@@ -173,7 +173,7 @@ table.tb{width:100%;border-collapse:collapse;font-size:var(--fs-s)}
 h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02em;margin:calc(var(--u)*12) 0 calc(var(--u)*16)}
 .cover-sub{font-size:var(--fs-m);font-weight:700;color:var(--ink2)}
 .cover-sub b{color:var(--orangeink)}
-.cover-meta{display:flex;flex-wrap:wrap;gap:var(--g2) var(--g4);margin-top:calc(var(--u)*30);font-size:var(--fs-s)}
+.cover-meta{display:grid;grid-template-columns:auto auto;justify-content:start;gap:var(--g2) var(--g4);margin-top:calc(var(--u)*30);font-size:var(--fs-s)}
 .cover-meta dt{font-size:var(--fs-cap);color:var(--ink3);letter-spacing:.1em;font-weight:700}
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*10)}
 .tile{border:1px solid var(--rule);border-radius:var(--r);padding:calc(var(--u)*14);display:flex;flex-direction:column;gap:calc(var(--u)*6);min-height:calc(var(--u)*150)}
@@ -194,6 +194,23 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 .divider.mi .qs>div{border-color:var(--orange)}
 
 /* ---------- agenda ---------- */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:var(--g3) var(--g4)}
+.people dt{font-size:var(--fs-cap);letter-spacing:.1em;color:var(--ink3);font-weight:700}
+.people dd{font-size:var(--fs-m);margin-top:calc(var(--u)*4);line-height:1.35}
+.rd{display:flex;flex-direction:column;gap:0;padding:0;list-style:none}
+.rd li{display:grid;grid-template-columns:calc(var(--u)*70) calc(var(--u)*150) 1fr;gap:calc(var(--u)*10);align-items:baseline;padding:calc(var(--u)*8) 0;border-bottom:1px solid var(--rule2);font-size:var(--fs-s)}
+.rd .tm{font-family:var(--f-num);color:var(--ink2)}
+.rd .mn{font-family:var(--f-num);color:var(--ink3);font-weight:400;margin-left:.3em}
+.rd .ds{color:var(--ink2);font-size:var(--fs-cap)}
+.rdbar{display:flex;gap:2px;height:calc(var(--u)*10);border-radius:5px;overflow:hidden;margin:calc(var(--u)*8) 0 calc(var(--u)*4)}
+.rdbar i{display:block;height:100%}
+.expert{display:flex;flex-direction:column;justify-content:center;gap:calc(var(--u)*6);background:var(--deep);color:var(--ondeep);border-radius:var(--r);padding:calc(var(--u)*28)}
+.expert .role{font-size:var(--fs-cap);letter-spacing:.14em;color:var(--ondeep2);font-weight:700}
+.expert .nm{font-size:var(--fs-xl);font-weight:900;line-height:1.1}
+.expert .org{font-size:var(--fs-m);color:var(--ondeep2)}
+body.scroll .people{grid-template-columns:1fr!important}
+body.scroll .rd li{grid-template-columns:auto 1fr!important}
+body.scroll .rd .ds{grid-column:1 / -1}
 .chip{display:inline-block;font-size:var(--fs-cap);font-weight:700;color:#fff;border-radius:4px;padding:0 .45em;margin-right:.45em;vertical-align:.1em}
 .chip.mi{background:var(--orange)} .chip.ma{background:var(--teal)}
 .agenda td{vertical-align:middle}
@@ -375,8 +392,10 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
       <h1>長者量六力<br>共學活動</h1>
       <p class="cover-sub"><b>微觀</b>看個案 ✕ <b>宏觀</b>看數據</p>
       <dl class="cover-meta">
-        <div><dt>對象</dt><dd>機構單位・醫療與評估人員</dd></div>
-        <div><dt>引導</dt><dd>鍾孟修 職能治療師</dd></div>
+        <div><dt>主辦單位</dt><dd>基隆市衛生局</dd></div>
+        <div><dt>協辦單位</dt><dd>台灣生活復能健康促進協會</dd></div>
+        <div><dt>專家委員</dt><dd>長庚科技大學 倪麗芬 副教授</dd></div>
+        <div><dt>主持人</dt><dd>鍾孟修 職能治療師</dd></div>
       </dl>
     </div>
     <div class="tiles" aria-label="六大內在能力">
@@ -433,9 +452,9 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
       <tbody>
         <tr class="ag-ne"><td class="num">09:30–10:00</td><td>報到</td><td class="muted">—</td><td>掃描加入 LINE 社群</td></tr>
         <tr class="ag-ne"><td class="num">10:00–10:05</td><td>開場與人員介紹</td><td>衛生局</td><td class="muted">—</td></tr>
-        <tr class="ag-mi"><td class="num"><b>10:05–11:15</b></td><td><span class="chip mi">微觀</span><b>共學主題報告（一）</b><br>案例討論與反饋</td><td>專家委員<br>共學團體講師主持人</td><td>模擬個案「李阿嬤」：初評 → 複評 → 介入計畫 → 3 個月追蹤 → 6 個月再評；分組討論 25 分鐘、各組報告與反饋</td></tr>
+        <tr class="ag-mi"><td class="num"><b>10:05–11:15</b></td><td><span class="chip mi">微觀</span><b>共學主題報告（一）</b><br>案例討論與反饋</td><td>專家委員<br>共學團體講師主持人</td><td>個案介紹 10′ → 分組討論 28′ → 兩組報告 14′ → 專家回饋 15′ → 小結 3′</td></tr>
         <tr class="ag-ne"><td class="num">11:15–11:20</td><td>休息</td><td class="muted">—</td><td class="muted">—</td></tr>
-        <tr class="ag-ma"><td class="num"><b>11:20–12:15</b></td><td><span class="chip ma">宏觀</span><b>共學主題報告（二）</b><br>數據分析與策略研討</td><td>專家委員<br>共學團體講師主持人</td><td>評估效能、介入率、轉介率、後測率、新開案分析；策略研討 15 分鐘、30 天行動承諾</td></tr>
+        <tr class="ag-ma"><td class="num"><b>11:20–12:15</b></td><td><span class="chip ma">宏觀</span><b>共學主題報告（二）</b><br>數據分析與策略研討</td><td>專家委員<br>共學團體講師主持人</td><td>數據介紹 10′ → 分組討論 25′ → 兩組報告 10′ → 專家回饋與總回饋 10′</td></tr>
         <tr class="ag-ne"><td class="num">12:15–12:30</td><td>滿意度調查、大合照</td><td class="muted">—</td><td>掃描滿意度問卷</td></tr>
       </tbody>
     </table></div>
@@ -443,8 +462,69 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>今天先看一位長輩（微觀），休息後再看全市數據（宏觀），讓個案裡的卡點在數據中找到對應。</li>
-    <li>分組建議：醫院、診所、衛生所、藥局混搭，讓不同流程互相借鏡。</li>
-    <li>第一段 70 分鐘：個案 30 分、分組討論 25 分、報告與反饋 15 分。第二段 55 分鐘：數據 22 分、策略研討 15 分、報告與行動承諾 18 分。</li>
+    <li>分兩組，每組約 5 個單位；建議醫院、診所、衛生所、藥局混搭。</li>
+    <li>兩個單元的細部時間在下兩頁。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 人員介紹與分組 -->
+<section class="slide" data-title="人員介紹與分組">
+  <div class="hd"><span class="sec">開場｜10:00–10:05</span><span class="pg"></span></div>
+  <h2>人員介紹與分組</h2>
+  <div class="body g12" style="display:grid">
+    <dl class="people card">
+      <div><dt>主辦單位</dt><dd>基隆市衛生局</dd></div>
+      <div><dt>協辦單位</dt><dd>台灣生活復能健康促進協會</dd></div>
+      <div><dt>專家委員</dt><dd><b>倪麗芬 副教授</b><br><span class="small ink2">長庚科技大學</span></dd></div>
+      <div><dt>主持人</dt><dd><b>鍾孟修 職能治療師</b><br><span class="small ink2">台灣生活復能健康促進協會 理事長</span></dd></div>
+    </dl>
+    <div class="fx">
+      <div class="g2">
+        <div class="card tint"><div class="label">第一組</div><p class="small" style="margin-top:6px">約 5 個單位</p><p class="small">組長：＿＿＿＿＿＿</p><p class="small">記錄：＿＿＿＿＿＿</p></div>
+        <div class="card warm"><div class="label">第二組</div><p class="small" style="margin-top:6px">約 5 個單位</p><p class="small">組長：＿＿＿＿＿＿</p><p class="small">記錄：＿＿＿＿＿＿</p></div>
+      </div>
+      <div class="card small"><b>組長</b>：帶討論、控時，並上台報告<br><b>記錄</b>：寫討論單，報告時協助補充<br><b>報告順序</b>：第一組完整報告，第二組只補充第一組沒提到的內容</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>衛生局開場後，主持人介紹專家委員倪麗芬副教授。</li>
+    <li>請兩組在 1 分鐘內選出組長與記錄，並把名字寫在討論單上。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 兩個單元怎麼進行 -->
+<section class="slide" data-title="兩個單元怎麼進行">
+  <div class="hd"><span class="sec">開場｜進行方式</span><span class="pg"></span></div>
+  <h2>兩個單元，同一套節奏</h2>
+  <div class="body g2" style="display:grid">
+    <div class="card">
+      <div class="label"><span class="chip mi">微觀</span>共學主題報告（一）案例討論與反饋・70 分鐘</div>
+      <div class="rdbar" aria-hidden="true"><i style="flex:10;background:var(--orange)"></i><i style="flex:28;background:var(--orangebg)"></i><i style="flex:8;background:var(--amber)"></i><i style="flex:6;background:var(--amberbg)"></i><i style="flex:15;background:var(--deep)"></i><i style="flex:3;background:var(--rule)"></i></div>
+      <ol class="rd">
+        <li><span class="tm">10:05</span><b>個案介紹<span class="mn">10′</span></b><span class="ds">主持人帶大家走完李阿嬤的 6 個月</span></li>
+        <li><span class="tm">10:15</span><b>分組討論<span class="mn">28′</span></b><span class="ds">兩組各自討論 4 個問題</span></li>
+        <li><span class="tm">10:43</span><b>第一組報告<span class="mn">8′</span></b><span class="ds">完整報告</span></li>
+        <li><span class="tm">10:51</span><b>第二組報告<span class="mn">6′</span></b><span class="ds">只補充第一組沒提到的內容</span></li>
+        <li><span class="tm">10:57</span><b>專家回饋<span class="mn">15′</span></b><span class="ds">倪麗芬副教授</span></li>
+        <li><span class="tm">11:12</span><b>主持人小結<span class="mn">3′</span></b><span class="ds">案例教我們的五件事</span></li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="label"><span class="chip ma">宏觀</span>共學主題報告（二）數據分析與策略研討・55 分鐘</div>
+      <div class="rdbar" aria-hidden="true"><i style="flex:10;background:var(--teal)"></i><i style="flex:25;background:var(--tealbg)"></i><i style="flex:6;background:var(--amber)"></i><i style="flex:4;background:var(--amberbg)"></i><i style="flex:10;background:var(--deep)"></i></div>
+      <ol class="rd">
+        <li><span class="tm">11:20</span><b>數據介紹<span class="mn">10′</span></b><span class="ds">全市指標、漏斗、新開案分析</span></li>
+        <li><span class="tm">11:30</span><b>分組討論<span class="mn">25′</span></b><span class="ds">找缺口，每個單位寫 30 天行動承諾卡</span></li>
+        <li><span class="tm">11:55</span><b>第一組報告<span class="mn">6′</span></b><span class="ds">完整報告</span></li>
+        <li><span class="tm">12:01</span><b>第二組報告<span class="mn">4′</span></b><span class="ds">只補充第一組沒提到的內容</span></li>
+        <li><span class="tm">12:05</span><b>專家回饋<span class="mn">10′</span></b><span class="ds">第二單元回饋＋今天的總回饋</span></li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>兩個單元都是：介紹 → 分組討論 → 第一組完整報告 → 第二組補充 → 專家回饋。</li>
+    <li>第二組報告前先問：「第一組沒提到的有哪些？」避免重複。</li>
+    <li>時間吃緊時，優先保住分組討論與專家回饋，縮短介紹。</li>
   </ul></aside>
 </section>
 
@@ -468,14 +548,14 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
         <li><span class="k">1</span><span class="small"><b>個資去識別</b>：個案只講化名與年齡層，不拍攝、不外傳量表與名冊。</span></li>
         <li><span class="k">2</span><span class="small">數據以<b>單位代碼</b>呈現。談流程卡在哪裡，不談排名。</span></li>
         <li><span class="k">3</span><span class="small">請對照<b>自己單位的數據</b>：評估數、首次評估數、初評異常、複評、介入與轉介、追蹤、後測。</span></li>
-        <li><span class="k">4</span><span class="small">每組有<b>主持、記錄、報告</b>三個角色，報告每組 2 分鐘。</span></li>
+        <li><span class="k">4</span><span class="small">分<b>兩組</b>、每組約 5 個單位，各選<b>組長</b>與<b>記錄</b>。第二組報告只補充第一組沒提到的內容。</span></li>
         <li><span class="k">5</span><span class="small">簽到、議程、討論紀錄、照片與行動承諾卡，會後一併留存備查。</span></li>
       </ol>
     </div>
   </div>
   <p class="foot">規定來源：國健署規定，見各縣市 115 年計畫須知（花蓮縣衛生局 114.12、臺中市衛生局需求說明書）。如有異動，以國健署函文公告為準。</p>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>左欄是計畫裡寫明的規定；右欄是今天的進行方式。</li>
+    <li>左欄是計畫裡寫明的規定；右欄是今天的進行方式。時間不夠可略過本頁與下一頁，內容會放在 LINE 社群。</li>
     <li>繼續教育時數是否認列：請主辦單位會前確認後口頭說明。</li>
     <li>強調心理安全：數據是起點，不是成績單。</li>
   </ul></aside>
@@ -729,7 +809,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 
 <!-- ───────── 微觀討論 -->
 <section class="slide mi" data-title="案例分組討論">
-  <div class="hd"><span class="sec mi">微觀｜案例討論 25 分鐘</span><span class="pg"></span></div>
+  <div class="hd"><span class="sec mi">微觀｜分組討論 10:15–10:43</span><span class="pg"></span></div>
   <h2>分組討論：如果李阿嬤是你們單位的個案</h2>
   <div class="disc">
     <ol class="qlist mi">
@@ -739,23 +819,62 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
       <li><span>你們單位接這個案，誰負責什麼？後測日要排在哪一天？</span></li>
     </ol>
     <div class="fx">
-      <div class="timer" data-min="25" id="timer2">
+      <div class="timer" data-min="28" id="timer2">
         <div class="label">討論計時</div>
         <div class="tv num">20:00</div>
         <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
       </div>
-      <div class="card small"><b>產出</b><br>在討論單畫出李阿嬤的時間軸，標出你們會加的接觸點。</div>
+      <div class="card small"><b>組長</b>：帶討論、控時，並上台報告<br><b>記錄</b>：寫討論單，報告時協助補充<br><b>產出</b>：在討論單畫出李阿嬤的時間軸，標出你們會加的接觸點</div>
     </div>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>Q4 請醫院、診所、衛生所、藥局各自回答，人力配置不同，答案也不同。</li>
-    <li>報告時請各組說出一個「加在第幾天」的接觸點。</li>
+    <li>Q4 請組內的醫院、診所、衛生所、藥局各自回答，人力配置不同，答案也不同。</li>
+    <li>剩 5 分鐘時提醒組長整理報告重點。</li>
   </ul></aside>
+</section>
+
+<!-- ───────── 案例成果呈現 -->
+<section class="slide" data-title="案例成果呈現">
+  <div class="hd"><span class="sec mi">微觀｜成果呈現 10:43–10:57</span><span class="pg"></span></div>
+  <h2>成果呈現：第一組完整報告，第二組只補充</h2>
+  <div class="body g2" style="display:grid">
+    <div class="card tint fx">
+      <div class="label">第一組｜完整報告</div>
+      <p class="small">依 Q1–Q4 報告。重點說出：你們會加在「第幾天」的接觸點、由誰負責。</p>
+      <div class="timer" data-min="8" style="border:0;padding:0"><div class="tv num">08:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
+    </div>
+    <div class="card warm fx">
+      <div class="label">第二組｜只補充新內容</div>
+      <p class="small">只講第一組<b>沒提到</b>的做法，例如不同單位類型（醫院、診所、衛生所、藥局）的不同安排。</p>
+      <div class="timer" data-min="6" style="border:0;padding:0"><div class="tv num">06:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
+    </div>
+  </div>
+  <p class="foot">記錄請把兩組的接觸點標在同一條時間軸上，讓專家委員回饋時對照。</p>
+  <aside class="notes"><h4>講者備註</h4><ul><li>第一組報告時，主持人把接觸點寫在白板的時間軸上；第二組補充的用另一個顏色。</li><li>這張時間軸給專家委員回饋時參考。</li></ul></aside>
+</section>
+
+<!-- ───────── 專家回饋（一） -->
+<section class="slide" data-title="專家回饋（一）">
+  <div class="hd"><span class="sec mi">微觀｜專家回饋 10:57–11:12</span><span class="pg"></span></div>
+  <h2>專家回饋：案例討論</h2>
+  <div class="body g12" style="display:grid">
+    <div class="expert">
+      <span class="role">專家委員</span>
+      <span class="nm">倪麗芬 副教授</span>
+      <span class="org">長庚科技大學</span>
+    </div>
+    <div class="fx">
+      <div class="label">回饋可以聚焦在</div>
+      <ol class="list"><li><span class="k">1</span><span>兩組的流程安排：哪一站最該先改</span></li><li><span class="k">2</span><span>介入效果怎麼判讀：哪些進步可以歸功於介入</span></li><li><span class="k">3</span><span>可以直接帶回單位用的做法</span></li></ol>
+      <div class="timer" data-min="15" style="border:0;padding:0;margin-top:auto"><div class="tv num" style="font-size:calc(var(--u)*44)">15:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul><li>把白板上兩組的時間軸留給委員對照。</li><li>回饋結束後，主持人用 3 分鐘小結。</li></ul></aside>
 </section>
 
 <!-- ───────── 案例反饋 -->
 <section class="slide" data-title="案例反饋">
-  <div class="hd"><span class="sec mi">微觀｜各組報告與反饋</span><span class="pg"></span></div>
+  <div class="hd"><span class="sec mi">微觀｜主持人小結 11:12–11:15</span><span class="pg"></span></div>
   <h2>案例反饋：李阿嬤的 177 天，教我們五件事</h2>
   <div class="body g21" style="display:grid">
     <ol class="list fb">
@@ -766,13 +885,12 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
       <li><span class="k">5</span><span><b>記錄同期發生的事</b><br><span class="small ink2">先生出院、換藥都會影響結果。追蹤表單旁多一欄，判讀介入效果才分得清楚。</span></span></li>
     </ol>
     <div class="fx">
-      <div class="card warm small"><b>各組報告（每組 2 分鐘）</b><br>說出你們會加在「第幾天」的一個接觸點，以及由誰負責。</div>
       <div class="card small"><b>介入有幫助的地方</b><br>藥物整合、營養師諮詢、照顧者的長照服務都有到位；中斷的據點改成居家運動後，行動能力仍有進步。</div>
       <div class="callout t small"><b>休息後</b>：把這五個卡點放到全市數據裡，看看有多常見。</div>
     </div>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>先聽各組報告，再用這頁收斂。各組提到的做法可以直接寫在對應的項目旁。</li>
+    <li>專家回饋後用這頁收斂 3 分鐘，把兩組提到的做法對到這五點。</li>
     <li>第 1、2、4 點在第二段的數據裡都有對應：未複評、未介入、未完成後測。</li>
   </ul></aside>
 </section>
@@ -957,8 +1075,8 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
     </div>
     <div class="fx">
       <div class="card small"><b>低於或貼近篩選線</b>
-        <ul style="margin-top:4px"><li>診所 D：4/13（30.8%）</li><li>診所 F：0/1（視力異常 1 案）</li><li>醫院 D：2/4（50.0%）</li></ul></div>
-      <div class="callout a small"><b>先檢查分母</b><br>衛生所 B 的分母用了初評異常數；若改用確認異常數，介入率約 67.6%。</div>
+        <ul style="margin-top:4px"><li>診所 M：4/13（30.8%）</li><li>診所 J：0/1（視力異常 1 案）</li><li>醫院 F：2/4（50.0%）</li></ul></div>
+      <div class="callout a small"><b>先檢查分母</b><br>衛生所 F 的分母用了初評異常數；若改用確認異常數，介入率約 67.6%。</div>
       <div class="callout small"><b>下一個問題</b><br>介入率高，不等於長輩真的被接手。只給一張衛教單張，也算介入。</div>
     </div>
   </div>
@@ -1030,7 +1148,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
     </div>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>後測率高的醫院（例如醫院 B 91.5%）請分享：誰負責？用什麼提醒？</li>
+    <li>後測率高的醫院（例如醫院 E 91.5%）請分享：誰負責？用什麼提醒？</li>
     <li>未到後測期 131 人：今天就可以排進行事曆。</li>
   </ul></aside>
 </section>
@@ -1105,57 +1223,33 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 
 <!-- ───────── 宏觀討論 -->
 <section class="slide" data-title="策略研討">
-  <div class="hd"><span class="sec">宏觀｜策略研討 15 分鐘</span><span class="pg"></span></div>
+  <div class="hd"><span class="sec">宏觀｜分組討論 11:30–11:55</span><span class="pg"></span></div>
   <h2>策略研討：找出你們單位的最大缺口</h2>
   <div class="disc">
     <ol class="qlist">
       <li><span>對照漏斗，你們單位最大的流失在哪一段？<small>未複評／未介入／未追蹤／未後測／新開案太少</small></span></li>
       <li><span>造成缺口的流程原因是什麼？<small>從人力、時間、場地、系統、長輩與家屬端各想一個</small></span></li>
       <li><span>你們的「介入」裡，有多少只是給衛教單張？<small>估一個比例，並說出一個真的交到下一雙手的例子</small></span></li>
-      <li><span>下個月可以先改的一件事是什麼？<small>寫在討論單：缺口 → 原因 → 改善</small></span></li>
+      <li><span>下個月可以先改的一件事是什麼？<small>每個單位填一張 30 天行動承諾卡（下一頁）</small></span></li>
     </ol>
     <div class="fx">
-      <div class="timer" data-min="15" id="timer1">
+      <div class="timer" data-min="25" id="timer1">
         <div class="label">討論計時</div>
         <div class="tv num">20:00</div>
         <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
       </div>
-      <div class="card small"><b>角色</b><br>主持：控時與點名發言<br>記錄：寫討論單<br>報告：每組 2 分鐘</div>
+      <div class="card small"><b>組長</b>：帶討論、控時，並上台報告<br><b>記錄</b>：寫討論單（缺口 → 原因 → 改善）<br><b>產出</b>：每個單位一張 30 天行動承諾卡</div>
     </div>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>巡場時優先聽 Q2：原因要具體到「哪一站、誰、什麼時候」。</li>
-    <li>報告時只講 Q1 與 Q4，其餘寫在討論單。</li>
-  </ul></aside>
-</section>
-
-<!-- ───────── 優化建議 -->
-<section class="slide" data-title="流程優化建議">
-  <div class="hd"><span class="sec">宏觀｜策略研討・綜整</span><span class="pg"></span></div>
-  <h2>七個流程優化做法，對應會改善的指標</h2>
-  <div class="body">
-    <table class="tb">
-      <thead><tr><th style="width:27%">卡點（宏觀／微觀）</th><th>改善做法</th><th style="width:16%">改善指標</th></tr></thead>
-      <tbody>
-        <tr><td>初評異常沒有當天複評<br><span class="cap muted">全市 ≥239 人／阿嬤延 2 週</span></td><td>異常當天完成複評；做不到就發複評預約卡，7 天內完成</td><td>複評完成率</td></tr>
-        <tr><td>轉介後沒人確認<br><span class="cap muted">據點中斷 8 週無人知</span></td><td>第 2 週打關懷電話確認「有沒有去」；滿 1 個月做正式追蹤並上傳</td><td>到位率・追蹤率</td></tr>
-        <tr><td>聯絡資訊只有一組<br><span class="cap muted">共照中心聯繫失敗</span></td><td>登錄長輩與主要聯絡人兩組電話；同意書勾選後當天送出轉介</td><td>到位率</td></tr>
-        <tr><td>後測卡在窗口尾端<br><span class="cap muted">診所後測率 15.4%</span></td><td>介入計畫訂好當天就約後測日，排在第 4 個月，留重排空間</td><td>後測率</td></tr>
-        <tr><td>介入多半只給單張</td><td>每位異常長輩至少一項「有人接手」的介入</td><td>轉介率</td></tr>
-        <tr><td>只看年度報表</td><td>每月看一次自己的漏斗；主管每月抽查 5 案並回饋</td><td>全部</td></tr>
-        <tr><td>新開案靠臨櫃遇到</td><td>門診系統提醒、慢箋回診順評、社區設站、LINE 自評異常轉院評</td><td>新開案比</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>請各組把剛才討論出的做法，對到這張表的哪一列；沒有對到的就是新點子，請補上。</li>
-    <li>「主管每月抽查」呼應須知的品質管理機制要求。</li>
+    <li>剩 5 分鐘時提醒各單位寫完行動承諾卡。</li>
   </ul></aside>
 </section>
 
 <!-- ───────── 行動承諾 -->
 <section class="slide" data-title="30 天行動承諾">
-  <div class="hd"><span class="sec">宏觀｜策略研討・行動承諾</span><span class="pg"></span></div>
+  <div class="hd"><span class="sec">宏觀｜分組討論・行動承諾</span><span class="pg"></span></div>
   <h2>30 天行動承諾卡</h2>
   <div class="body g21" style="display:grid">
     <form class="pdca" id="pdca" autocomplete="off">
@@ -1181,6 +1275,88 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
+<!-- ───────── 數據成果呈現 -->
+<section class="slide" data-title="數據成果呈現">
+  <div class="hd"><span class="sec">宏觀｜成果呈現 11:55–12:05</span><span class="pg"></span></div>
+  <h2>成果呈現：第一組完整報告，第二組只補充</h2>
+  <div class="body g2" style="display:grid">
+    <div class="card tint fx">
+      <div class="label">第一組｜完整報告</div>
+      <p class="small">說出組內單位最大的缺口、背後原因，以及各單位的 30 天行動。</p>
+      <div class="timer" data-min="6" style="border:0;padding:0"><div class="tv num">06:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
+    </div>
+    <div class="card warm fx">
+      <div class="label">第二組｜只補充新內容</div>
+      <p class="small">只講第一組<b>沒提到</b>的缺口與做法，以及需要衛生局協助的事。</p>
+      <div class="timer" data-min="4" style="border:0;padding:0"><div class="tv num">04:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
+    </div>
+  </div>
+  <p class="foot">需要衛生局協助的事項，請記錄另外列出，會後交給主辦單位。</p>
+  <aside class="notes"><h4>講者備註</h4><ul><li>報告完請各單位把行動承諾卡交給記錄，滿意度時段一起收回。</li></ul></aside>
+</section>
+
+<!-- ───────── 專家回饋（二） -->
+<section class="slide" data-title="專家回饋（二）">
+  <div class="hd"><span class="sec">宏觀｜專家回饋 12:05–12:15</span><span class="pg"></span></div>
+  <h2>專家回饋：數據分析與策略</h2>
+  <div class="body g12" style="display:grid">
+    <div class="expert">
+      <span class="role">專家委員</span>
+      <span class="nm">倪麗芬 副教授</span>
+      <span class="org">長庚科技大學</span>
+    </div>
+    <div class="fx">
+      <div class="label">回饋可以聚焦在</div>
+      <ol class="list"><li><span class="k">1</span><span>數據判讀：哪些缺口最值得先處理</span></li><li><span class="k">2</span><span>兩組策略的可行性與優先順序</span></li><li><span class="k">3</span><span>衛生局與單位可以一起做的事</span></li></ol>
+      <div class="timer" data-min="10" style="border:0;padding:0;margin-top:auto"><div class="tv num" style="font-size:calc(var(--u)*44)">10:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul><li>這 10 分鐘包含第二單元回饋與今天的總回饋（下一頁），請委員自行分配。</li></ul></aside>
+</section>
+
+<!-- ───────── 專家總回饋 -->
+<section class="slide" data-title="專家總回饋">
+  <div class="hd"><span class="sec">專家總回饋</span><span class="pg"></span></div>
+  <h2>專家總回饋：今天的共學</h2>
+  <div class="body g12" style="display:grid">
+    <div class="expert">
+      <span class="role">專家委員</span>
+      <span class="nm">倪麗芬 副教授</span>
+      <span class="org">長庚科技大學</span>
+    </div>
+    <div class="fx">
+      <div class="label">回饋可以聚焦在</div>
+      <ol class="list"><li><span class="k">1</span><span>今天看到的亮點</span></li><li><span class="k">2</span><span>全市可以一起改善的一件事</span></li><li><span class="k">3</span><span>下一次共學可以深入的主題</span></li></ol>
+      
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul><li>總回饋後直接進入滿意度調查與大合照。</li></ul></aside>
+</section>
+
+<!-- ───────── 優化建議 -->
+<section class="slide" data-title="流程優化建議">
+  <div class="hd"><span class="sec">會後帶回</span><span class="pg"></span></div>
+  <h2>會後帶回：七個流程優化做法</h2>
+  <div class="body">
+    <table class="tb">
+      <thead><tr><th style="width:27%">卡點（宏觀／微觀）</th><th>改善做法</th><th style="width:16%">改善指標</th></tr></thead>
+      <tbody>
+        <tr><td>初評異常沒有當天複評<br><span class="cap muted">全市 ≥239 人／阿嬤延 2 週</span></td><td>異常當天完成複評；做不到就發複評預約卡，7 天內完成</td><td>複評完成率</td></tr>
+        <tr><td>轉介後沒人確認<br><span class="cap muted">據點中斷 8 週無人知</span></td><td>第 2 週打關懷電話確認「有沒有去」；滿 1 個月做正式追蹤並上傳</td><td>到位率・追蹤率</td></tr>
+        <tr><td>聯絡資訊只有一組<br><span class="cap muted">共照中心聯繫失敗</span></td><td>登錄長輩與主要聯絡人兩組電話；同意書勾選後當天送出轉介</td><td>到位率</td></tr>
+        <tr><td>後測卡在窗口尾端<br><span class="cap muted">診所後測率 15.4%</span></td><td>介入計畫訂好當天就約後測日，排在第 4 個月，留重排空間</td><td>後測率</td></tr>
+        <tr><td>介入多半只給單張</td><td>每位異常長輩至少一項「有人接手」的介入</td><td>轉介率</td></tr>
+        <tr><td>只看年度報表</td><td>每月看一次自己的漏斗；主管每月抽查 5 案並回饋</td><td>全部</td></tr>
+        <tr><td>新開案靠臨櫃遇到</td><td>門診系統提醒、慢箋回診順評、社區設站、LINE 自評異常轉院評</td><td>新開案比</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>這頁不一定要現場講，會放在 LINE 社群讓各單位會後對照。</li>
+    <li>「主管每月抽查」呼應須知的品質管理機制要求。</li>
+  </ul></aside>
+</section>
+
 <!-- ───────── 參考資料 -->
 <section class="slide" data-title="參考資料">
   <div class="hd"><span class="sec">附錄</span><span class="pg"></span></div>
@@ -1193,6 +1369,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
       <li><span class="tag">工作手冊</span><span>國民健康署《預防及延緩失能之長者功能評估服務試辦計畫 工作手冊》，110 年 5 月。<a href="https://www.klchb.klcg.gov.tw/wSite/public/Attachment/01205/f1625039772640.pdf" target="_blank" rel="noopener">開啟 PDF</a></span></li>
       <li><span class="tag">新聞稿</span><span>國民健康署〈全臺醫療單位齊心 陪長輩「量六力」〉，2025 年 11 月 26 日。<a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19644" target="_blank" rel="noopener">開啟網頁</a></span></li>
       <li><span class="tag">報導</span><span>工商時報〈「量六力」揪失能警訊 每 4 名長者就有 1 人需注意〉，2026 年 8 月。<a href="https://www.ctee.com.tw/news/20260805702058-431401" target="_blank" rel="noopener">開啟網頁</a></span></li>
+      <li><span class="tag">講義</span><span>直式 A4 學員講義（含兩頁討論記錄頁）。<a href="handout.pdf" target="_blank" rel="noopener">下載 PDF</a></span></li>
       <li><span class="tag">數據</span><span>2026 機構訪查篩選表（衛生局內部資料，本簡報已去識別化為單位代碼）。</span></li>
     </ul>
     <p class="foot">各項規定以國民健康署最新函文公告為準。個案「李阿嬤」為教學用虛構個案。</p>
@@ -1228,7 +1405,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 
 <div class="bar" id="bar">
   <button type="button" id="prev" aria-label="上一頁">◀</button>
-  <span class="count" id="count">1 / 31</span>
+  <span class="count" id="count">1 / 38</span>
   <button type="button" id="next" aria-label="下一頁">▶</button>
   <div class="prog" aria-hidden="true"><i id="progi"></i></div>
   <button type="button" id="tocBtn">目錄 T</button>
@@ -1244,7 +1421,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 (function(){
 "use strict";
 /* ---------- data (2026 機構訪查篩選表，去識別化) ---------- */
-var UNITS=[{"c":"醫院A","t":"醫院","ab":23.8,"iv":100.0,"pt":62.5,"abf":null,"ivf":"18/18","ptf":"5/8","n":""},{"c":"醫院B","t":"醫院","ab":21.3,"iv":99.1,"pt":91.5,"abf":null,"ivf":"113/114","ptf":"43/47","n":""},{"c":"醫院C","t":"醫院","ab":5.2,"iv":100.0,"pt":80.0,"abf":null,"ivf":"50/50","ptf":"28/35","n":""},{"c":"醫院D","t":"醫院","ab":2.6,"iv":50.0,"pt":null,"abf":null,"ivf":"2/4","ptf":null,"n":""},{"c":"醫院E","t":"醫院","ab":8.8,"iv":93.2,"pt":16.7,"abf":null,"ivf":"41/44","ptf":"1/6","n":""},{"c":"醫院F","t":"醫院","ab":15.0,"iv":100.0,"pt":null,"abf":null,"ivf":"30/30","ptf":null,"n":"全數為視力/聽力異常，無需後測"},{"c":"衛生所A","t":"衛生所","ab":10.0,"iv":89.2,"pt":57.1,"abf":null,"ivf":"83/93","ptf":"16/28","n":""},{"c":"衛生所B","t":"衛生所","ab":12.5,"iv":55.9,"pt":52.9,"abf":null,"ivf":"71/127","ptf":"18/34","n":"介入率分母用初評異常數"},{"c":"衛生所C","t":"衛生所","ab":12.0,"iv":94.9,"pt":54.0,"abf":null,"ivf":"93/98","ptf":"27/50","n":""},{"c":"衛生所D","t":"衛生所","ab":7.3,"iv":97.9,"pt":100.0,"abf":null,"ivf":"46/47","ptf":"3/3","n":"原始資料分母疑似筆誤，已更正後計算"},{"c":"衛生所E","t":"衛生所","ab":15.8,"iv":100.0,"pt":75.0,"abf":null,"ivf":"174/174","ptf":"6/8","n":"163 案無需後測"},{"c":"衛生所F","t":"衛生所","ab":2.2,"iv":100.0,"pt":100.0,"abf":null,"ivf":"13/13","ptf":"4/4","n":""},{"c":"衛生所G","t":"衛生所","ab":14.4,"iv":76.3,"pt":71.4,"abf":null,"ivf":"71/93","ptf":"25/35","n":""},{"c":"診所A","t":"診所","ab":3.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"3 案皆未複評"},{"c":"診所B","t":"診所","ab":null,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評異常 70 案皆未完成複評"},{"c":"診所C","t":"診所","ab":10.0,"iv":100.0,"pt":87.5,"abf":null,"ivf":"23/23","ptf":"7/8","n":""},{"c":"診所D","t":"診所","ab":20.0,"iv":30.8,"pt":0.0,"abf":null,"ivf":"4/13","ptf":"0/7","n":""},{"c":"診所E","t":"診所","ab":0.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評無異常"},{"c":"診所F","t":"診所","ab":1.7,"iv":0.0,"pt":null,"abf":null,"ivf":"0/1","ptf":null,"n":"視力異常 1 案"},{"c":"診所G","t":"診所","ab":0.8,"iv":100.0,"pt":0.0,"abf":null,"ivf":"1/1","ptf":"0/1","n":""},{"c":"診所H","t":"診所","ab":1.7,"iv":100.0,"pt":null,"abf":null,"ivf":"1/1","ptf":null,"n":""},{"c":"診所I","t":"診所","ab":93.3,"iv":100.0,"pt":16.7,"abf":null,"ivf":"44/44","ptf":"1/6","n":""},{"c":"診所J","t":"診所","ab":51.7,"iv":83.9,"pt":6.7,"abf":null,"ivf":"26/31","ptf":"1/15","n":""},{"c":"診所K","t":"診所","ab":28.2,"iv":100.0,"pt":null,"abf":null,"ivf":"9/9","ptf":null,"n":"9 案未到後測期"},{"c":"診所L","t":"診所","ab":16.4,"iv":100.0,"pt":0.0,"abf":null,"ivf":"10/10","ptf":"0/4","n":""},{"c":"診所M","t":"診所","ab":43.3,"iv":100.0,"pt":4.2,"abf":null,"ivf":"26/26","ptf":"1/24","n":""},{"c":"藥局A","t":"藥局","ab":0.8,"iv":100.0,"pt":100.0,"abf":null,"ivf":"1/1","ptf":"1/1","n":""},{"c":"藥局B","t":"藥局","ab":0.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"無異常個案"},{"c":"藥局C","t":"藥局","ab":21.7,"iv":69.2,"pt":null,"abf":null,"ivf":"9/13","ptf":null,"n":"7 案未到後測期"},{"c":"藥局D","t":"藥局","ab":null,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評異常 6 案（視力）未複評、未介入"}];
+var UNITS=[{"c":"醫院A","t":"醫院","ab":5.2,"iv":100.0,"pt":80.0,"abf":null,"ivf":"50/50","ptf":"28/35","n":""},{"c":"醫院B","t":"醫院","ab":8.8,"iv":93.2,"pt":16.7,"abf":null,"ivf":"41/44","ptf":"1/6","n":""},{"c":"醫院C","t":"醫院","ab":23.8,"iv":100.0,"pt":62.5,"abf":null,"ivf":"18/18","ptf":"5/8","n":""},{"c":"醫院D","t":"醫院","ab":15.0,"iv":100.0,"pt":null,"abf":null,"ivf":"30/30","ptf":null,"n":"全數為視力/聽力異常，無需後測"},{"c":"醫院E","t":"醫院","ab":21.3,"iv":99.1,"pt":91.5,"abf":null,"ivf":"113/114","ptf":"43/47","n":""},{"c":"醫院F","t":"醫院","ab":2.6,"iv":50.0,"pt":null,"abf":null,"ivf":"2/4","ptf":null,"n":""},{"c":"衛生所A","t":"衛生所","ab":12.0,"iv":94.9,"pt":54.0,"abf":null,"ivf":"93/98","ptf":"27/50","n":""},{"c":"衛生所B","t":"衛生所","ab":15.8,"iv":100.0,"pt":75.0,"abf":null,"ivf":"174/174","ptf":"6/8","n":"163 案無需後測"},{"c":"衛生所C","t":"衛生所","ab":14.4,"iv":76.3,"pt":71.4,"abf":null,"ivf":"71/93","ptf":"25/35","n":""},{"c":"衛生所D","t":"衛生所","ab":10.0,"iv":89.2,"pt":57.1,"abf":null,"ivf":"83/93","ptf":"16/28","n":""},{"c":"衛生所E","t":"衛生所","ab":2.2,"iv":100.0,"pt":100.0,"abf":null,"ivf":"13/13","ptf":"4/4","n":""},{"c":"衛生所F","t":"衛生所","ab":12.5,"iv":55.9,"pt":52.9,"abf":null,"ivf":"71/127","ptf":"18/34","n":"介入率分母用初評異常數"},{"c":"衛生所G","t":"衛生所","ab":7.3,"iv":97.9,"pt":100.0,"abf":null,"ivf":"46/47","ptf":"3/3","n":"原始資料分母疑似筆誤，已更正後計算"},{"c":"診所A","t":"診所","ab":0.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評無異常"},{"c":"診所B","t":"診所","ab":10.0,"iv":100.0,"pt":87.5,"abf":null,"ivf":"23/23","ptf":"7/8","n":""},{"c":"診所C","t":"診所","ab":93.3,"iv":100.0,"pt":16.7,"abf":null,"ivf":"44/44","ptf":"1/6","n":""},{"c":"診所D","t":"診所","ab":43.3,"iv":100.0,"pt":4.2,"abf":null,"ivf":"26/26","ptf":"1/24","n":""},{"c":"診所E","t":"診所","ab":0.8,"iv":100.0,"pt":0.0,"abf":null,"ivf":"1/1","ptf":"0/1","n":""},{"c":"診所F","t":"診所","ab":28.2,"iv":100.0,"pt":null,"abf":null,"ivf":"9/9","ptf":null,"n":"9 案未到後測期"},{"c":"診所G","t":"診所","ab":51.7,"iv":83.9,"pt":6.7,"abf":null,"ivf":"26/31","ptf":"1/15","n":""},{"c":"診所H","t":"診所","ab":3.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"3 案皆未複評"},{"c":"診所I","t":"診所","ab":16.4,"iv":100.0,"pt":0.0,"abf":null,"ivf":"10/10","ptf":"0/4","n":""},{"c":"診所J","t":"診所","ab":1.7,"iv":0.0,"pt":null,"abf":null,"ivf":"0/1","ptf":null,"n":"視力異常 1 案"},{"c":"診所K","t":"診所","ab":null,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評異常 70 案皆未完成複評"},{"c":"診所L","t":"診所","ab":1.7,"iv":100.0,"pt":null,"abf":null,"ivf":"1/1","ptf":null,"n":""},{"c":"診所M","t":"診所","ab":20.0,"iv":30.8,"pt":0.0,"abf":null,"ivf":"4/13","ptf":"0/7","n":""},{"c":"藥局A","t":"藥局","ab":0.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"無異常個案"},{"c":"藥局B","t":"藥局","ab":null,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評異常 6 案（視力）未複評、未介入"},{"c":"藥局C","t":"藥局","ab":0.8,"iv":100.0,"pt":100.0,"abf":null,"ivf":"1/1","ptf":"1/1","n":""},{"c":"藥局D","t":"藥局","ab":21.7,"iv":69.2,"pt":null,"abf":null,"ivf":"9/13","ptf":null,"n":"7 案未到後測期"}];
 var TYPES=["醫院","衛生所","診所","藥局"];
 var AGG={
  "醫院":{u:6,N:2426,rev:85.5,ab:10.8,iv:97.7,pt:80.2,ivf:"254/260",ptf:"77/96",unf:19,ny:38},

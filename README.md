@@ -18,5 +18,9 @@
 - `img/qr-survey.png`：滿意度問卷 QR code（最後一頁）
   圖檔放進 `img/` 後重新整理即顯示；沒有圖檔時會顯示提示框。
 
+## 學員講義（直式 A4 PDF）
+- `handout.pdf`：首頁有網頁版 QR code；兩次討論後各有一頁空白討論記錄頁（一、討論的記錄重點／二、相關記錄內容）
+- 重新產生：`python3 handout_build.py img/qr-web.svg` → `NODE_PATH=<puppeteer-core 所在 node_modules> node handout_pdf.cjs handout.pdf`
+
 ## 資料說明
 宏觀數據來自 2026 機構訪查篩選表，已去識別化為單位代碼，只呈現比率與類型加總。個案「李阿嬤」為教學用虛構個案。規定內容以國民健康署最新函文公告為準。
