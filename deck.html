@@ -194,6 +194,12 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 .divider.mi .qs>div{border-color:var(--orange)}
 
 /* ---------- agenda ---------- */
+.chip{display:inline-block;font-size:var(--fs-cap);font-weight:700;color:#fff;border-radius:4px;padding:0 .45em;margin-right:.45em;vertical-align:.1em}
+.chip.mi{background:var(--orange)} .chip.ma{background:var(--teal)}
+.agenda td{vertical-align:middle}
+.agenda tr.ag-mi td:first-child{box-shadow:inset 4px 0 0 var(--orange)}
+.agenda tr.ag-ma td:first-child{box-shadow:inset 4px 0 0 var(--teal)}
+.agenda tr.ag-ne td{color:var(--ink2)}
 .tl{display:flex;height:calc(var(--u)*64);border-radius:var(--r);overflow:hidden;gap:2px}
 .tl>div{display:flex;flex-direction:column;justify-content:center;padding:0 calc(var(--u)*10);font-size:var(--fs-cap);line-height:1.25;min-width:0;overflow:hidden}
 .tl .ma{background:var(--teal);color:#fff} .tl .ma2{background:var(--tealbg);color:var(--ink)}
@@ -360,15 +366,14 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 </style>
 
 <div class="deck" id="deck">
-
-<!-- 1 ───────── 封面 -->
+<!-- ───────── 封面 -->
 <section class="slide" data-title="封面">
   <div class="hd"><span class="sec">115 年度 長者內在能力檢測服務｜共學活動</span><span class="pg"></span></div>
   <div class="cover-main">
     <div>
       <p class="kicker">ICOPE · Integrated Care for Older People</p>
       <h1>長者量六力<br>共學活動</h1>
-      <p class="cover-sub"><b>宏觀</b>看數據 ✕ <b>微觀</b>看個案</p>
+      <p class="cover-sub"><b>微觀</b>看個案 ✕ <b>宏觀</b>看數據</p>
       <dl class="cover-meta">
         <div><dt>對象</dt><dd>機構單位・醫療與評估人員</dd></div>
         <div><dt>引導</dt><dd>鍾孟修 職能治療師</dd></div>
@@ -385,14 +390,14 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>歡迎詞：今天不是考核，是一起把流程變順。</li>
-    <li>今年國健署要求共學從「宏觀」與「微觀」兩個角度討論：前半段看全市數據，後半段用一位模擬長輩走完 6 個月。</li>
+    <li>今年國健署要求共學從「宏觀」與「微觀」兩個角度討論：第一段用一位模擬長輩走完 6 個月，休息後看全市數據。</li>
     <li>右邊是量表的六個面向，等一下所有數據和個案都會回到這六格。</li>
   </ul></aside>
 </section>
 
-<!-- 2 ───────── LINE 社群 -->
+<!-- ───────── LINE 社群 -->
 <section class="slide" data-title="加入 LINE 社群">
-  <div class="hd"><span class="sec">開場</span><span class="pg"></span></div>
+  <div class="hd"><span class="sec">報到｜09:30–10:00</span><span class="pg"></span></div>
   <div class="line-main">
     <div class="qrbox" id="qr-line">
       <div class="qrframe">
@@ -402,8 +407,8 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
       <div class="qrcap">掃描加入 LINE 社群</div>
     </div>
     <div class="body" style="justify-content:center">
-      <h2>還沒加入 LINE 社群的夥伴，<br>請先掃描加入</h2>
-      <p style="font-size:var(--fs-m)">今天的簡報和共學相關資料，都會放在社群裡。會後要回頭查，直接到社群找。</p>
+      <h2>報到時，請先掃描<br>加入 LINE 社群</h2>
+      <p style="font-size:var(--fs-m)">還沒加入的夥伴請先加入。今天的簡報和共學相關資料都會放在社群裡，會後直接到社群找。</p>
       <ol class="list" style="max-width:34em">
         <li><span class="k">1</span><span>打開 LINE，點主頁右上角「加入好友」圖示</span></li>
         <li><span class="k">2</span><span>選「QR 碼」，掃描左邊的條碼</span></li>
@@ -413,56 +418,37 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
     </div>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>停 1–2 分鐘讓大家掃描，可以邊等邊請同組互相協助。</li>
+    <li>報到時段（09:30–10:00）就投影這一頁，讓大家邊報到邊掃描。</li>
     <li>提醒：今天的簡報、計算表與討論單都會放到社群。</li>
   </ul></aside>
 </section>
 
-<!-- 3 ───────── 議程 -->
+<!-- ───────── 議程 -->
 <section class="slide" data-title="今日議程">
-  <div class="hd"><span class="sec">開場</span><span class="pg"></span></div>
-  <h2>今天 120 分鐘，兩段數據、兩段討論</h2>
+  <div class="hd"><span class="sec">開場｜10:00–10:05</span><span class="pg"></span></div>
+  <h2>今日議程 <span class="lite num">09:30–12:30</span></h2>
   <div class="body">
-    <div class="xscroll"><div class="tl" style="min-width:560px">
-      <div class="ne" style="flex:10"><b>10′</b>開場</div>
-      <div class="ma" style="flex:25"><b>25′</b>宏觀：數據看流程</div>
-      <div class="ma2" style="flex:20"><b>20′</b>宏觀分組討論</div>
-      <div class="ne" style="flex:10"><b>10′</b>休息</div>
-      <div class="mi" style="flex:25"><b>25′</b>微觀：個案模擬</div>
-      <div class="mi2" style="flex:20"><b>20′</b>微觀分組討論</div>
-      <div class="ne" style="flex:10"><b>10′</b>行動承諾</div>
-    </div></div>
-    <div class="g2">
-      <div class="card tint">
-        <div class="label">宏觀｜現有資料數據</div>
-        <h3 style="margin:6px 0 8px">單位怎麼改善整體流程與效能</h3>
-        <ul class="small" style="display:flex;flex-direction:column;gap:4px">
-          <li>評估效能：初評異常率、複評完成率、異常率</li>
-          <li>介入率與轉介率：介入有沒有真的「接手」</li>
-          <li>追蹤與後測：個案追不追得到</li>
-          <li>新開案的分析過程：還有誰沒被評到</li>
-        </ul>
-      </div>
-      <div class="card warm">
-        <div class="label">微觀｜個案討論模擬（機構版・醫療人員）</div>
-        <h3 style="margin:6px 0 8px">一位長輩的 6 個月，看介入幫了什麼</h3>
-        <ul class="small" style="display:flex;flex-direction:column;gap:4px">
-          <li>初評 → 針對初評異常的複評</li>
-          <li>個人介入計畫 → 3 個月追蹤</li>
-          <li>6 個月再評（後測）</li>
-          <li>長輩的變化，以及單位介入的貢獻</li>
-        </ul>
-      </div>
-    </div>
-    <p class="foot">產出：每組一張「缺口 → 原因 → 改善」討論單；每個單位一張 30 天行動承諾卡。結束前請填寫滿意度問卷。</p>
+    <div class="xscroll"><table class="tb agenda" style="min-width:640px">
+      <thead><tr><th style="width:15%">時間</th><th style="width:33%">議程</th><th style="width:20%">主持人／主講者</th><th>今天在簡報裡</th></tr></thead>
+      <tbody>
+        <tr class="ag-ne"><td class="num">09:30–10:00</td><td>報到</td><td class="muted">—</td><td>掃描加入 LINE 社群</td></tr>
+        <tr class="ag-ne"><td class="num">10:00–10:05</td><td>開場與人員介紹</td><td>衛生局</td><td class="muted">—</td></tr>
+        <tr class="ag-mi"><td class="num"><b>10:05–11:15</b></td><td><span class="chip mi">微觀</span><b>共學主題報告（一）</b><br>案例討論與反饋</td><td>專家委員<br>共學團體講師主持人</td><td>模擬個案「李阿嬤」：初評 → 複評 → 介入計畫 → 3 個月追蹤 → 6 個月再評；分組討論 25 分鐘、各組報告與反饋</td></tr>
+        <tr class="ag-ne"><td class="num">11:15–11:20</td><td>休息</td><td class="muted">—</td><td class="muted">—</td></tr>
+        <tr class="ag-ma"><td class="num"><b>11:20–12:15</b></td><td><span class="chip ma">宏觀</span><b>共學主題報告（二）</b><br>數據分析與策略研討</td><td>專家委員<br>共學團體講師主持人</td><td>評估效能、介入率、轉介率、後測率、新開案分析；策略研討 15 分鐘、30 天行動承諾</td></tr>
+        <tr class="ag-ne"><td class="num">12:15–12:30</td><td>滿意度調查、大合照</td><td class="muted">—</td><td>掃描滿意度問卷</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot">產出：每組一張討論單（案例：加在第幾天的接觸點；數據：缺口 → 原因 → 改善）；每個單位一張 30 天行動承諾卡。</p>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>時間可依場地調整；兩段討論各 20 分鐘是底線，不建議壓縮。</li>
-    <li>分組建議：同類型單位混搭（醫院＋診所＋衛生所＋藥局），讓不同流程互相借鏡。</li>
+    <li>今天先看一位長輩（微觀），休息後再看全市數據（宏觀），讓個案裡的卡點在數據中找到對應。</li>
+    <li>分組建議：醫院、診所、衛生所、藥局混搭，讓不同流程互相借鏡。</li>
+    <li>第一段 70 分鐘：個案 30 分、分組討論 25 分、報告與反饋 15 分。第二段 55 分鐘：數據 22 分、策略研討 15 分、報告與行動承諾 18 分。</li>
   </ul></aside>
 </section>
 
-<!-- 4 ───────── 注意事項 -->
+<!-- ───────── 注意事項 -->
 <section class="slide" data-title="共學活動注意事項">
   <div class="hd"><span class="sec">開場｜注意事項</span><span class="pg"></span></div>
   <h2>共學活動注意事項</h2>
@@ -495,7 +481,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 5 ───────── 115 流程 -->
+<!-- ───────── 115 流程 -->
 <section class="slide" data-title="115 年服務流程">
   <div class="hd"><span class="sec">開場｜共同語言</span><span class="pg"></span></div>
   <h2>115 年服務流程：從初評到後測</h2>
@@ -520,12 +506,304 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 6 ───────── 宏觀 divider -->
-<section class="slide divider" data-title="宏觀：數據看流程">
-  <div class="hd"><span class="sec">PART 1</span><span class="pg"></span></div>
+<!-- ───────── 微觀 divider -->
+<section class="slide divider mi" data-title="第一段：案例討論與反饋">
+  <div class="hd"><span class="sec" style="color:var(--orange)">共學主題報告（一）案例討論與反饋｜10:05–11:15</span><span class="pg"></span></div>
+  <div class="body" style="justify-content:center;gap:calc(var(--u)*40)">
+    <div class="big">微觀<small>MICRO · 機構版（醫療人員）· 一位長輩的 177 天</small></div>
+    <p class="lead">跟著一位模擬個案走完一次服務，看她怎麼變化，也看單位的介入幫了什麼。</p>
+    <div class="qs">
+      <div><b>初評</b><span>Day 0・六項篩檢</span></div>
+      <div><b>複評與介入</b><span>Day 14・針對異常項</span></div>
+      <div><b>3 個月追蹤</b><span>Day 90・電訪＋回診</span></div>
+      <div><b>6 個月再評</b><span>Day 177・後測</span></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>個案為教學用虛構人物，內容綜合常見情境。</li>
+    <li>每一站都會停下來問：「如果是你的單位，會怎麼做？」</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 個案 -->
+<section class="slide" data-title="認識李阿嬤">
+  <div class="hd"><span class="sec mi">微觀｜個案</span><span class="pg"></span></div>
+  <h2>認識李阿嬤（化名，教學用虛構個案）</h2>
+  <div class="body">
+    <div class="g2" style="grid-template-columns:1fr 1.3fr">
+      <dl class="prof card">
+        <dt>年齡性別</dt><dd>78 歲女性</dd>
+        <dt>同住</dt><dd>82 歲先生；女兒住臺北，週末回來</dd>
+        <dt>慢性病</dt><dd>高血壓、第 2 型糖尿病、退化性膝關節炎</dd>
+        <dt>身分</dt><dd><b>首次評估者</b>（110–114 年未曾評估）</dd>
+        <dt>來源</dt><dd>家醫科慢箋回診，護理師依門診提醒邀約</dd>
+      </dl>
+      <div class="card warm small">
+        <div class="label">最近發生的事</div>
+        <p style="margin-top:6px">2 月先生在家跌倒住院，3 月初出院。阿嬤這段時間兩頭跑，吃不下、睡不好，也不再去廟口的唱歌班。女兒說：「媽媽最近一直重複問同樣的事。」</p>
+      </div>
+    </div>
+    <div class="xscroll"><div class="ctl" id="caseTl" style="min-width:820px"></div></div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>時間軸上方是發生的事，下方兩條色帶是規定的窗口：追蹤（評估滿 1 個月起）與後測（3–6 個月）。</li>
+    <li>虛線圓圈是「發生了但單位不知道」的事件，等一下會回來談。</li>
+    <li>她是首次評估者，第二段的新開案分析會再談到。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 初評 -->
+<section class="slide" data-title="Day 0 初評">
+  <div class="hd"><span class="sec mi">微觀｜Day 0 初評</span><span class="pg"></span></div>
+  <h2>Day 0 初評：六項裡有四項異常</h2>
+  <div class="body g21" style="display:grid">
+    <div>
+      <div class="formrow"><span class="dom bad">A</span><span class="nm">認知</span><span>日期 ✓（說出農曆日期）・地點 ✓・3 項物品只記得 2 項</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom bad">B</span><span class="nm">行動</span><span>椅子起身 5 次 <b class="num">15.8</b> 秒（&gt;12 秒）</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom bad">C</span><span class="nm">營養</span><span>3 個月內體重 49.5 → 46.2 kg（減 3.3）・食慾不振</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom ok">D</span><span class="nm">視力</span><span>自覺無困難；遠、近距離皆通過<br><span class="t-orange small">高風險調查：糖尿病，過去 1 年未做眼科檢查</span></span><span class="res"><span class="yn"><i class="x"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom ok">E</span><span class="nm">聽力</span><span>氣音測試 6‧1‧9 正確複誦</span><span class="res"><span class="yn"><i class="x"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom bad">F</span><span class="nm">憂鬱</span><span>兩週內常心煩（阿雜）・減少活動和興趣</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+    </div>
+    <div class="fx">
+      <div class="card"><b>停一下：下一步要做哪些評估？</b>
+        <p class="cap muted" style="margin-top:4px">先讓各組回答，再按下方按鈕對答案。</p>
+        <button class="btn pri" type="button" data-reveal="r19" style="margin-top:8px">顯示答案</button>
+      </div>
+      <div class="card tint small reveal-body" id="r19" hidden>
+        <ul style="display:flex;flex-direction:column;gap:4px">
+          <li>4 項複評：A → AD8 或 BHT、B → SPPB、C → MNA-SF、F → GDS-15</li>
+          <li>任 1 項異常 → 加做<b>用藥評估</b>與<b>社會照護與支持評估</b></li>
+          <li>視力不算異常，但高風險調查為「是」→ 建議眼科檢查（糖尿病眼底）</li>
+          <li>同意書：營養與認知轉介都勾「同意」；協助女兒在手機註冊 LINE 量六力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>農曆日期答對算正確：手冊允許以農曆或相對時序判斷。</li>
+    <li>視力題 b 只是「建議眼科」，不計為異常，但臨床上很重要。</li>
+    <li>初評約 12 分鐘。接下來問：複評當天做得完嗎？</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 複評 -->
+<section class="slide" data-title="Day 14 複評">
+  <div class="hd"><span class="sec mi">微觀｜Day 14 複評</span><span class="pg"></span></div>
+  <h2>Day 14 複評：確認四項異常，加上多重用藥</h2>
+  <div class="body g21" style="display:grid">
+    <div>
+      <div class="formrow"><span class="dom bad">A</span><span class="nm">AD8</span><span>女兒陪同填答：重複問同樣問題、忘記約診</span><span class="res"><span class="score">2<small>/8</small></span><span class="pill sr">≥2 異常</span></span></div>
+      <div class="formrow"><span class="dom bad">B</span><span class="nm">SPPB</span><span>平衡 3・步行 4 公尺 5.9 秒 3・起身 15.8 秒 2</span><span class="res"><span class="score">8<small>/12</small></span><span class="pill sr">&lt;10 受限</span></span></div>
+      <div class="formrow"><span class="dom bad">C</span><span class="nm">MNA-SF</span><span>食量減少、體重下降、BMI 20.0</span><span class="res"><span class="score">10<small>/14</small></span><span class="pill wn">8–11 風險</span></span></div>
+      <div class="formrow"><span class="dom bad">F</span><span class="nm">GDS-15</span><span>常覺得無聊、提不起勁、擔心先生</span><span class="res"><span class="score">6<small>/15</small></span><span class="pill sr">≥5 疑似</span></span></div>
+      <div class="formrow"><span class="dom">Rx</span><span class="nm">用藥</span><span>長期用藥 7 種，含安眠藥（BZD）、NSAID 止痛藥</span><span class="res"><span class="pill sr">多重用藥</span></span></div>
+      <div class="formrow"><span class="dom">S</span><span class="nm">社會支持</span><span>照顧剛出院的先生；購物需女兒協助；停止社交活動</span><span class="res"><span class="pill wn">需支持</span></span></div>
+    </div>
+    <div class="fx">
+      <div class="callout"><b>流程卡點</b><br><span class="small">原本要當天複評，但門診量大改約 2 週後。女兒那週差點不能陪同，AD8 險些無人填答。</span></div>
+      <button class="btn pri" type="button" data-reveal="r20" style="align-self:flex-start">還有什麼做法？</button>
+      <div class="card tint small reveal-body" id="r20" hidden>
+        <ul style="display:flex;flex-direction:column;gap:4px">
+          <li>初評異常當天就做複評：排第二站，或由另一位人員接手</li>
+          <li>做不到當天，就發「複評預約卡」並在 7 天內完成</li>
+          <li>家屬不在場：改用 BHT 由長輩本人作答，後測也要用 BHT</li>
+          <li>第二段的全市數據會看到：至少 239 人卡在這一段</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>切點：AD8 ≥2、SPPB &lt;10、MNA-SF 8–11 有營養不良風險（0–7 營養不良）、GDS-15 ≥5 疑似憂鬱。</li>
+    <li>SPPB 計分：步行 4 公尺 4.82–6.20 秒得 3 分；起身 13.70–16.69 秒得 2 分。</li>
+    <li>問大家：你們單位的複評是誰做？平均隔幾天？</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 介入計畫 -->
+<section class="slide" data-title="個人介入計畫">
+  <div class="hd"><span class="sec mi">微觀｜Day 14 個人介入計畫</span><span class="pg"></span></div>
+  <h2>個人介入計畫：六類介入怎麼排</h2>
+  <div class="body">
+    <table class="tb">
+      <thead><tr><th style="width:19%">介入類型</th><th>本案做法</th><th style="width:18%">對應問題</th><th style="width:20%">負責與時程</th></tr></thead>
+      <tbody>
+        <tr><td><b>轉介醫療院所</b></td><td>高齡整合門診：藥物整合、體重下降原因；眼科：糖尿病眼底檢查</td><td>用藥・營養・行動・視力</td><td>護理師代掛號，4/07、4/15</td></tr>
+        <tr><td><b>連結社區據點</b></td><td>巷弄長照站肌力課（每週 2 次）；社區營養推廣中心</td><td>行動・營養・社會參與</td><td>個管電話媒合，3/31 起</td></tr>
+        <tr><td><b>連結失智共照中心</b></td><td>AD8 = 2，同意書已勾選同意轉介</td><td>認知</td><td>系統轉介，預計 2 週內聯繫</td></tr>
+        <tr><td><b>連結長照管理中心</b></td><td>協助先生申請長照 2.0，減輕阿嬤照顧負荷</td><td>社會支持・憂鬱</td><td>撥 1966，3/25</td></tr>
+        <tr><td><b>指導居家健康管理</b></td><td>Vivifrail 居家運動單張與影片；每餐一掌心蛋白質；LINE 量六力註冊在女兒手機</td><td>行動・營養</td><td>當日衛教</td></tr>
+        <tr><td class="muted"><b>評估單位直接介入</b></td><td class="muted">本案未使用（單位沒有團體課程）</td><td class="muted">—</td><td class="muted">—</td></tr>
+      </tbody>
+    </table>
+    <div class="g2">
+      <div class="callout t small"><b>優點</b>：一次涵蓋五類介入，而且把<b>照顧者</b>（先生）也納入計畫。</div>
+      <div class="callout small"><b>先想一想</b>：這張計畫裡，哪一項最可能中斷？單位要怎麼知道它中斷了？</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>先讓大家猜哪一項會中斷，再進下一頁揭曉。</li>
+    <li>「連結長照管理中心」的對象可以是照顧者，這是很多單位沒想到的介入點。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 3 個月追蹤 -->
+<section class="slide" data-title="Day 90 追蹤">
+  <div class="hd"><span class="sec mi">微觀｜Day 90 三個月追蹤</span><span class="pg"></span></div>
+  <h2>Day 90 追蹤：四項到位，兩項卡住</h2>
+  <div class="body g21" style="display:grid">
+    <table class="tb">
+      <thead><tr><th style="width:23%">介入</th><th style="width:15%">狀態</th><th>發現與調整</th></tr></thead>
+      <tbody>
+        <tr><td>高齡整合門診</td><td><span class="pill ok">已到位</span></td><td>停用安眠藥，止痛藥改 acetaminophen，藥物由 7 種減為 5 種</td></tr>
+        <tr><td>眼科</td><td><span class="pill ok">已到位</span></td><td>輕度非增殖性視網膜病變，半年後回診</td></tr>
+        <tr><td>社區營養推廣中心</td><td><span class="pill ok">已到位</span></td><td>營養師電訪 2 次；早餐加蛋與豆漿</td></tr>
+        <tr><td>長照管理中心（先生）</td><td><span class="pill ok">已到位</span></td><td>先生居家服務每週 3 次，阿嬤可以出門</td></tr>
+        <tr><td>巷弄長照站</td><td><span class="pill sr">已中斷</span></td><td>第 5 週起沒去：膝痛、先生沒人顧、要過大馬路。<b>調整</b>：居家運動加女兒週末陪走；膝痛轉復健科</td></tr>
+        <tr><td>失智共照中心</td><td><span class="pill cr">未聯繫上</span></td><td>聯絡電話留家裡市話，白天沒人接。<b>調整</b>：改留女兒手機，6/16 完成收案</td></tr>
+      </tbody>
+    </table>
+    <div class="fx">
+      <div class="card small"><div class="label">回診順便測</div>
+        <p style="margin-top:4px">椅子起身 <b class="num">13.9</b> 秒（初評 15.8）<br>體重 <b class="num">47.0</b> kg（初評 46.2）<br>阿嬤說：「先生有人幫忙後，比較睡得著。」</p></div>
+      <div class="callout"><b>關鍵發現</b><br><span class="small">據點在第 5 週就中斷，單位到第 90 天才知道；共照中心晚了 3 個月才收案。</span></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>追蹤用「追蹤表單（含轉介）」逐項確認，並上傳平台。</li>
+    <li>規定：評估滿 1 個月起即可追蹤。若第 1 次追蹤排在第 5 週，就能及早發現據點中斷。</li>
+    <li>聯絡人資訊單一是很常見的失敗原因。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 6 個月後測 -->
+<section class="slide" data-title="Day 177 後測">
+  <div class="hd"><span class="sec mi">微觀｜Day 177 六個月再評（後測）</span><span class="pg"></span></div>
+  <h2>Day 177 後測：行動、營養、情緒回到正常範圍</h2>
+  <div class="body">
+    <div class="minis" id="minis"></div>
+    <div class="g2">
+      <div class="card small"><b>用藥評估</b>：7 種 → 5 種，已停用安眠藥。<b>社會照護與支持</b>：先生有居家服務，阿嬤恢復每週 1 次唱歌班。</div>
+      <div class="callout a small"><b>日期提醒</b>：後測排在 9/03，距離 6 個月窗口截止（9/10）只剩 1 週。那週如果感冒，這次後測就做不成了。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>綠色色帶是正常範圍。SPPB、MNA-SF、GDS-15 都跨進正常範圍；AD8 持平。</li>
+    <li>椅子起身與體重有 3 個時間點，因為 3 個月回診時有順便測。</li>
+    <li>後測工具與複評相同：AD8 → AD8。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 介入貢獻 -->
+<section class="slide" data-title="介入的貢獻">
+  <div class="hd"><span class="sec mi">微觀｜介入幫了什麼</span><span class="pg"></span></div>
+  <h2>哪些介入可能發揮了幫助？</h2>
+  <div class="body g21" style="display:grid">
+    <div>
+      <table class="mx">
+        <thead><tr><th>介入</th><th>行動<br><span class="num">SPPB +2</span></th><th>營養<br><span class="num">MNA-SF +2</span></th><th>情緒<br><span class="num">GDS −3</span></th><th>認知<br><span class="num">AD8 持平</span></th><th>用藥<br><span class="num">−2 種</span></th></tr></thead>
+        <tbody>
+          <tr><td>藥物整合（高齡整合門診）</td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="p" title="主要"></i></td></tr>
+          <tr><td>居家運動＋女兒陪走</td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><i class="q" title="間接"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+          <tr><td>營養師諮詢</td><td><i class="q" title="間接"></i></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+          <tr><td>長照服務（先生）</td><td><i class="q" title="間接"></i></td><td><span class="z">—</span></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+          <tr><td>失智共照中心</td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td></tr>
+          <tr><td>巷弄長照站（已中斷）</td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+        </tbody>
+      </table>
+      <div class="slegend" style="margin-top:8px"><span><i style="background:var(--teal)"></i>主要可能貢獻</span><span><i style="background:transparent;border:2.5px solid var(--teal);box-sizing:border-box"></i>間接可能貢獻</span><span>— 無明顯關聯</span></div>
+    </div>
+    <div class="fx">
+      <div class="callout a small"><b>判讀要小心</b>
+        <ul style="margin-top:4px"><li>沒有對照組，只能說「可能有幫助」</li><li>同期事件：先生 3 月出院後逐漸穩定</li><li>AD8 由家屬填，短期變化不敏感，「持平」也算守住</li></ul></div>
+      <div class="card tint small"><b>單位可以做的</b>：在追蹤表單旁加一欄「同期發生的事」，例如家人住院、換藥、搬家，判讀時才分得清楚。</div>
+      <div class="card small">眼科發現的視網膜病變不在後測項目裡，卻是這次服務很重要的成果。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>這張表是討論用的推論，不是因果結論。</li>
+    <li>問大家：如果只能保留兩項介入，你會留哪兩項？為什麼？</li>
+    <li>中斷的據點沒有直接貢獻，但「調整後的居家運動」有。追蹤的價值在於能及時調整。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 微觀討論 -->
+<section class="slide mi" data-title="案例分組討論">
+  <div class="hd"><span class="sec mi">微觀｜案例討論 25 分鐘</span><span class="pg"></span></div>
+  <h2>分組討論：如果李阿嬤是你們單位的個案</h2>
+  <div class="disc">
+    <ol class="qlist mi">
+      <li><span>複評延後 2 週、共照中心晚 3 個月，哪個環節可以更早攔截？<small>寫出「誰、在第幾天、做什麼」</small></span></li>
+      <li><span>據點第 5 週就中斷，卻到第 90 天才發現。追蹤的時間點和方式要怎麼排？</span></li>
+      <li><span>6 個月的進步，哪些是介入的功勞？哪些可能是情境改變？<small>要記錄什麼，才判斷得出來</small></span></li>
+      <li><span>你們單位接這個案，誰負責什麼？後測日要排在哪一天？</span></li>
+    </ol>
+    <div class="fx">
+      <div class="timer" data-min="25" id="timer2">
+        <div class="label">討論計時</div>
+        <div class="tv num">20:00</div>
+        <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
+      </div>
+      <div class="card small"><b>產出</b><br>在討論單畫出李阿嬤的時間軸，標出你們會加的接觸點。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>Q4 請醫院、診所、衛生所、藥局各自回答，人力配置不同，答案也不同。</li>
+    <li>報告時請各組說出一個「加在第幾天」的接觸點。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 案例反饋 -->
+<section class="slide" data-title="案例反饋">
+  <div class="hd"><span class="sec mi">微觀｜各組報告與反饋</span><span class="pg"></span></div>
+  <h2>案例反饋：李阿嬤的 177 天，教我們五件事</h2>
+  <div class="body g21" style="display:grid">
+    <ol class="list fb">
+      <li><span class="k">1</span><span><b>複評當天做完</b><br><span class="small ink2">Day 0 初評、Day 14 才複評，女兒差點不能陪同填 AD8。做不到當天，就在 7 天內完成。</span></span></li>
+      <li><span class="k">2</span><span><b>轉介後確認「有沒有去」</b><br><span class="small ink2">據點第 5 週就中斷，第 90 天才發現。第 2 週先打一通關懷電話，滿 1 個月再做正式追蹤。</span></span></li>
+      <li><span class="k">3</span><span><b>聯絡人留兩組電話</b><br><span class="small ink2">只留家裡市話，共照中心晚了 3 個月才收案。</span></span></li>
+      <li><span class="k">4</span><span><b>後測排在第 4 個月</b><br><span class="small ink2">Day 177 後測，離 6 個月截止只剩 1 週，沒有重排空間。</span></span></li>
+      <li><span class="k">5</span><span><b>記錄同期發生的事</b><br><span class="small ink2">先生出院、換藥都會影響結果。追蹤表單旁多一欄，判讀介入效果才分得清楚。</span></span></li>
+    </ol>
+    <div class="fx">
+      <div class="card warm small"><b>各組報告（每組 2 分鐘）</b><br>說出你們會加在「第幾天」的一個接觸點，以及由誰負責。</div>
+      <div class="card small"><b>介入有幫助的地方</b><br>藥物整合、營養師諮詢、照顧者的長照服務都有到位；中斷的據點改成居家運動後，行動能力仍有進步。</div>
+      <div class="callout t small"><b>休息後</b>：把這五個卡點放到全市數據裡，看看有多常見。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>先聽各組報告，再用這頁收斂。各組提到的做法可以直接寫在對應的項目旁。</li>
+    <li>第 1、2、4 點在第二段的數據裡都有對應：未複評、未介入、未完成後測。</li>
+  </ul></aside>
+</section>
+
+<!-- ───────── 休息 -->
+<section class="slide" data-title="休息">
+  <div class="hd"><span class="sec">休息｜11:15–11:20</span><span class="pg"></span></div>
+  <div class="body" style="justify-content:center;align-items:center;text-align:center;gap:var(--g3)">
+    <h2 style="font-size:var(--fs-xl)">休息 5 分鐘</h2>
+    <div class="timer" data-min="5" id="timer3" style="align-items:center;border:0">
+      <div class="tv num" style="font-size:calc(var(--u)*120)">05:00</div>
+      <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
+    </div>
+    <p style="font-size:var(--fs-m)">11:20 開始第二段：數據分析與策略研討</p>
+    <div class="qrbox" style="flex-direction:row;gap:var(--g2)">
+      <div class="qrframe" style="width:calc(var(--u)*130);height:calc(var(--u)*130);min-width:96px;min-height:96px;padding:calc(var(--u)*8)">
+        <img src="img/qr-line.png" alt="LINE 社群加入 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
+        <div class="ph" style="font-size:var(--fs-cap);padding:4px">LINE<br>QR code</div>
+      </div>
+      <p class="small ink2" style="text-align:left">還沒加入 LINE 社群？<br>趁休息掃描加入</p>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul><li>休息時可以先切到第二段的封面頁等待。</li></ul></aside>
+</section>
+
+<!-- ───────── 宏觀 divider -->
+<section class="slide divider" data-title="第二段：數據分析與策略研討">
+  <div class="hd"><span class="sec">共學主題報告（二）數據分析與策略研討｜11:20–12:15</span><span class="pg"></span></div>
   <div class="body" style="justify-content:center;gap:calc(var(--u)*40)">
     <div class="big">宏觀<small>MACRO · 30 個單位 · 9,454 筆評估</small></div>
-    <p class="lead">把全市的數據攤開，看流程在哪一段流失。</p>
+    <p class="lead">剛才李阿嬤遇到的卡點，放到全市數據裡有多常見？把數據攤開，看流程在哪一段流失。</p>
     <div class="qs">
       <div><b>找得到嗎？</b><span>評估效能</span></div>
       <div><b>接得住嗎？</b><span>介入率・轉介率</span></div>
@@ -539,7 +817,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 7 ───────── 指標定義 -->
+<!-- ───────── 指標定義 -->
 <section class="slide" data-title="指標怎麼算">
   <div class="hd"><span class="sec">宏觀｜指標定義</span><span class="pg"></span></div>
   <h2>先對齊：每個指標的分子與分母</h2>
@@ -579,7 +857,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 8 ───────── 總覽 -->
+<!-- ───────── 總覽 -->
 <section class="slide" data-title="全市總覽">
   <div class="hd"><span class="sec">宏觀｜總覽</span><span class="pg"></span></div>
   <h2>30 個單位、9,454 筆評估的整體樣貌</h2>
@@ -618,7 +896,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 9 ───────── 漏斗 -->
+<!-- ───────── 漏斗 -->
 <section class="slide" data-title="服務漏斗">
   <div class="hd"><span class="sec">宏觀｜流程效能</span><span class="pg"></span></div>
   <h2>漏斗看流失：長輩在哪一段掉出去？</h2>
@@ -643,7 +921,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 10 ───────── 評估效能 -->
+<!-- ───────── 評估效能 -->
 <section class="slide" data-title="評估效能">
   <div class="hd"><span class="sec">宏觀｜評估效能</span><span class="pg"></span></div>
   <h2>評估效能：異常率太低、太高都要看</h2>
@@ -668,7 +946,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 11 ───────── 介入率 -->
+<!-- ───────── 介入率 -->
 <section class="slide" data-title="介入率">
   <div class="hd"><span class="sec">宏觀｜介入率</span><span class="pg"></span></div>
   <h2>介入率 89.0%，大多數單位都「有做」</h2>
@@ -690,7 +968,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 12 ───────── 轉介率 -->
+<!-- ───────── 轉介率 -->
 <section class="slide" data-title="轉介率">
   <div class="hd"><span class="sec">宏觀｜轉介率</span><span class="pg"></span></div>
   <h2>轉介率：介入有沒有「交到下一雙手」</h2>
@@ -731,7 +1009,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 13 ───────── 後測率 -->
+<!-- ───────── 後測率 -->
 <section class="slide" data-title="追蹤與後測">
   <div class="hd"><span class="sec">宏觀｜追蹤與後測</span><span class="pg"></span></div>
   <h2>後測率：診所 15.4%，是全市最大的缺口</h2>
@@ -757,7 +1035,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 14 ───────── 新開案 -->
+<!-- ───────── 新開案 -->
 <section class="slide" data-title="新開案分析">
   <div class="hd"><span class="sec">宏觀｜新開案</span><span class="pg"></span></div>
   <h2>新開案的分析過程：五個步驟</h2>
@@ -790,7 +1068,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 15 ───────── 計算器 -->
+<!-- ───────── 計算器 -->
 <section class="slide" data-title="單位自我診斷">
   <div class="hd"><span class="sec">宏觀｜工具</span><span class="pg"></span></div>
   <h2>單位自我診斷：填入人數，馬上看指標</h2>
@@ -825,10 +1103,10 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 16 ───────── 宏觀討論 -->
-<section class="slide" data-title="宏觀分組討論">
-  <div class="hd"><span class="sec">宏觀｜分組討論 20 分鐘</span><span class="pg"></span></div>
-  <h2>分組討論：找出你們單位的最大缺口</h2>
+<!-- ───────── 宏觀討論 -->
+<section class="slide" data-title="策略研討">
+  <div class="hd"><span class="sec">宏觀｜策略研討 15 分鐘</span><span class="pg"></span></div>
+  <h2>策略研討：找出你們單位的最大缺口</h2>
   <div class="disc">
     <ol class="qlist">
       <li><span>對照漏斗，你們單位最大的流失在哪一段？<small>未複評／未介入／未追蹤／未後測／新開案太少</small></span></li>
@@ -837,7 +1115,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
       <li><span>下個月可以先改的一件事是什麼？<small>寫在討論單：缺口 → 原因 → 改善</small></span></li>
     </ol>
     <div class="fx">
-      <div class="timer" data-min="20" id="timer1">
+      <div class="timer" data-min="15" id="timer1">
         <div class="label">討論計時</div>
         <div class="tv num">20:00</div>
         <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
@@ -851,256 +1129,9 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 17 ───────── 微觀 divider -->
-<section class="slide divider mi" data-title="微觀：個案模擬">
-  <div class="hd"><span class="sec" style="color:var(--orange)">PART 2</span><span class="pg"></span></div>
-  <div class="body" style="justify-content:center;gap:calc(var(--u)*40)">
-    <div class="big">微觀<small>MICRO · 機構版（醫療人員）· 一位長輩的 177 天</small></div>
-    <p class="lead">跟著一位模擬個案走完一次服務，看她怎麼變化，也看單位的介入幫了什麼。</p>
-    <div class="qs">
-      <div><b>初評</b><span>Day 0・六項篩檢</span></div>
-      <div><b>複評與介入</b><span>Day 14・針對異常項</span></div>
-      <div><b>3 個月追蹤</b><span>Day 90・電訪＋回診</span></div>
-      <div><b>6 個月再評</b><span>Day 177・後測</span></div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>個案為教學用虛構人物，內容綜合常見情境。</li>
-    <li>每一站都會停下來問：「如果是你的單位，會怎麼做？」</li>
-  </ul></aside>
-</section>
-
-<!-- 18 ───────── 個案 -->
-<section class="slide" data-title="認識李阿嬤">
-  <div class="hd"><span class="sec mi">微觀｜個案</span><span class="pg"></span></div>
-  <h2>認識李阿嬤（化名，教學用虛構個案）</h2>
-  <div class="body">
-    <div class="g2" style="grid-template-columns:1fr 1.3fr">
-      <dl class="prof card">
-        <dt>年齡性別</dt><dd>78 歲女性</dd>
-        <dt>同住</dt><dd>82 歲先生；女兒住臺北，週末回來</dd>
-        <dt>慢性病</dt><dd>高血壓、第 2 型糖尿病、退化性膝關節炎</dd>
-        <dt>身分</dt><dd><b>首次評估者</b>（110–114 年未曾評估）</dd>
-        <dt>來源</dt><dd>家醫科慢箋回診，護理師依門診提醒邀約</dd>
-      </dl>
-      <div class="card warm small">
-        <div class="label">最近發生的事</div>
-        <p style="margin-top:6px">2 月先生在家跌倒住院，3 月初出院。阿嬤這段時間兩頭跑，吃不下、睡不好，也不再去廟口的唱歌班。女兒說：「媽媽最近一直重複問同樣的事。」</p>
-      </div>
-    </div>
-    <div class="xscroll"><div class="ctl" id="caseTl" style="min-width:820px"></div></div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>時間軸上方是發生的事，下方兩條色帶是規定的窗口：追蹤（評估滿 1 個月起）與後測（3–6 個月）。</li>
-    <li>虛線圓圈是「發生了但單位不知道」的事件，等一下會回來談。</li>
-    <li>她是新開案，也連結到宏觀的新開案分析。</li>
-  </ul></aside>
-</section>
-
-<!-- 19 ───────── 初評 -->
-<section class="slide" data-title="Day 0 初評">
-  <div class="hd"><span class="sec mi">微觀｜Day 0 初評</span><span class="pg"></span></div>
-  <h2>Day 0 初評：六項裡有四項異常</h2>
-  <div class="body g21" style="display:grid">
-    <div>
-      <div class="formrow"><span class="dom bad">A</span><span class="nm">認知</span><span>日期 ✓（說出農曆日期）・地點 ✓・3 項物品只記得 2 項</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
-      <div class="formrow"><span class="dom bad">B</span><span class="nm">行動</span><span>椅子起身 5 次 <b class="num">15.8</b> 秒（&gt;12 秒）</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
-      <div class="formrow"><span class="dom bad">C</span><span class="nm">營養</span><span>3 個月內體重 49.5 → 46.2 kg（減 3.3）・食慾不振</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
-      <div class="formrow"><span class="dom ok">D</span><span class="nm">視力</span><span>自覺無困難；遠、近距離皆通過<br><span class="t-orange small">高風險調查：糖尿病，過去 1 年未做眼科檢查</span></span><span class="res"><span class="yn"><i class="x"></i>異常</span></span></div>
-      <div class="formrow"><span class="dom ok">E</span><span class="nm">聽力</span><span>氣音測試 6‧1‧9 正確複誦</span><span class="res"><span class="yn"><i class="x"></i>異常</span></span></div>
-      <div class="formrow"><span class="dom bad">F</span><span class="nm">憂鬱</span><span>兩週內常心煩（阿雜）・減少活動和興趣</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
-    </div>
-    <div class="fx">
-      <div class="card"><b>停一下：下一步要做哪些評估？</b>
-        <p class="cap muted" style="margin-top:4px">先讓各組回答，再按下方按鈕對答案。</p>
-        <button class="btn pri" type="button" data-reveal="r19" style="margin-top:8px">顯示答案</button>
-      </div>
-      <div class="card tint small reveal-body" id="r19" hidden>
-        <ul style="display:flex;flex-direction:column;gap:4px">
-          <li>4 項複評：A → AD8 或 BHT、B → SPPB、C → MNA-SF、F → GDS-15</li>
-          <li>任 1 項異常 → 加做<b>用藥評估</b>與<b>社會照護與支持評估</b></li>
-          <li>視力不算異常，但高風險調查為「是」→ 建議眼科檢查（糖尿病眼底）</li>
-          <li>同意書：營養與認知轉介都勾「同意」；協助女兒在手機註冊 LINE 量六力</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>農曆日期答對算正確：手冊允許以農曆或相對時序判斷。</li>
-    <li>視力題 b 只是「建議眼科」，不計為異常，但臨床上很重要。</li>
-    <li>初評約 12 分鐘。接下來問：複評當天做得完嗎？</li>
-  </ul></aside>
-</section>
-
-<!-- 20 ───────── 複評 -->
-<section class="slide" data-title="Day 14 複評">
-  <div class="hd"><span class="sec mi">微觀｜Day 14 複評</span><span class="pg"></span></div>
-  <h2>Day 14 複評：確認四項異常，加上多重用藥</h2>
-  <div class="body g21" style="display:grid">
-    <div>
-      <div class="formrow"><span class="dom bad">A</span><span class="nm">AD8</span><span>女兒陪同填答：重複問同樣問題、忘記約診</span><span class="res"><span class="score">2<small>/8</small></span><span class="pill sr">≥2 異常</span></span></div>
-      <div class="formrow"><span class="dom bad">B</span><span class="nm">SPPB</span><span>平衡 3・步行 4 公尺 5.9 秒 3・起身 15.8 秒 2</span><span class="res"><span class="score">8<small>/12</small></span><span class="pill sr">&lt;10 受限</span></span></div>
-      <div class="formrow"><span class="dom bad">C</span><span class="nm">MNA-SF</span><span>食量減少、體重下降、BMI 20.0</span><span class="res"><span class="score">10<small>/14</small></span><span class="pill wn">8–11 風險</span></span></div>
-      <div class="formrow"><span class="dom bad">F</span><span class="nm">GDS-15</span><span>常覺得無聊、提不起勁、擔心先生</span><span class="res"><span class="score">6<small>/15</small></span><span class="pill sr">≥5 疑似</span></span></div>
-      <div class="formrow"><span class="dom">Rx</span><span class="nm">用藥</span><span>長期用藥 7 種，含安眠藥（BZD）、NSAID 止痛藥</span><span class="res"><span class="pill sr">多重用藥</span></span></div>
-      <div class="formrow"><span class="dom">S</span><span class="nm">社會支持</span><span>照顧剛出院的先生；購物需女兒協助；停止社交活動</span><span class="res"><span class="pill wn">需支持</span></span></div>
-    </div>
-    <div class="fx">
-      <div class="callout"><b>流程卡點</b><br><span class="small">原本要當天複評，但門診量大改約 2 週後。女兒那週差點不能陪同，AD8 險些無人填答。</span></div>
-      <button class="btn pri" type="button" data-reveal="r20" style="align-self:flex-start">還有什麼做法？</button>
-      <div class="card tint small reveal-body" id="r20" hidden>
-        <ul style="display:flex;flex-direction:column;gap:4px">
-          <li>初評異常當天就做複評：排第二站，或由另一位人員接手</li>
-          <li>做不到當天，就發「複評預約卡」並在 7 天內完成</li>
-          <li>家屬不在場：改用 BHT 由長輩本人作答，後測也要用 BHT</li>
-          <li>宏觀對照：全市至少 239 人卡在這一段</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>切點：AD8 ≥2、SPPB &lt;10、MNA-SF 8–11 有營養不良風險（0–7 營養不良）、GDS-15 ≥5 疑似憂鬱。</li>
-    <li>SPPB 計分：步行 4 公尺 4.82–6.20 秒得 3 分；起身 13.70–16.69 秒得 2 分。</li>
-    <li>問大家：你們單位的複評是誰做？平均隔幾天？</li>
-  </ul></aside>
-</section>
-
-<!-- 21 ───────── 介入計畫 -->
-<section class="slide" data-title="個人介入計畫">
-  <div class="hd"><span class="sec mi">微觀｜Day 14 個人介入計畫</span><span class="pg"></span></div>
-  <h2>個人介入計畫：六類介入怎麼排</h2>
-  <div class="body">
-    <table class="tb">
-      <thead><tr><th style="width:19%">介入類型</th><th>本案做法</th><th style="width:18%">對應問題</th><th style="width:20%">負責與時程</th></tr></thead>
-      <tbody>
-        <tr><td><b>轉介醫療院所</b></td><td>高齡整合門診：藥物整合、體重下降原因；眼科：糖尿病眼底檢查</td><td>用藥・營養・行動・視力</td><td>護理師代掛號，4/07、4/15</td></tr>
-        <tr><td><b>連結社區據點</b></td><td>巷弄長照站肌力課（每週 2 次）；社區營養推廣中心</td><td>行動・營養・社會參與</td><td>個管電話媒合，3/31 起</td></tr>
-        <tr><td><b>連結失智共照中心</b></td><td>AD8 = 2，同意書已勾選同意轉介</td><td>認知</td><td>系統轉介，預計 2 週內聯繫</td></tr>
-        <tr><td><b>連結長照管理中心</b></td><td>協助先生申請長照 2.0，減輕阿嬤照顧負荷</td><td>社會支持・憂鬱</td><td>撥 1966，3/25</td></tr>
-        <tr><td><b>指導居家健康管理</b></td><td>Vivifrail 居家運動單張與影片；每餐一掌心蛋白質；LINE 量六力註冊在女兒手機</td><td>行動・營養</td><td>當日衛教</td></tr>
-        <tr><td class="muted"><b>評估單位直接介入</b></td><td class="muted">本案未使用（單位沒有團體課程）</td><td class="muted">—</td><td class="muted">—</td></tr>
-      </tbody>
-    </table>
-    <div class="g2">
-      <div class="callout t small"><b>優點</b>：一次涵蓋五類介入，而且把<b>照顧者</b>（先生）也納入計畫。</div>
-      <div class="callout small"><b>先想一想</b>：這張計畫裡，哪一項最可能中斷？單位要怎麼知道它中斷了？</div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>先讓大家猜哪一項會中斷，再進下一頁揭曉。</li>
-    <li>「連結長照管理中心」的對象可以是照顧者，這是很多單位沒想到的介入點。</li>
-  </ul></aside>
-</section>
-
-<!-- 22 ───────── 3 個月追蹤 -->
-<section class="slide" data-title="Day 90 追蹤">
-  <div class="hd"><span class="sec mi">微觀｜Day 90 三個月追蹤</span><span class="pg"></span></div>
-  <h2>Day 90 追蹤：四項到位，兩項卡住</h2>
-  <div class="body g21" style="display:grid">
-    <table class="tb">
-      <thead><tr><th style="width:23%">介入</th><th style="width:15%">狀態</th><th>發現與調整</th></tr></thead>
-      <tbody>
-        <tr><td>高齡整合門診</td><td><span class="pill ok">已到位</span></td><td>停用安眠藥，止痛藥改 acetaminophen，藥物由 7 種減為 5 種</td></tr>
-        <tr><td>眼科</td><td><span class="pill ok">已到位</span></td><td>輕度非增殖性視網膜病變，半年後回診</td></tr>
-        <tr><td>社區營養推廣中心</td><td><span class="pill ok">已到位</span></td><td>營養師電訪 2 次；早餐加蛋與豆漿</td></tr>
-        <tr><td>長照管理中心（先生）</td><td><span class="pill ok">已到位</span></td><td>先生居家服務每週 3 次，阿嬤可以出門</td></tr>
-        <tr><td>巷弄長照站</td><td><span class="pill sr">已中斷</span></td><td>第 5 週起沒去：膝痛、先生沒人顧、要過大馬路。<b>調整</b>：居家運動加女兒週末陪走；膝痛轉復健科</td></tr>
-        <tr><td>失智共照中心</td><td><span class="pill cr">未聯繫上</span></td><td>聯絡電話留家裡市話，白天沒人接。<b>調整</b>：改留女兒手機，6/16 完成收案</td></tr>
-      </tbody>
-    </table>
-    <div class="fx">
-      <div class="card small"><div class="label">回診順便測</div>
-        <p style="margin-top:4px">椅子起身 <b class="num">13.9</b> 秒（初評 15.8）<br>體重 <b class="num">47.0</b> kg（初評 46.2）<br>阿嬤說：「先生有人幫忙後，比較睡得著。」</p></div>
-      <div class="callout"><b>關鍵發現</b><br><span class="small">據點在第 5 週就中斷，單位到第 90 天才知道；共照中心晚了 3 個月才收案。</span></div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>追蹤用「追蹤表單（含轉介）」逐項確認，並上傳平台。</li>
-    <li>規定：評估滿 1 個月起即可追蹤。若第 1 次追蹤排在第 5 週，就能及早發現據點中斷。</li>
-    <li>聯絡人資訊單一是很常見的失敗原因。</li>
-  </ul></aside>
-</section>
-
-<!-- 23 ───────── 6 個月後測 -->
-<section class="slide" data-title="Day 177 後測">
-  <div class="hd"><span class="sec mi">微觀｜Day 177 六個月再評（後測）</span><span class="pg"></span></div>
-  <h2>Day 177 後測：行動、營養、情緒回到正常範圍</h2>
-  <div class="body">
-    <div class="minis" id="minis"></div>
-    <div class="g2">
-      <div class="card small"><b>用藥評估</b>：7 種 → 5 種，已停用安眠藥。<b>社會照護與支持</b>：先生有居家服務，阿嬤恢復每週 1 次唱歌班。</div>
-      <div class="callout a small"><b>日期提醒</b>：後測排在 9/03，距離 6 個月窗口截止（9/10）只剩 1 週。那週如果感冒，這次後測就做不成了。</div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>綠色色帶是正常範圍。SPPB、MNA-SF、GDS-15 都跨進正常範圍；AD8 持平。</li>
-    <li>椅子起身與體重有 3 個時間點，因為 3 個月回診時有順便測。</li>
-    <li>後測工具與複評相同：AD8 → AD8。</li>
-  </ul></aside>
-</section>
-
-<!-- 24 ───────── 介入貢獻 -->
-<section class="slide" data-title="介入的貢獻">
-  <div class="hd"><span class="sec mi">微觀｜介入幫了什麼</span><span class="pg"></span></div>
-  <h2>哪些介入可能發揮了幫助？</h2>
-  <div class="body g21" style="display:grid">
-    <div>
-      <table class="mx">
-        <thead><tr><th>介入</th><th>行動<br><span class="num">SPPB +2</span></th><th>營養<br><span class="num">MNA-SF +2</span></th><th>情緒<br><span class="num">GDS −3</span></th><th>認知<br><span class="num">AD8 持平</span></th><th>用藥<br><span class="num">−2 種</span></th></tr></thead>
-        <tbody>
-          <tr><td>藥物整合（高齡整合門診）</td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="p" title="主要"></i></td></tr>
-          <tr><td>居家運動＋女兒陪走</td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><i class="q" title="間接"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
-          <tr><td>營養師諮詢</td><td><i class="q" title="間接"></i></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
-          <tr><td>長照服務（先生）</td><td><i class="q" title="間接"></i></td><td><span class="z">—</span></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
-          <tr><td>失智共照中心</td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td></tr>
-          <tr><td>巷弄長照站（已中斷）</td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
-        </tbody>
-      </table>
-      <div class="slegend" style="margin-top:8px"><span><i style="background:var(--teal)"></i>主要可能貢獻</span><span><i style="background:transparent;border:2.5px solid var(--teal);box-sizing:border-box"></i>間接可能貢獻</span><span>— 無明顯關聯</span></div>
-    </div>
-    <div class="fx">
-      <div class="callout a small"><b>判讀要小心</b>
-        <ul style="margin-top:4px"><li>沒有對照組，只能說「可能有幫助」</li><li>同期事件：先生 3 月出院後逐漸穩定</li><li>AD8 由家屬填，短期變化不敏感，「持平」也算守住</li></ul></div>
-      <div class="card tint small"><b>單位可以做的</b>：在追蹤表單旁加一欄「同期發生的事」，例如家人住院、換藥、搬家，判讀時才分得清楚。</div>
-      <div class="card small">眼科發現的視網膜病變不在後測項目裡，卻是這次服務很重要的成果。</div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>這張表是討論用的推論，不是因果結論。</li>
-    <li>問大家：如果只能保留兩項介入，你會留哪兩項？為什麼？</li>
-    <li>中斷的據點沒有直接貢獻，但「調整後的居家運動」有。追蹤的價值在於能及時調整。</li>
-  </ul></aside>
-</section>
-
-<!-- 25 ───────── 微觀討論 -->
-<section class="slide mi" data-title="微觀分組討論">
-  <div class="hd"><span class="sec mi">微觀｜分組討論 20 分鐘</span><span class="pg"></span></div>
-  <h2>分組討論：如果李阿嬤是你們單位的個案</h2>
-  <div class="disc">
-    <ol class="qlist mi">
-      <li><span>複評延後 2 週、共照中心晚 3 個月，哪個環節可以更早攔截？<small>寫出「誰、在第幾天、做什麼」</small></span></li>
-      <li><span>據點第 5 週就中斷，卻到第 90 天才發現。追蹤的時間點和方式要怎麼排？</span></li>
-      <li><span>6 個月的進步，哪些是介入的功勞？哪些可能是情境改變？<small>要記錄什麼，才判斷得出來</small></span></li>
-      <li><span>你們單位接這個案，誰負責什麼？後測日要排在哪一天？</span></li>
-    </ol>
-    <div class="fx">
-      <div class="timer" data-min="20" id="timer2">
-        <div class="label">討論計時</div>
-        <div class="tv num">20:00</div>
-        <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
-      </div>
-      <div class="card small"><b>產出</b><br>在討論單畫出李阿嬤的時間軸，標出你們會加的接觸點。</div>
-    </div>
-  </div>
-  <aside class="notes"><h4>講者備註</h4><ul>
-    <li>Q4 請醫院、診所、衛生所、藥局各自回答，人力配置不同，答案也不同。</li>
-    <li>報告時請各組說出一個「加在第幾天」的接觸點。</li>
-  </ul></aside>
-</section>
-
-<!-- 26 ───────── 優化建議 -->
+<!-- ───────── 優化建議 -->
 <section class="slide" data-title="流程優化建議">
-  <div class="hd"><span class="sec">綜整｜宏觀 × 微觀</span><span class="pg"></span></div>
+  <div class="hd"><span class="sec">宏觀｜策略研討・綜整</span><span class="pg"></span></div>
   <h2>七個流程優化做法，對應會改善的指標</h2>
   <div class="body">
     <table class="tb">
@@ -1122,9 +1153,9 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 27 ───────── 行動承諾 -->
+<!-- ───────── 行動承諾 -->
 <section class="slide" data-title="30 天行動承諾">
-  <div class="hd"><span class="sec">綜整｜行動承諾</span><span class="pg"></span></div>
+  <div class="hd"><span class="sec">宏觀｜策略研討・行動承諾</span><span class="pg"></span></div>
   <h2>30 天行動承諾卡</h2>
   <div class="body g21" style="display:grid">
     <form class="pdca" id="pdca" autocomplete="off">
@@ -1150,7 +1181,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   </ul></aside>
 </section>
 
-<!-- 28 ───────── 參考資料 -->
+<!-- ───────── 參考資料 -->
 <section class="slide" data-title="參考資料">
   <div class="hd"><span class="sec">附錄</span><span class="pg"></span></div>
   <h2>參考資料</h2>
@@ -1169,14 +1200,14 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
   <aside class="notes"><h4>講者備註</h4><ul><li>參考資料也會一併放到 LINE 社群。</li></ul></aside>
 </section>
 
-<!-- 29 ───────── 滿意度 -->
-<section class="slide" data-title="滿意度問卷">
-  <div class="hd"><span class="sec">結尾</span><span class="pg"></span></div>
+<!-- ───────── 滿意度 -->
+<section class="slide" data-title="滿意度調查、大合照">
+  <div class="hd"><span class="sec">滿意度調查、大合照｜12:15–12:30</span><span class="pg"></span></div>
   <div class="end-main">
     <div class="body" style="justify-content:center">
       <p class="kicker">謝謝今天的參與</p>
-      <h2 style="font-size:var(--fs-xl)">離開前，請掃描填寫<br>滿意度問卷</h2>
-      <p style="font-size:var(--fs-m)">大約 2 分鐘。你的回饋會決定下一次共學要深入哪個主題。</p>
+      <h2 style="font-size:var(--fs-xl)">請掃描填寫<br>滿意度問卷</h2>
+      <p style="font-size:var(--fs-m)">填完後，我們一起拍大合照。你的回饋會決定下一次共學要深入哪個主題。</p>
       <div class="card tint small" style="max-width:34em">還沒加入 LINE 社群的夥伴，簡報與相關資料都會放在社群裡，請回到開場那一頁掃描加入。</div>
     </div>
     <div class="qrbox" id="qr-survey">
@@ -1188,7 +1219,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
     </div>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>留 3 分鐘讓大家當場填寫。</li>
+    <li>先留 5 分鐘讓大家當場填寫，再進行大合照。</li>
     <li>提醒行動承諾卡繳回方式。</li>
   </ul></aside>
 </section>
@@ -1197,7 +1228,7 @@ h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02e
 
 <div class="bar" id="bar">
   <button type="button" id="prev" aria-label="上一頁">◀</button>
-  <span class="count" id="count">1 / 29</span>
+  <span class="count" id="count">1 / 31</span>
   <button type="button" id="next" aria-label="下一頁">▶</button>
   <div class="prog" aria-hidden="true"><i id="progi"></i></div>
   <button type="button" id="tocBtn">目錄 T</button>
