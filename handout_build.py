@@ -25,18 +25,27 @@ COVER = f'''<section class="hcover">
     <div><dt>專家委員</dt><dd>長庚科技大學 倪麗芬 副教授</dd></div>
     <div><dt>主持人</dt><dd>鍾孟修 職能治療師</dd></div>
   </dl>
-  <div class="hqr">
-    <div class="hqr-code">{qr}</div>
-    <div class="hqr-txt">
-      <b>掃描開啟網頁版講義</b>
-      <p>網頁版有互動圖表與「單位自我診斷計算器」，會後可隨時查看。</p>
-      <p class="num url">mattsue1003.github.io/icope-colearning</p>
+  <div class="hqr2">
+    <div class="hqr">
+      <div class="hqr-code">{qr}</div>
+      <div class="hqr-txt">
+        <b>網頁版講義</b>
+        <p>互動圖表與「單位自我診斷計算器」，會後可隨時查看。</p>
+        <p class="num url">mattsue1003.github.io/icope-colearning</p>
+      </div>
+    </div>
+    <div class="hqr line">
+      <div class="hqr-code"><img src="img/qr-line.jpg" alt="LINE 社群 QR code"></div>
+      <div class="hqr-txt">
+        <b>加入 LINE 社群</b>
+        <p>還沒加入的夥伴請先加入，簡報與相關資料都會放在社群裡。</p>
+      </div>
     </div>
   </div>
   {TILES}
   <div class="htoc">
     <div><b>一、開場</b><span>議程・分組・進行方式・服務流程</span></div>
-    <div><b>二、案例討論與反饋</b><span>模擬個案・分組討論・討論記錄頁</span></div>
+    <div><b>二、案例討論與反饋</b><span>胡女士案例・分組討論・討論記錄頁</span></div>
     <div><b>三、數據分析與策略研討</b><span>指標・全市數據・自我診斷工作單・行動承諾卡・討論記錄頁</span></div>
     <div><b>四、會後帶回</b><span>七個流程優化做法・參考資料</span></div>
   </div>
@@ -78,7 +87,8 @@ order = ["今日議程", "人員介紹與分組", "兩個單元怎麼進行", "�
          "第二段：數據分析與策略研討", "指標怎麼算", "全市總覽", "服務漏斗", "評估效能", "介入率", "轉介率",
          "追蹤與後測", "新開案分析", "單位自我診斷", "策略研討", "30 天行動承諾", "@REC2",
          "流程優化建議", "參考資料"]
-body = [COVER] + [{"@REC1": REC1, "@REC2": REC2}.get(t) or secs[t] for t in order]
+END = '''<section class="hend"><img src="img/qr-survey.svg" alt="滿意度問卷 QR code"><div><b>最後，請填寫滿意度問卷</b><p>掃描左邊的 QR code，大約 2 分鐘。你的回饋會決定下一次共學要深入哪個主題。</p></div></section>'''
+body = [COVER] + [{"@REC1": REC1, "@REC2": REC2}.get(t) or secs[t] for t in order] + [END]
 
 CASE_TABLE = '''<table class="tb"><thead><tr><th style="width:24%">時間</th><th>發生的事</th></tr></thead><tbody>
 <tr><td class="num">Day −7・114/3/25</td><td>開始長照復能服務</td></tr>
@@ -135,11 +145,17 @@ body.handout{background:#fff}
 .hcover{break-after:page;display:flex;flex-direction:column;gap:14px;padding:4px 2px}
 .hcover h1{font-size:54px;margin:4px 0 6px}
 .hcover .cover-meta{margin-top:6px}
-.hqr{display:grid;grid-template-columns:44mm 1fr;gap:18px;align-items:center;border:1.5px solid var(--teal);border-radius:12px;padding:14px 18px;background:var(--tealbg)}
-.hqr-code svg{width:44mm;height:44mm;display:block;border-radius:6px}
-.hqr-txt b{font-size:22px;display:block;margin-bottom:6px}
-.hqr-txt p{font-size:14px;color:var(--ink2)}
-.hqr-txt .url{font-size:15px;color:var(--tealink);margin-top:8px;word-break:break-all}
+.hqr2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hqr{display:grid;grid-template-columns:34mm 1fr;gap:12px;align-items:center;border:1.5px solid var(--teal);border-radius:12px;padding:12px 14px;background:var(--tealbg)}
+.hqr.line{border-color:#06C755;background:#EAF8EF}
+.hqr-code svg,.hqr-code img{width:34mm;height:34mm;display:block;border-radius:6px;background:#fff}
+.hend{break-inside:avoid;display:grid;grid-template-columns:40mm 1fr;gap:16px;align-items:center;border:1.5px solid var(--amber);border-radius:12px;padding:14px 18px;background:var(--amberbg);margin-top:4px}
+.hend img{width:40mm;height:40mm;display:block;background:#fff;border-radius:6px;padding:2mm}
+.hend b{font-size:20px;display:block;margin-bottom:4px}
+.hend p{font-size:14px;color:var(--ink2)}
+.hqr-txt b{font-size:18px;display:block;margin-bottom:4px}
+.hqr-txt p{font-size:12.5px;color:var(--ink2)}
+.hqr-txt .url{font-size:12px;color:var(--tealink);margin-top:8px;word-break:break-all}
 .hcover .tiles{grid-template-columns:repeat(3,1fr)}
 .hcover .tile{min-height:0;padding:10px}
 .htoc{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;border-top:1px solid var(--rule);padding-top:10px}

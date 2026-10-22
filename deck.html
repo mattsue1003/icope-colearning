@@ -367,6 +367,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
 .pdca textarea{height:calc(var(--u)*64);min-height:44px}
 .pdca .wide{grid-column:1 / -1}
 .qrbox{display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*10)}
+a.qrframe{text-decoration:none;color:inherit}
 .qrframe{width:calc(var(--u)*300);height:calc(var(--u)*300);min-width:180px;min-height:180px;max-width:100%;aspect-ratio:1;background:#fff;border-radius:calc(var(--u)*14);padding:calc(var(--u)*14);border:1px solid var(--rule);display:grid;place-items:center;position:relative}
 .qrframe img,.qrframe canvas{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;display:block}
 .qrframe .ph{display:none;text-align:center;font-size:var(--fs-s);color:#5d7177;line-height:1.5;padding:12px}
@@ -409,7 +410,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>歡迎詞：今天不是考核，是一起把流程變順。</li>
-    <li>今年國健署要求共學從「宏觀」與「微觀」兩個角度討論：第一段用一位模擬長輩走完 6 個月，休息後看全市數據。</li>
+    <li>今年國健署要求共學從「宏觀」與「微觀」兩個角度討論：第一段用胡女士的案例走完初評到後測，休息後看全市數據。</li>
     <li>右邊是量表的六個面向，等一下所有數據和個案都會回到這六格。</li>
   </ul></aside>
 </section>
@@ -419,10 +420,10 @@ body.scroll .rd .ds{grid-column:1 / -1}
   <div class="hd"><span class="sec">報到｜09:30–10:00</span><span class="pg"></span></div>
   <div class="line-main">
     <div class="qrbox" id="qr-line">
-      <div class="qrframe">
-        <img src="img/qr-line.png" alt="LINE 社群加入 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
-        <div class="ph">LINE 社群 QR code<br>（圖檔：img/qr-line.png）</div>
-      </div>
+      <a class="qrframe" href="https://line.me/ti/g/KegcvJBWSQ" target="_blank" rel="noopener" aria-label="開啟 LINE 社群邀請">
+        <img src="img/qr-line.jpg" alt="LINE 社群加入 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
+        <div class="ph">LINE 社群 QR code<br>（圖檔：img/qr-line.jpg）</div>
+      </a>
       <div class="qrcap">掃描加入 LINE 社群</div>
     </div>
     <div class="body" style="justify-content:center">
@@ -430,7 +431,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
       <p style="font-size:var(--fs-m)">還沒加入的夥伴請先加入。今天的簡報和共學相關資料都會放在社群裡，會後直接到社群找。</p>
       <ol class="list" style="max-width:34em">
         <li><span class="k">1</span><span>打開 LINE，點主頁右上角「加入好友」圖示</span></li>
-        <li><span class="k">2</span><span>選「QR 碼」，掃描左邊的條碼</span></li>
+        <li><span class="k">2</span><span>選「QR 碼」，掃描左邊的條碼（也可以直接用手機相機掃描）</span></li>
         <li><span class="k">3</span><span>點「加入」，看到社群名稱就完成了</span></li>
       </ol>
       <p class="callout t small">已經加入的夥伴：請幫忙身旁同仁掃描，並確認社群通知是開啟的。</p>
@@ -458,7 +459,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
         <tr class="ag-ne"><td class="num">12:15–12:30</td><td>滿意度調查、大合照</td><td class="muted">—</td><td>掃描滿意度問卷</td></tr>
       </tbody>
     </table></div>
-    <p class="foot">產出：每組一張討論單（案例：加在第幾天的接觸點；數據：缺口 → 原因 → 改善）；每個單位一張 30 天行動承諾卡。</p>
+    <p class="foot">產出：每組一張討論單（案例：每題一個具體做法；數據：缺口 → 原因 → 改善）；每個單位一張 30 天行動承諾卡。</p>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>今天先看一位長輩（微觀），休息後再看全市數據（宏觀），讓個案裡的卡點在數據中找到對應。</li>
@@ -601,7 +602,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>案例改編自案例分享示範，部分內容已調整，僅供教學討論。</li>
-    <li>每一站都會停下來問：「如果是你的單位，會怎麼做？」</li>
+    <li>個案介紹只有 10 分鐘，每頁約停 1 分鐘；「停一下」的題目可以留給分組討論。</li>
   </ul></aside>
 </section>
 
@@ -718,10 +719,10 @@ body.scroll .rd .ds{grid-column:1 / -1}
     <table class="tb">
       <thead><tr><th style="width:15%">異常項目</th><th>介入內容</th><th style="width:30%">對應的介入類型（115 須知）</th></tr></thead>
       <tbody>
-        <tr><td><b>行動</b></td><td>衛教（紙本／線上保健教材）；長照復能—居家職能治療（3/25 已開始）；輔具服務點（輔具中心）；一般社區據點</td><td>居家健康管理・連結長照・連結社區據點</td></tr>
-        <tr><td><b>聽力</b></td><td>衛教；轉介耳鼻喉科；華科基金會（助聽器資源）</td><td>轉介醫療院所・連結社區資源</td></tr>
-        <tr><td><b>用藥</b></td><td>衛教；向原處方醫師諮詢</td><td>轉介醫療院所</td></tr>
-        <tr><td><b>社會照護與支持</b></td><td>衛教；原有長照服務（陪伴外出、陪同運動）；一般社區據點</td><td>連結長照・連結社區據點</td></tr>
+        <tr><td><b>行動</b></td><td>衛教（紙本／線上保健教材）；長照復能—居家職能治療（3/25 已開始）；輔具服務點（輔具中心）；一般社區據點</td><td>指導居家健康管理・連結社區據點（輔具服務點、社區據點）・原有長照服務</td></tr>
+        <tr><td><b>聽力</b></td><td>衛教；轉介耳鼻喉科；華科基金會（助聽器資源）</td><td>指導居家健康管理・轉介醫療院所・連結社區據點（社福資源）</td></tr>
+        <tr><td><b>用藥</b></td><td>衛教；向原處方醫師諮詢</td><td>指導居家健康管理・轉介醫療院所</td></tr>
+        <tr><td><b>社會照護與支持</b></td><td>衛教；原有長照服務（陪伴外出、陪同運動）；一般社區據點</td><td>指導居家健康管理・原有長照服務・連結社區據點</td></tr>
       </tbody>
     </table>
     <div class="g2">
@@ -743,7 +744,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
     <table class="tb">
       <thead><tr><th>追蹤表單選項</th><th style="width:22%">紀錄</th></tr></thead>
       <tbody>
-        <tr><td>D｜至醫療院所進一步檢查（耳鼻喉科）</td><td><span class="pill ok">已勾選</span></td></tr>
+        <tr><td>D｜至醫療院所進一步檢查</td><td><span class="pill ok">已勾選</span></td></tr>
         <tr><td>F｜配戴輔具或調整輔具使用狀況</td><td><span class="pill ok">已勾選</span></td></tr>
         <tr><td>A｜依衛教教材執行健康行為</td><td><span class="pill">未勾選</span></td></tr>
         <tr><td>E｜至社區據點接受介入活動或課程</td><td><span class="pill sr">未勾選</span></td></tr>
@@ -753,7 +754,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
       </tbody>
     </table>
     <div class="fx">
-      <div class="card small"><b>解讀</b><br>聽力檢查與輔具已經到位。社區據點沒有去，和她「不想麻煩人」一致。向原處方醫師諮詢用藥的結果，沒有記錄。</div>
+      <div class="card small"><b>解讀</b><br>已到醫療院所做進一步檢查，輔具也已配戴或調整。社區據點沒有去，和她「不想麻煩人」一致。向原處方醫師諮詢用藥的結果，沒有記錄。</div>
       <div class="callout"><b>關鍵問題</b><br><span class="small">追蹤只勾了 2 項。沒勾的項目，是沒做、沒問，還是沒記？</span></div>
       <div class="card tint small">時間：評估後第 6 週，符合「滿 1 個月起」的追蹤規定。</div>
     </div>
@@ -847,7 +848,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
   <div class="body g2" style="display:grid">
     <div class="card tint fx">
       <div class="label">第一組｜完整報告</div>
-      <p class="small">依 Q1–Q4 報告。重點說出：你們會加在「第幾天」的接觸點、由誰負責。</p>
+      <p class="small">依 Q1–Q4 報告，每題說出一個具體做法：誰、何時、轉介到哪裡。</p>
       <div class="timer" data-min="8" style="border:0;padding:0"><div class="tv num">08:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
     </div>
     <div class="card warm fx">
@@ -856,8 +857,8 @@ body.scroll .rd .ds{grid-column:1 / -1}
       <div class="timer" data-min="6" style="border:0;padding:0"><div class="tv num">06:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
     </div>
   </div>
-  <p class="foot">記錄請把兩組的接觸點標在同一條時間軸上，讓專家委員回饋時對照。</p>
-  <aside class="notes"><h4>講者備註</h4><ul><li>第一組報告時，主持人把接觸點寫在白板的時間軸上；第二組補充的用另一個顏色。</li><li>這張時間軸給專家委員回饋時參考。</li></ul></aside>
+  <p class="foot">記錄請把兩組的做法依 Q1–Q4 整理在同一張表上，讓專家委員回饋時對照。</p>
+  <aside class="notes"><h4>講者備註</h4><ul><li>第一組報告時，主持人把做法依 Q1–Q4 寫在白板上；第二組補充的用另一個顏色。</li><li>白板內容給專家委員回饋時參考。</li></ul></aside>
 </section>
 
 <!-- ───────── 專家回饋（一） -->
@@ -876,7 +877,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
       <div class="timer" data-min="15" style="border:0;padding:0;margin-top:auto"><div class="tv num" style="font-size:calc(var(--u)*44)">15:00</div><div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div></div>
     </div>
   </div>
-  <aside class="notes"><h4>講者備註</h4><ul><li>把白板上兩組的時間軸留給委員對照。</li><li>回饋結束後，主持人用 3 分鐘小結。</li></ul></aside>
+  <aside class="notes"><h4>講者備註</h4><ul><li>把白板上兩組的做法留給委員對照。</li><li>回饋結束後，主持人用 3 分鐘小結。</li></ul></aside>
 </section>
 
 <!-- ───────── 案例反饋 -->
@@ -898,7 +899,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>專家回饋後用這頁收斂 3 分鐘，把兩組提到的做法對到這五點。</li>
-    <li>第 2、3、4 點在第二段的數據裡都有對應：未複評、未介入、未完成後測。</li>
+    <li>第 1、3、4 點在第二段的數據裡都有對應：未複評、未完成追蹤、未完成後測。</li>
   </ul></aside>
 </section>
 
@@ -913,10 +914,10 @@ body.scroll .rd .ds{grid-column:1 / -1}
     </div>
     <p style="font-size:var(--fs-m)">11:20 開始第二段：數據分析與策略研討</p>
     <div class="qrbox" style="flex-direction:row;gap:var(--g2)">
-      <div class="qrframe" style="width:calc(var(--u)*130);height:calc(var(--u)*130);min-width:96px;min-height:96px;padding:calc(var(--u)*8)">
-        <img src="img/qr-line.png" alt="LINE 社群加入 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
+      <a class="qrframe" href="https://line.me/ti/g/KegcvJBWSQ" target="_blank" rel="noopener" aria-label="開啟 LINE 社群邀請" style="width:calc(var(--u)*130);height:calc(var(--u)*130);min-width:96px;min-height:96px;padding:calc(var(--u)*8)">
+        <img src="img/qr-line.jpg" alt="LINE 社群加入 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
         <div class="ph" style="font-size:var(--fs-cap);padding:4px">LINE<br>QR code</div>
-      </div>
+      </a>
       <p class="small ink2" style="text-align:left">還沒加入 LINE 社群？<br>趁休息掃描加入</p>
     </div>
   </div>
@@ -1042,7 +1043,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
   <aside class="notes"><h4>講者備註</h4><ul>
     <li>請每組在自己的討論單上畫出單位的漏斗，標出最大缺口。</li>
     <li>「確認異常」比「完成複評」少，是因為部分長輩複評後正常；這是好事，不是流失。</li>
-    <li>未複評的 239 人：最常見原因是當天時間不夠、改約後沒回來、家屬不在無法填 AD8。</li>
+    <li>未複評的 239 人：請各組分享自己單位的原因，例如當天時間不夠、改約後沒回來、家屬不在無法填 AD8。</li>
   </ul></aside>
 </section>
 
@@ -1148,14 +1149,14 @@ body.scroll .rd .ds{grid-column:1 / -1}
       </table>
     </div>
     <div class="fx">
-      <div class="card small"><b>7 家低於 30%</b>，其中 6 家是診所。共同點：異常個案多，但沒有人專責排後測。</div>
+      <div class="card small"><b>7 家低於 30%</b>，其中 6 家是診所。診所已到後測期的 65 人，只完成 10 人。</div>
       <div class="callout a small"><b>窗口管理</b>
         <ul style="margin-top:4px"><li>後測窗口：評估後 3～6 個月</li><li>介入計畫訂好當天，就約好後測日</li><li>年底上傳截止前 1 個月，盤點「已到期未後測」名單</li></ul></div>
       <div class="card tint small">跨年規定：114 年評估個案可在 115 年完成追蹤與後測。115 年個案是否比照，以 116 年須知為準。</div>
     </div>
   </div>
   <aside class="notes"><h4>講者備註</h4><ul>
-    <li>後測率高的醫院（例如醫院 E 91.5%）請分享：誰負責？用什麼提醒？</li>
+    <li>後測率高的醫院（例如醫院 E 91.5%）請分享：誰負責？用什麼提醒？</li><li>後測率低的單位請分享：後測由誰排？卡在哪裡？</li>
     <li>未到後測期 131 人：今天就可以排進行事曆。</li>
   </ul></aside>
 </section>
@@ -1376,6 +1377,7 @@ body.scroll .rd .ds{grid-column:1 / -1}
       <li><span class="tag">工作手冊</span><span>國民健康署《預防及延緩失能之長者功能評估服務試辦計畫 工作手冊》，110 年 5 月。<a href="https://www.klchb.klcg.gov.tw/wSite/public/Attachment/01205/f1625039772640.pdf" target="_blank" rel="noopener">開啟 PDF</a></span></li>
       <li><span class="tag">新聞稿</span><span>國民健康署〈全臺醫療單位齊心 陪長輩「量六力」〉，2025 年 11 月 26 日。<a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19644" target="_blank" rel="noopener">開啟網頁</a></span></li>
       <li><span class="tag">報導</span><span>工商時報〈「量六力」揪失能警訊 每 4 名長者就有 1 人需注意〉，2026 年 8 月。<a href="https://www.ctee.com.tw/news/20260805702058-431401" target="_blank" rel="noopener">開啟網頁</a></span></li>
+      <li><span class="tag">案例</span><span>〈ICOPE 異常個案之轉介追蹤模式（案例分享示範）〉，本簡報改編並調整部分內容，僅供教學討論。</span></li>
       <li><span class="tag">講義</span><span>直式 A4 學員講義（含兩頁討論記錄頁）。<a href="handout.pdf" target="_blank" rel="noopener">下載 PDF</a></span></li>
       <li><span class="tag">數據</span><span>2026 機構訪查篩選表（衛生局內部資料，本簡報已去識別化為單位代碼）。</span></li>
     </ul>
@@ -1392,13 +1394,19 @@ body.scroll .rd .ds{grid-column:1 / -1}
       <p class="kicker">謝謝今天的參與</p>
       <h2 style="font-size:var(--fs-xl)">請掃描填寫<br>滿意度問卷</h2>
       <p style="font-size:var(--fs-m)">填完後，我們一起拍大合照。你的回饋會決定下一次共學要深入哪個主題。</p>
-      <div class="card tint small" style="max-width:34em">還沒加入 LINE 社群的夥伴，簡報與相關資料都會放在社群裡，請回到開場那一頁掃描加入。</div>
+      <div class="qrbox" style="flex-direction:row;gap:var(--g2);align-items:center;justify-content:flex-start">
+        <a class="qrframe" href="https://line.me/ti/g/KegcvJBWSQ" target="_blank" rel="noopener" aria-label="開啟 LINE 社群邀請" style="width:calc(var(--u)*120);height:calc(var(--u)*120);min-width:90px;min-height:90px;padding:calc(var(--u)*8)">
+          <img src="img/qr-line.jpg" alt="LINE 社群加入 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
+          <div class="ph" style="font-size:var(--fs-cap);padding:4px">LINE<br>QR code</div>
+        </a>
+        <p class="small ink2">還沒加入 LINE 社群？<br>簡報與相關資料都在社群裡。</p>
+      </div>
     </div>
     <div class="qrbox" id="qr-survey">
-      <div class="qrframe">
-        <img src="img/qr-survey.png" alt="滿意度問卷 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
-        <div class="ph">滿意度問卷 QR code<br>（圖檔：img/qr-survey.png）</div>
-      </div>
+      <a class="qrframe" href="https://docs.google.com/forms/d/1w2ATG8rxDQQmsrSdcxOeeoYDOFDclIMFwkT3JbuCVsg/viewform" target="_blank" rel="noopener" aria-label="開啟滿意度問卷">
+        <img src="img/qr-survey.svg" alt="滿意度問卷 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
+        <div class="ph">滿意度問卷 QR code</div>
+      </a>
       <div class="qrcap">掃描填寫滿意度</div>
     </div>
   </div>

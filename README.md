@@ -14,9 +14,9 @@
 ## 檔案
 - `index.html`：可直接開啟／GitHub Pages 用（由 `build.sh` 產生）
 - `deck.html`：簡報內容原始檔，修改後執行 `zsh build.sh`
-- `img/qr-line.png`：LINE 社群 QR code（第 2 頁，報到時投影）
-- `img/qr-survey.png`：滿意度問卷 QR code（最後一頁）
-  圖檔放進 `img/` 後重新整理即顯示；沒有圖檔時會顯示提示框。
+- `img/qr-line.jpg`：LINE 社群 QR code（報到頁、休息頁、最後一頁、講義首頁）
+- `img/qr-survey.svg`：滿意度問卷 QR code（最後一頁、講義末頁），連到問卷填答頁（viewform）
+- `img/qr-web.svg`：網頁版講義 QR code（講義首頁）
 
 ## 學員講義（直式 A4 PDF）
 - `handout.pdf`：首頁有網頁版 QR code；兩次討論後各有一頁空白討論記錄頁（一、討論的記錄重點／二、相關記錄內容）
