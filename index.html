@@ -1,0 +1,1459 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>ICOPE 長者量六力共學</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: a 1280×720 "assessment sheet" stage scaled by --u; phones get a scrolling stack of the same sheets.
+   Visual idea: the ICOPE form itself — domain letters A–F, □是 □否 boxes, fraction-style formulas. */
+:root{
+  --u:1px;
+  --paper:#E9F0EF; --sheet:#FFFFFF; --ink:#12343B; --ink2:#44616A; --ink3:#728B91;
+  --rule:#CFDCDB; --rule2:#E4ECEB;
+  --teal:#028090; --tealink:#016B78; --tealbg:#E0F0F1; --tealmid:#7FC0C7;
+  --orange:#E8552D; --orangeink:#B83A17; --orangebg:#FCE8E0;
+  --amber:#F4A93C; --amberink:#8F5A00; --amberbg:#FDF0D8;
+  --deep:#12343B; --ondeep:#EAF4F3; --ondeep2:#A9C6C9;
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --critical:#d03b3b;
+  --shadow:0 1px 2px rgba(18,52,59,.08),0 10px 32px rgba(18,52,59,.12);
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",system-ui,sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --fs-cap:max(11.5px,calc(var(--u)*15));
+  --fs-s:max(12.5px,calc(var(--u)*17.5));
+  --fs-b:max(14px,calc(var(--u)*20.5));
+  --fs-m:max(16px,calc(var(--u)*25));
+  --fs-h:max(22px,calc(var(--u)*38));
+  --fs-xl:max(28px,calc(var(--u)*56));
+  --fs-hero:max(36px,calc(var(--u)*86));
+  --g1:calc(var(--u)*8); --g2:calc(var(--u)*14); --g3:calc(var(--u)*22); --g4:calc(var(--u)*32);
+  --r:calc(var(--u)*10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B1517; --sheet:#132327; --ink:#E3EEEE; --ink2:#AFC4C7; --ink3:#7F989C;
+    --rule:#2B4247; --rule2:#1E3337;
+    --teal:#3DB4BF; --tealink:#6CCAD3; --tealbg:#16383D; --tealmid:#2C7E87;
+    --orange:#F2754F; --orangeink:#FF9C7C; --orangebg:#3B231C;
+    --amber:#F4B65A; --amberink:#F7C77E; --amberbg:#372B17;
+    --deep:#0E2E34; --ondeep:#E6F2F2; --ondeep2:#93B6BA;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 32px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B1517; --sheet:#132327; --ink:#E3EEEE; --ink2:#AFC4C7; --ink3:#7F989C;
+  --rule:#2B4247; --rule2:#1E3337;
+  --teal:#3DB4BF; --tealink:#6CCAD3; --tealbg:#16383D; --tealmid:#2C7E87;
+  --orange:#F2754F; --orangeink:#FF9C7C; --orangebg:#3B231C;
+  --amber:#F4B65A; --amberink:#F7C77E; --amberbg:#372B17;
+  --deep:#0E2E34; --ondeep:#E6F2F2; --ondeep2:#93B6BA;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 32px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--fs-b);line-height:1.55;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding-left:1.15em}
+a{color:var(--tealink)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+b,strong{font-weight:700}
+.muted{color:var(--ink3)} .ink2{color:var(--ink2)}
+.t-teal{color:var(--tealink)} .t-orange{color:var(--orangeink)} .t-amber{color:var(--amberink)}
+.small{font-size:var(--fs-s)} .cap{font-size:var(--fs-cap)}
+
+/* ---------- deck shell ---------- */
+.deck{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(46px + env(safe-area-inset-bottom,0px));display:grid;place-items:center}
+.slide{position:relative;background:var(--sheet);color:var(--ink);display:none;flex-direction:column;
+  width:calc(var(--u)*1280);height:calc(var(--u)*720);padding:calc(var(--u)*34) calc(var(--u)*56) calc(var(--u)*30);
+  gap:var(--g2);overflow:hidden;box-shadow:var(--shadow);border-radius:calc(var(--u)*6)}
+.slide.on{display:flex;animation:fadein .22s ease-out}
+@keyframes fadein{from{opacity:.4}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.slide.on{animation:none}}
+.hd{display:flex;justify-content:space-between;align-items:baseline;gap:var(--g2);font-size:var(--fs-cap);color:var(--ink3);letter-spacing:.06em;border-bottom:1px solid var(--rule2);padding-bottom:calc(var(--u)*8)}
+.hd .sec{color:var(--tealink);font-weight:700}
+.hd .sec.mi{color:var(--orangeink)}
+.hd .pg{font-family:var(--f-num)}
+h2{font-size:var(--fs-h);font-weight:900;line-height:1.22;letter-spacing:.01em;text-wrap:balance}
+h2 .lite{font-weight:500;color:var(--ink2)}
+h3{font-size:var(--fs-m);font-weight:700;line-height:1.3;text-wrap:balance}
+.body{flex:1;min-height:0;display:flex;flex-direction:column;gap:var(--g3)}
+.foot{font-size:var(--fs-cap);color:var(--ink3);line-height:1.45}
+aside.notes{display:none}
+
+.bar{position:fixed;left:0;right:0;bottom:0;height:calc(46px + env(safe-area-inset-bottom,0px));padding:0 max(16px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(16px,env(safe-area-inset-left,0px));
+  display:flex;align-items:center;gap:10px;background:var(--paper);border-top:1px solid var(--rule);font-size:14px;z-index:20}
+.bar button{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;height:32px;padding:0 12px;cursor:pointer;white-space:nowrap}
+.bar button:hover{border-color:var(--teal)}
+.bar .count{font-family:var(--f-num);min-width:64px;text-align:center}
+.bar .prog{flex:1;height:4px;background:var(--rule2);border-radius:2px;overflow:hidden;min-width:40px}
+.bar .prog i{display:block;height:100%;background:var(--teal);width:0;transition:width .2s}
+.bar .hint{color:var(--ink3);font-size:12px}
+.notes-panel{position:fixed;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:calc(54px + env(safe-area-inset-bottom,0px));max-height:38vh;overflow:auto;
+  background:var(--sheet);border:1px solid var(--rule);border-left:4px solid var(--amber);border-radius:10px;padding:12px 16px;font-size:15px;line-height:1.6;box-shadow:var(--shadow);z-index:25}
+.notes-panel h4{margin:0 0 4px;font-size:13px;color:var(--amberink);letter-spacing:.08em}
+.notes-panel ul{margin:0;padding-left:1.1em}
+.toc{position:fixed;inset:0;background:color-mix(in srgb,var(--deep) 55%,transparent);z-index:30;display:grid;place-items:center;padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+.toc-box{background:var(--sheet);border-radius:12px;max-width:880px;width:100%;max-height:86vh;overflow:auto;padding:20px 22px;box-shadow:var(--shadow)}
+.toc-box h4{margin:0 0 10px;font-size:16px}
+.toc-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 16px;font-size:15px}
+.toc-list button{all:unset;cursor:pointer;display:flex;gap:10px;padding:6px 8px;border-radius:6px}
+.toc-list button:hover,.toc-list button:focus-visible{background:var(--tealbg)}
+.toc-list .n{font-family:var(--f-num);color:var(--ink3);min-width:22px}
+.toc-list .on{background:var(--tealbg);font-weight:700}
+.tip{position:fixed;z-index:40;pointer-events:none;background:var(--ink);color:var(--sheet);font-size:13px;line-height:1.45;padding:8px 10px;border-radius:8px;max-width:240px;box-shadow:var(--shadow)}
+
+/* ---------- scroll mode (phones / short screens) ---------- */
+body.scroll{height:auto}
+body.scroll .deck{position:static;display:flex;align-items:stretch;justify-items:stretch;flex-direction:column;gap:16px;padding-block:16px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body.scroll .slide{display:flex;width:auto;height:auto;padding:calc(var(--u)*30) calc(var(--u)*28);border-radius:12px;animation:none}
+body.scroll .bar{display:none}
+body.scroll .fab{display:flex}
+body.scroll .g2,body.scroll .g3,body.scroll .g4,body.scroll .g21,body.scroll .g12,body.scroll .cover-main,body.scroll .line-main,body.scroll .end-main{grid-template-columns:1fr!important}
+body.scroll .kpis,body.scroll .minis,body.scroll .tiles,body.scroll .divider .qs{grid-template-columns:1fr 1fr!important}
+body.scroll .pdca,body.scroll .calc,body.scroll .disc{grid-template-columns:1fr!important}
+body.scroll .divider .big{font-size:64px}
+body.scroll .stack-sm{flex-direction:column!important;align-items:stretch!important}
+body.scroll.shownotes aside.notes{display:block;margin-top:8px;border-top:1px dashed var(--rule);padding-top:8px;font-size:14px;color:var(--ink2)}
+body.scroll aside.notes h4{margin:0 0 4px;font-size:12px;color:var(--amberink)}
+.fab{display:none;position:fixed;right:max(16px,calc(env(safe-area-inset-right,0px) + 12px));bottom:calc(16px + env(safe-area-inset-bottom,0px));gap:8px;z-index:20}
+.fab button{background:var(--deep);color:var(--ondeep);border:0;border-radius:999px;padding:10px 14px;font-size:14px;box-shadow:var(--shadow);cursor:pointer}
+.xscroll{overflow-x:auto;max-width:100%}
+
+/* ---------- shared components ---------- */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:var(--g3)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--g3)}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--g2)}
+.g21{display:grid;grid-template-columns:1.55fr 1fr;gap:var(--g4)}
+.g12{display:grid;grid-template-columns:1fr 1.45fr;gap:var(--g4)}
+.g2>*,.g3>*,.g4>*,.g21>*,.g12>*{min-width:0}
+.card{border:1px solid var(--rule);border-radius:var(--r);padding:calc(var(--u)*16) calc(var(--u)*18);background:var(--sheet)}
+.card.tint{background:var(--tealbg);border-color:transparent}
+.card.warm{background:var(--orangebg);border-color:transparent}
+.card.sun{background:var(--amberbg);border-color:transparent}
+.label{font-size:var(--fs-cap);letter-spacing:.08em;color:var(--ink3);font-weight:700}
+.list{display:flex;flex-direction:column;gap:calc(var(--u)*9);padding:0;list-style:none}
+.list li{display:grid;grid-template-columns:calc(var(--u)*26) 1fr;gap:calc(var(--u)*8);align-items:start}
+.list li>.k{font-family:var(--f-num);font-weight:600;color:var(--tealink);font-size:var(--fs-s);line-height:1.9}
+.dom{display:inline-grid;place-items:center;width:calc(var(--u)*30);height:calc(var(--u)*30);min-width:20px;min-height:20px;border-radius:calc(var(--u)*6);background:var(--deep);color:var(--ondeep);font-family:var(--f-num);font-weight:600;font-size:var(--fs-s);flex:none}
+.dom.bad{background:var(--orange);color:#fff}
+.dom.ok{background:var(--tealbg);color:var(--tealink)}
+.yn{font-family:var(--f-body);font-size:var(--fs-s);white-space:nowrap;color:var(--ink2)}
+.yn .x{display:inline-block;width:.95em;height:.95em;border:1.5px solid currentColor;border-radius:2px;vertical-align:-.12em;margin-right:.18em;position:relative}
+.yn .x.on{background:var(--ink);border-color:var(--ink)}
+.yn .x.on::after{content:"";position:absolute;inset:18% 30% 30% 30%;border:solid var(--sheet);border-width:0 2px 2px 0;transform:rotate(40deg)}
+.pill{display:inline-flex;align-items:center;gap:.35em;font-size:var(--fs-cap);font-weight:700;padding:.18em .6em;border-radius:999px;white-space:nowrap;background:var(--rule2);color:var(--ink)}
+.pill::before{content:"";width:.62em;height:.62em;border-radius:50%;background:var(--ink3)}
+.pill.ok::before{background:var(--good)} .pill.wn::before{background:var(--warn)} .pill.sr::before{background:var(--serious)} .pill.cr::before{background:var(--critical)}
+.pill.ok{background:color-mix(in srgb,var(--good) 14%,var(--sheet))}
+.pill.wn{background:color-mix(in srgb,var(--warn) 20%,var(--sheet))}
+.pill.sr{background:color-mix(in srgb,var(--serious) 20%,var(--sheet))}
+.pill.cr{background:color-mix(in srgb,var(--critical) 16%,var(--sheet))}
+.frac{display:inline-grid;grid-template-rows:auto auto;justify-items:center;vertical-align:middle;line-height:1.3;font-size:var(--fs-s)}
+.frac>span:first-child{border-bottom:1.5px solid var(--ink);padding:0 .3em .1em}
+.frac>span:last-child{padding:.1em .3em 0}
+.callout{border-left:calc(var(--u)*5) solid var(--orange);background:var(--orangebg);padding:calc(var(--u)*12) calc(var(--u)*16);border-radius:0 var(--r) var(--r) 0}
+.callout.t{border-color:var(--teal);background:var(--tealbg)}
+.callout.a{border-color:var(--amber);background:var(--amberbg)}
+table.tb{width:100%;border-collapse:collapse;font-size:var(--fs-s)}
+.tb th{font-size:var(--fs-cap);color:var(--ink3);font-weight:700;letter-spacing:.06em;text-align:left;border-bottom:1.5px solid var(--ink);padding:calc(var(--u)*6) calc(var(--u)*8)}
+.tb td{border-bottom:1px solid var(--rule2);padding:calc(var(--u)*7) calc(var(--u)*8);vertical-align:top}
+.tb td.r,.tb th.r{text-align:right}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);background:var(--sheet);border-radius:8px;padding:calc(var(--u)*6) calc(var(--u)*12);font-size:var(--fs-s);cursor:pointer}
+.btn:hover{border-color:var(--teal)}
+.btn.pri{background:var(--teal);border-color:var(--teal);color:#fff}
+.reveal-body{animation:fadein .25s}
+
+/* ---------- cover ---------- */
+.cover-main{flex:1;display:grid;grid-template-columns:1.05fr 1fr;gap:var(--g4);align-items:center}
+.kicker{font-family:var(--f-num);font-size:var(--fs-s);color:var(--tealink);letter-spacing:.04em}
+h1{font-size:var(--fs-hero);font-weight:900;line-height:1.08;letter-spacing:.02em;margin:calc(var(--u)*12) 0 calc(var(--u)*16)}
+.cover-sub{font-size:var(--fs-m);font-weight:700;color:var(--ink2)}
+.cover-sub b{color:var(--orangeink)}
+.cover-meta{display:flex;flex-wrap:wrap;gap:var(--g2) var(--g4);margin-top:calc(var(--u)*30);font-size:var(--fs-s)}
+.cover-meta dt{font-size:var(--fs-cap);color:var(--ink3);letter-spacing:.1em;font-weight:700}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*10)}
+.tile{border:1px solid var(--rule);border-radius:var(--r);padding:calc(var(--u)*14);display:flex;flex-direction:column;gap:calc(var(--u)*6);min-height:calc(var(--u)*150)}
+.tile .top{display:flex;align-items:center;gap:calc(var(--u)*8);font-weight:700;font-size:var(--fs-m)}
+.tile .it{font-size:var(--fs-cap);color:var(--ink2);line-height:1.4;flex:1}
+
+/* ---------- divider ---------- */
+.slide.divider{background:var(--deep);color:var(--ondeep)}
+.slide.divider .hd{border-color:color-mix(in srgb,var(--ondeep) 18%,transparent);color:var(--ondeep2)}
+.slide.divider .hd .sec{color:var(--tealmid)}
+.divider .big{font-size:calc(var(--u)*150);font-weight:900;line-height:1;letter-spacing:.04em}
+.divider .big small{display:block;font-family:var(--f-num);font-size:var(--fs-m);font-weight:500;letter-spacing:.2em;color:var(--ondeep2);margin-top:calc(var(--u)*14)}
+.divider .lead{font-size:var(--fs-m);font-weight:700;max-width:30em}
+.divider .qs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--g2)}
+.divider .qs>div{border-top:2px solid var(--tealmid);padding-top:calc(var(--u)*10)}
+.divider .qs b{display:block;font-size:var(--fs-m)}
+.divider .qs span{font-size:var(--fs-s);color:var(--ondeep2)}
+.divider.mi .qs>div{border-color:var(--orange)}
+
+/* ---------- agenda ---------- */
+.tl{display:flex;height:calc(var(--u)*64);border-radius:var(--r);overflow:hidden;gap:2px}
+.tl>div{display:flex;flex-direction:column;justify-content:center;padding:0 calc(var(--u)*10);font-size:var(--fs-cap);line-height:1.25;min-width:0;overflow:hidden}
+.tl .ma{background:var(--teal);color:#fff} .tl .ma2{background:var(--tealbg);color:var(--ink)}
+.tl .mi{background:var(--orange);color:#fff} .tl .mi2{background:var(--orangebg);color:var(--ink)}
+.tl .ne{background:var(--rule2);color:var(--ink2)}
+.tl b{font-family:var(--f-num);font-size:var(--fs-s)}
+
+/* ---------- flow ---------- */
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:calc(var(--u)*8)}
+.st{border:1px solid var(--rule);border-radius:var(--r);padding:calc(var(--u)*12);display:flex;flex-direction:column;gap:calc(var(--u)*6);position:relative;min-width:0}
+.st .no{font-family:var(--f-num);font-size:var(--fs-cap);color:var(--ink3)}
+.st h3{font-size:var(--fs-b)}
+.st p,.st li{font-size:var(--fs-s);line-height:1.5;color:var(--ink2)}
+.st ul{padding-left:1em}
+.st.key{border-color:var(--teal);background:var(--tealbg)}
+.axis{position:relative;height:calc(var(--u)*46);margin-top:calc(var(--u)*4)}
+.axis .ln{position:absolute;left:0;right:0;top:calc(var(--u)*14);height:2px;background:var(--rule)}
+.axis .mk{position:absolute;top:0;transform:translateX(-50%);text-align:center;font-size:var(--fs-cap);color:var(--ink2);white-space:nowrap}
+.axis .mk::before{content:"";display:block;margin:calc(var(--u)*8) auto calc(var(--u)*4);width:calc(var(--u)*12);height:calc(var(--u)*12);border-radius:50%;background:var(--teal)}
+.axis .win{position:absolute;top:calc(var(--u)*10);height:calc(var(--u)*10);border-radius:5px;opacity:.85}
+
+/* ---------- metrics ---------- */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--g2)}
+.kpi{border-top:3px solid var(--teal);padding-top:calc(var(--u)*8)}
+.kpi .v{font-family:var(--f-num);font-weight:600;font-size:var(--fs-xl);line-height:1.05;letter-spacing:-.03em}
+.kpi .v small{font-size:.45em;margin-left:.08em;color:var(--ink2)}
+.kpi .l{font-size:var(--fs-s);font-weight:700}
+.kpi .s{font-size:var(--fs-cap);color:var(--ink3)}
+.kpi.alert{border-color:var(--orange)}
+.fx{display:flex;flex-direction:column;gap:calc(var(--u)*8)}
+.fx .row{display:flex;align-items:center;gap:calc(var(--u)*10);flex-wrap:wrap}
+.fx .nm{font-weight:700;font-size:var(--fs-s);min-width:calc(var(--u)*120)}
+.fx .eq{font-size:var(--fs-s);color:var(--ink3)}
+.thr{font-size:var(--fs-cap);font-weight:700;color:var(--orangeink);background:var(--orangebg);border-radius:4px;padding:.05em .45em;white-space:nowrap}
+
+/* funnel */
+.fun{display:flex;flex-direction:column;gap:calc(var(--u)*10)}
+.fr{display:grid;grid-template-columns:calc(var(--u)*170) 1fr calc(var(--u)*92);gap:calc(var(--u)*12);align-items:center}
+.fr .lb{font-size:var(--fs-b);font-weight:700;text-align:right;line-height:1.25}
+.fr .lb small{display:block;font-weight:400;color:var(--ink3);font-size:var(--fs-cap)}
+.fr .tr{height:calc(var(--u)*46);position:relative}
+.fr .bx{height:100%;border-radius:0 calc(var(--u)*4) calc(var(--u)*4) 0;min-width:3px}
+.fr .vl{font-family:var(--f-num);font-weight:600;font-size:var(--fs-m)}
+.leak{display:grid;grid-template-columns:calc(var(--u)*170) 1fr;gap:calc(var(--u)*12);font-size:var(--fs-cap);color:var(--orangeink);font-weight:700;margin:calc(var(--u)*-3) 0}
+.leak span:last-child::before{content:"↳ "}
+
+/* strip chart */
+.strip{display:flex;flex-direction:column;gap:calc(var(--u)*4);min-width:0}
+.srow{display:grid;grid-template-columns:calc(var(--u)*78) 1fr calc(var(--u)*76);gap:calc(var(--u)*10);align-items:center}
+.srow .sl{font-size:var(--fs-s);font-weight:700;text-align:right}
+.srow .sa{font-family:var(--f-num);font-size:var(--fs-s);color:var(--ink2)}
+.strk{position:relative;height:calc(var(--u)*64);border-bottom:1px solid var(--rule2)}
+.strk .grid{position:absolute;top:0;bottom:0;width:1px;background:var(--rule2)}
+.strk .th{position:absolute;top:calc(var(--u)*-4);bottom:calc(var(--u)*-4);border-left:2px dashed var(--orange)}
+.dot{position:absolute;top:50%;width:calc(var(--u)*19);height:calc(var(--u)*19);min-width:11px;min-height:11px;margin:0;padding:0;border-radius:50%;border:2px solid var(--sheet);background:var(--teal);transform:translate(-50%,calc(-50% + var(--dy,0px)));cursor:pointer}
+.dot::after{content:"";position:absolute;inset:-9px;border-radius:50%}
+.dot.flag{background:var(--orange)}
+.dot:hover,.dot:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.sax{display:grid;grid-template-columns:calc(var(--u)*78) 1fr calc(var(--u)*76);gap:calc(var(--u)*10)}
+.sax .tk{position:relative;height:calc(var(--u)*20)}
+.sax .tk span{position:absolute;transform:translateX(-50%);font-family:var(--f-num);font-size:var(--fs-cap);color:var(--ink3)}
+.compact .strk{height:calc(var(--u)*50)}
+.slegend{display:flex;gap:var(--g3);flex-wrap:wrap;font-size:var(--fs-cap);color:var(--ink2)}
+.slegend i{display:inline-block;width:.8em;height:.8em;border-radius:50%;vertical-align:-.05em;margin-right:.35em}
+.slegend .dash{width:0;height:1em;border-radius:0;border-left:2px dashed var(--orange);margin-right:.5em}
+
+/* mini bars in tables */
+.mb{display:flex;align-items:center;gap:calc(var(--u)*8)}
+.mb .t{flex:1;height:calc(var(--u)*8);background:var(--rule2);border-radius:4px;overflow:hidden;min-width:30px}
+.mb .t i{display:block;height:100%;background:var(--teal);border-radius:4px}
+.mb .t i.lo{background:var(--orange)}
+.mb .v{font-family:var(--f-num);min-width:4.2em;text-align:right}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:calc(var(--u)*10)}
+.step{border-top:3px solid var(--teal);padding-top:calc(var(--u)*8);display:flex;flex-direction:column;gap:calc(var(--u)*6);min-width:0}
+.step .n{font-family:var(--f-num);font-weight:600;color:var(--tealink);font-size:var(--fs-s)}
+.step h3{font-size:var(--fs-b)}
+.step p,.step li{font-size:var(--fs-cap);color:var(--ink2);line-height:1.5}
+.step ul{padding-left:1em}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1.05fr;gap:var(--g4);flex:1;min-height:0}
+.calc .in{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*8) var(--g2);align-content:start}
+.calc label{display:flex;flex-direction:column;gap:2px;font-size:var(--fs-cap);color:var(--ink2);font-weight:700}
+.calc input{font:inherit;font-family:var(--f-num);font-size:var(--fs-b);padding:calc(var(--u)*5) calc(var(--u)*10);border:1px solid var(--rule);border-radius:8px;background:var(--sheet);color:var(--ink);width:100%}
+.calc input:focus{border-color:var(--teal);outline:none;box-shadow:0 0 0 3px var(--tealbg)}
+.calc .out{display:flex;flex-direction:column;gap:calc(var(--u)*5)}
+.orow{display:grid;grid-template-columns:1fr auto auto;gap:calc(var(--u)*12);align-items:center;padding:calc(var(--u)*6) 0;border-bottom:1px solid var(--rule2);font-size:var(--fs-s)}
+.orow .ov{font-family:var(--f-num);font-weight:600;font-size:var(--fs-b);min-width:4.4em;text-align:right}
+.orow .of{font-size:var(--fs-cap);color:var(--ink3);font-weight:400}
+
+/* discussion */
+.disc{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--g4);flex:1;min-height:0}
+.qlist{display:flex;flex-direction:column;gap:var(--g2);counter-reset:q;padding:0;list-style:none}
+.qlist li{display:grid;grid-template-columns:calc(var(--u)*44) 1fr;gap:calc(var(--u)*10);align-items:start;font-size:var(--fs-b)}
+.qlist li::before{counter-increment:q;content:"Q" counter(q);font-family:var(--f-num);font-weight:600;color:#fff;background:var(--teal);border-radius:6px;text-align:center;font-size:var(--fs-s);padding:2px 0}
+.mi .qlist li::before,.qlist.mi li::before{background:var(--orange)}
+.qlist li small{display:block;color:var(--ink3);font-size:var(--fs-cap)}
+.timer{border:1px solid var(--rule);border-radius:var(--r);padding:calc(var(--u)*14);display:flex;flex-direction:column;gap:calc(var(--u)*10);align-items:flex-start}
+.timer .tv{font-family:var(--f-num);font-weight:600;font-size:calc(var(--u)*64);line-height:1;letter-spacing:-.02em}
+.timer.done .tv{color:var(--orangeink)}
+.timer .tb2{display:flex;gap:8px;flex-wrap:wrap}
+
+/* case */
+.prof{display:grid;grid-template-columns:auto 1fr;gap:calc(var(--u)*4) calc(var(--u)*14);font-size:var(--fs-s)}
+.prof dt{color:var(--ink3);font-weight:700}
+.ctl{position:relative;height:calc(var(--u)*250);margin:calc(var(--u)*8) calc(var(--u)*6) 0}
+.ctl .base{position:absolute;left:0;right:0;top:calc(var(--u)*164);height:2px;background:var(--ink)}
+.ctl .w{position:absolute;height:calc(var(--u)*22);border-radius:4px;font-size:var(--fs-cap);font-weight:700;padding:0 8px;line-height:calc(var(--u)*22);white-space:nowrap;overflow:hidden}
+.ctl .w.fu{top:calc(var(--u)*180);background:var(--tealbg);color:var(--tealink)}
+.ctl .w.pt{top:calc(var(--u)*206);background:var(--amberbg);color:var(--amberink)}
+.ctl .ev{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;width:calc(var(--u)*170)}
+.ctl .ev.l{transform:none;align-items:flex-start;text-align:left}
+.ctl .ev.r{transform:translateX(-100%);align-items:flex-end;text-align:right}
+.ctl .ev .d{font-family:var(--f-num);font-size:var(--fs-cap);color:var(--ink3)}
+.ctl .ev b{font-size:var(--fs-s);line-height:1.3}
+.ctl .ev.hidden-ev b{color:var(--orangeink)}
+.ctl .cn{position:absolute;width:0;border-left:1.5px dotted var(--ink3)}
+.ctl .pin{position:absolute;top:calc(var(--u)*155);width:calc(var(--u)*20);height:calc(var(--u)*20);border-radius:50%;background:var(--teal);border:3px solid var(--sheet);transform:translateX(-50%)}
+.ctl .pin.hid{background:var(--sheet);border:2.5px dashed var(--orange)}
+.ctl .mo{position:absolute;top:calc(var(--u)*232);transform:translateX(-50%);font-family:var(--f-num);font-size:var(--fs-cap);color:var(--ink3);white-space:nowrap}
+.formrow{display:grid;grid-template-columns:calc(var(--u)*38) calc(var(--u)*92) 1fr auto;gap:calc(var(--u)*12);align-items:center;padding:calc(var(--u)*9) 0;border-bottom:1px solid var(--rule2);font-size:var(--fs-s)}
+.formrow .nm{font-weight:700}
+.formrow .res{display:flex;gap:calc(var(--u)*10);align-items:center;justify-content:flex-end}
+.score{font-family:var(--f-num);font-weight:600;font-size:var(--fs-m)}
+.score small{font-size:.6em;color:var(--ink3);font-weight:500}
+.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--g2)}
+.mini{border:1px solid var(--rule);border-radius:var(--r);padding:calc(var(--u)*12) calc(var(--u)*14);display:flex;flex-direction:column;gap:calc(var(--u)*4);min-width:0}
+.mini .mt{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-weight:700;font-size:var(--fs-s)}
+.mini .mt span{font-weight:400;font-size:var(--fs-cap);color:var(--ink3)}
+.mini svg{width:100%;height:calc(var(--u)*92);min-height:60px;display:block;overflow:visible}
+.mini .mv{display:flex;justify-content:space-between;font-family:var(--f-num);font-size:var(--fs-cap);color:var(--ink2)}
+.mini .mv b{font-size:var(--fs-s);color:var(--ink)}
+.mx{width:100%;border-collapse:collapse;font-size:var(--fs-s)}
+.mx th{font-size:var(--fs-cap);font-weight:700;color:var(--ink2);padding:calc(var(--u)*6);border-bottom:1.5px solid var(--ink);text-align:center;line-height:1.3}
+.mx th:first-child{text-align:left}
+.mx td{padding:calc(var(--u)*7) calc(var(--u)*6);border-bottom:1px solid var(--rule2);text-align:center}
+.mx td:first-child{text-align:left;font-weight:700}
+.mx .p{display:inline-block;width:calc(var(--u)*16);height:calc(var(--u)*16);min-width:11px;min-height:11px;border-radius:50%;background:var(--teal);vertical-align:middle}
+.mx .q{display:inline-block;width:calc(var(--u)*16);height:calc(var(--u)*16);min-width:11px;min-height:11px;border-radius:50%;border:2.5px solid var(--teal);vertical-align:middle}
+.mx .z{color:var(--rule)}
+
+/* commitment & QR */
+.pdca{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*10) var(--g3)}
+.pdca label{display:flex;flex-direction:column;gap:3px;font-size:var(--fs-cap);font-weight:700;color:var(--ink2)}
+.pdca input,.pdca textarea{font:inherit;font-size:var(--fs-s);padding:calc(var(--u)*6) calc(var(--u)*10);border:1px solid var(--rule);border-radius:8px;background:var(--sheet);color:var(--ink);width:100%;resize:none}
+.pdca textarea{height:calc(var(--u)*64);min-height:44px}
+.pdca .wide{grid-column:1 / -1}
+.qrbox{display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*10)}
+.qrframe{width:calc(var(--u)*300);height:calc(var(--u)*300);min-width:180px;min-height:180px;max-width:100%;aspect-ratio:1;background:#fff;border-radius:calc(var(--u)*14);padding:calc(var(--u)*14);border:1px solid var(--rule);display:grid;place-items:center;position:relative}
+.qrframe img,.qrframe canvas{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;display:block}
+.qrframe .ph{display:none;text-align:center;font-size:var(--fs-s);color:#5d7177;line-height:1.5;padding:12px}
+.qrbox.missing .qrframe img{display:none}
+.qrbox.missing .qrframe .ph{display:block}
+.qrbox.missing .qrframe{border:2px dashed var(--amber);background:var(--amberbg)}
+.qrbox.missing .qrframe .ph{color:var(--amberink)}
+.qrcap{font-weight:700;font-size:var(--fs-m);text-align:center}
+.line-main{flex:1;display:grid;grid-template-columns:auto 1fr;gap:calc(var(--u)*56);align-items:center}
+.end-main{flex:1;display:grid;grid-template-columns:1fr auto;gap:calc(var(--u)*48);align-items:center}
+.ref{display:flex;flex-direction:column;gap:calc(var(--u)*10);font-size:var(--fs-s);padding:0;list-style:none}
+.ref li{display:grid;grid-template-columns:calc(var(--u)*92) 1fr;gap:calc(var(--u)*12)}
+.ref .tag{font-size:var(--fs-cap);font-weight:700;color:var(--tealink);letter-spacing:.04em}
+</style>
+
+<div class="deck" id="deck">
+
+<!-- 1 ───────── 封面 -->
+<section class="slide" data-title="封面">
+  <div class="hd"><span class="sec">115 年度 長者內在能力檢測服務｜共學活動</span><span class="pg"></span></div>
+  <div class="cover-main">
+    <div>
+      <p class="kicker">ICOPE · Integrated Care for Older People</p>
+      <h1>長者量六力<br>共學活動</h1>
+      <p class="cover-sub"><b>宏觀</b>看數據 ✕ <b>微觀</b>看個案</p>
+      <dl class="cover-meta">
+        <div><dt>對象</dt><dd>機構單位・醫療與評估人員</dd></div>
+        <div><dt>引導</dt><dd>鍾孟修 職能治療師</dd></div>
+      </dl>
+    </div>
+    <div class="tiles" aria-label="六大內在能力">
+      <div class="tile"><div class="top"><span class="dom">A</span>認知</div><div class="it">3 項物品記憶・時間與地點定向</div><div class="yn"><i class="x"></i>是 <i class="x"></i>否</div></div>
+      <div class="tile"><div class="top"><span class="dom">B</span>行動</div><div class="it">雙手抱胸起立坐下 5 次，是否大於 12 秒</div><div class="yn"><i class="x"></i>是 <i class="x"></i>否</div></div>
+      <div class="tile"><div class="top"><span class="dom">C</span>營養</div><div class="it">3 個月內體重無意減輕 3 公斤・食慾不振</div><div class="yn"><i class="x"></i>是 <i class="x"></i>否</div></div>
+      <div class="tile"><div class="top"><span class="dom">D</span>視力</div><div class="it">WHO 簡單視力圖・遠／近距離</div><div class="yn"><i class="x"></i>是 <i class="x"></i>否</div></div>
+      <div class="tile"><div class="top"><span class="dom">E</span>聽力</div><div class="it">氣音測試 6‧1‧9／2‧5‧7</div><div class="yn"><i class="x"></i>是 <i class="x"></i>否</div></div>
+      <div class="tile"><div class="top"><span class="dom">F</span>憂鬱</div><div class="it">過去兩週心煩、沒希望・活動興趣減少</div><div class="yn"><i class="x"></i>是 <i class="x"></i>否</div></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>歡迎詞：今天不是考核，是一起把流程變順。</li>
+    <li>今年國健署要求共學從「宏觀」與「微觀」兩個角度討論：前半段看全市數據，後半段用一位模擬長輩走完 6 個月。</li>
+    <li>右邊是量表的六個面向，等一下所有數據和個案都會回到這六格。</li>
+  </ul></aside>
+</section>
+
+<!-- 2 ───────── LINE 社群 -->
+<section class="slide" data-title="加入 LINE 社群">
+  <div class="hd"><span class="sec">開場</span><span class="pg"></span></div>
+  <div class="line-main">
+    <div class="qrbox" id="qr-line">
+      <div class="qrframe">
+        <img src="img/qr-line.png" alt="LINE 社群加入 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
+        <div class="ph">LINE 社群 QR code<br>（圖檔：img/qr-line.png）</div>
+      </div>
+      <div class="qrcap">掃描加入 LINE 社群</div>
+    </div>
+    <div class="body" style="justify-content:center">
+      <h2>還沒加入 LINE 社群的夥伴，<br>請先掃描加入</h2>
+      <p style="font-size:var(--fs-m)">今天的簡報和共學相關資料，都會放在社群裡。會後要回頭查，直接到社群找。</p>
+      <ol class="list" style="max-width:34em">
+        <li><span class="k">1</span><span>打開 LINE，點主頁右上角「加入好友」圖示</span></li>
+        <li><span class="k">2</span><span>選「QR 碼」，掃描左邊的條碼</span></li>
+        <li><span class="k">3</span><span>點「加入」，看到社群名稱就完成了</span></li>
+      </ol>
+      <p class="callout t small">已經加入的夥伴：請幫忙身旁同仁掃描，並確認社群通知是開啟的。</p>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>停 1–2 分鐘讓大家掃描，可以邊等邊請同組互相協助。</li>
+    <li>提醒：今天的簡報、計算表與討論單都會放到社群。</li>
+  </ul></aside>
+</section>
+
+<!-- 3 ───────── 議程 -->
+<section class="slide" data-title="今日議程">
+  <div class="hd"><span class="sec">開場</span><span class="pg"></span></div>
+  <h2>今天 120 分鐘，兩段數據、兩段討論</h2>
+  <div class="body">
+    <div class="xscroll"><div class="tl" style="min-width:560px">
+      <div class="ne" style="flex:10"><b>10′</b>開場</div>
+      <div class="ma" style="flex:25"><b>25′</b>宏觀：數據看流程</div>
+      <div class="ma2" style="flex:20"><b>20′</b>宏觀分組討論</div>
+      <div class="ne" style="flex:10"><b>10′</b>休息</div>
+      <div class="mi" style="flex:25"><b>25′</b>微觀：個案模擬</div>
+      <div class="mi2" style="flex:20"><b>20′</b>微觀分組討論</div>
+      <div class="ne" style="flex:10"><b>10′</b>行動承諾</div>
+    </div></div>
+    <div class="g2">
+      <div class="card tint">
+        <div class="label">宏觀｜現有資料數據</div>
+        <h3 style="margin:6px 0 8px">單位怎麼改善整體流程與效能</h3>
+        <ul class="small" style="display:flex;flex-direction:column;gap:4px">
+          <li>評估效能：初評異常率、複評完成率、異常率</li>
+          <li>介入率與轉介率：介入有沒有真的「接手」</li>
+          <li>追蹤與後測：個案追不追得到</li>
+          <li>新開案的分析過程：還有誰沒被評到</li>
+        </ul>
+      </div>
+      <div class="card warm">
+        <div class="label">微觀｜個案討論模擬（機構版・醫療人員）</div>
+        <h3 style="margin:6px 0 8px">一位長輩的 6 個月，看介入幫了什麼</h3>
+        <ul class="small" style="display:flex;flex-direction:column;gap:4px">
+          <li>初評 → 針對初評異常的複評</li>
+          <li>個人介入計畫 → 3 個月追蹤</li>
+          <li>6 個月再評（後測）</li>
+          <li>長輩的變化，以及單位介入的貢獻</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot">產出：每組一張「缺口 → 原因 → 改善」討論單；每個單位一張 30 天行動承諾卡。結束前請填寫滿意度問卷。</p>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>時間可依場地調整；兩段討論各 20 分鐘是底線，不建議壓縮。</li>
+    <li>分組建議：同類型單位混搭（醫院＋診所＋衛生所＋藥局），讓不同流程互相借鏡。</li>
+  </ul></aside>
+</section>
+
+<!-- 4 ───────── 注意事項 -->
+<section class="slide" data-title="共學活動注意事項">
+  <div class="hd"><span class="sec">開場｜注意事項</span><span class="pg"></span></div>
+  <h2>共學活動注意事項</h2>
+  <div class="body g2" style="display:grid">
+    <div class="card">
+      <div class="label">計畫規定（115 年長者內在能力檢測推動計畫）</div>
+      <ol class="list" style="margin-top:10px">
+        <li><span class="k">1</span><span class="small">共學活動屬國健署與衛生局辦理的<b>學習成長活動</b>，參與計畫的服務人員須配合參加。</span></li>
+        <li><span class="k">2</span><span class="small">服務資格效期 2 年。展延須在 1 年內完成<b>繼續教育 150 分鐘</b>，本場是否認列以主辦單位公告為準。</span></li>
+        <li><span class="k">3</span><span class="small">執行院所應有<b>品質管理機制</b>：服務人員自我管理（收案、評估、紀錄、上傳、進度），加上主管監督（抽查、回饋、改善追蹤）。</span></li>
+        <li><span class="k">4</span><span class="small">應建立<b>轉介（介入）模式</b>：轉介流程與原則、收案與介入內容、結果回饋方式、功能變化追蹤；訪查時會抽驗案件。</span></li>
+      </ol>
+    </div>
+    <div class="card sun">
+      <div class="label">今天的現場約定</div>
+      <ol class="list" style="margin-top:10px">
+        <li><span class="k">1</span><span class="small"><b>個資去識別</b>：個案只講化名與年齡層，不拍攝、不外傳量表與名冊。</span></li>
+        <li><span class="k">2</span><span class="small">數據以<b>單位代碼</b>呈現。談流程卡在哪裡，不談排名。</span></li>
+        <li><span class="k">3</span><span class="small">請對照<b>自己單位的數據</b>：評估數、首次評估數、初評異常、複評、介入與轉介、追蹤、後測。</span></li>
+        <li><span class="k">4</span><span class="small">每組有<b>主持、記錄、報告</b>三個角色，報告每組 2 分鐘。</span></li>
+        <li><span class="k">5</span><span class="small">簽到、議程、討論紀錄、照片與行動承諾卡，會後一併留存備查。</span></li>
+      </ol>
+    </div>
+  </div>
+  <p class="foot">規定來源：國健署規定，見各縣市 115 年計畫須知（花蓮縣衛生局 114.12、臺中市衛生局需求說明書）。如有異動，以國健署函文公告為準。</p>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>左欄是計畫裡寫明的規定；右欄是今天的進行方式。</li>
+    <li>繼續教育時數是否認列：請主辦單位會前確認後口頭說明。</li>
+    <li>強調心理安全：數據是起點，不是成績單。</li>
+  </ul></aside>
+</section>
+
+<!-- 5 ───────── 115 流程 -->
+<section class="slide" data-title="115 年服務流程">
+  <div class="hd"><span class="sec">開場｜共同語言</span><span class="pg"></span></div>
+  <h2>115 年服務流程：從初評到後測</h2>
+  <div class="body">
+    <div class="xscroll"><div class="flow" style="min-width:900px">
+      <div class="st"><span class="no">01・Day 0</span><h3>前置說明</h3><ul><li>65 歲以上（原住民 55 歲）</li><li>距前次評估滿 1 年；排除長期臥床</li><li>簽同意書：營養、認知異常轉介勾選</li><li>協助註冊 LINE「長者量六力」</li></ul></div>
+      <div class="st key"><span class="no">02・Day 0</span><h3>初評 6 項</h3><p>A 認知・B 行動・C 營養<br>D 視力・E 聽力・F 憂鬱</p></div>
+      <div class="st"><span class="no">03・Day 0</span><h3>用藥＋社會照護與支持</h3><p>初評<b>任 1 項異常</b>就要接續評估</p></div>
+      <div class="st key"><span class="no">04</span><h3>複評</h3><ul><li>A → BHT 或 AD8</li><li>B → SPPB</li><li>C → MNA-SF</li><li>F → GDS-15</li><li>D、E 異常 → 轉介，<b>不複評、不後測</b></li></ul></div>
+      <div class="st"><span class="no">05</span><h3>個人介入計畫</h3><p>至少 1 項：居家健康管理、社區據點、轉介醫療、長照中心、單位直接介入、失智共照中心</p></div>
+      <div class="st"><span class="no">06・≥1 個月</span><h3>追蹤</h3><p>評估滿 1 個月起至後測當日；電訪或其他方式，填「追蹤表單（含轉介）」</p></div>
+      <div class="st key"><span class="no">07・3–6 個月</span><h3>後測</h3><p>用<b>同一份複評量表</b>（認知須與原本 BHT／AD8 相同）；用藥、社會支持異常者一併後測</p></div>
+    </div></div>
+    <div class="callout t small">每月上傳「成人預防保健暨慢性疾病防治資訊系統—長者功能評估」；年底最後上傳日依各縣市公告。追蹤表單與量表為 114 年 10 月修訂版。</div>
+  </div>
+  <p class="foot">依國健署 ICOPE 長者內在能力檢測量表（114.10 修訂）與 115 年計畫須知整理。</p>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>先對齊名詞：後面所有指標都掛在這七站上。</li>
+    <li>常見誤解 1：視力、聽力異常沒有複評，也不做後測，但仍要轉介並追蹤。</li>
+    <li>常見誤解 2：追蹤要在「評估滿 1 個月」之後才算數；後測窗口是 3 到 6 個月。</li>
+    <li>常見誤解 3：認知後測必須用和複評同一種工具（BHT 就用 BHT）。</li>
+  </ul></aside>
+</section>
+
+<!-- 6 ───────── 宏觀 divider -->
+<section class="slide divider" data-title="宏觀：數據看流程">
+  <div class="hd"><span class="sec">PART 1</span><span class="pg"></span></div>
+  <div class="body" style="justify-content:center;gap:calc(var(--u)*40)">
+    <div class="big">宏觀<small>MACRO · 30 個單位 · 9,454 筆評估</small></div>
+    <p class="lead">把全市的數據攤開，看流程在哪一段流失。</p>
+    <div class="qs">
+      <div><b>找得到嗎？</b><span>評估效能</span></div>
+      <div><b>接得住嗎？</b><span>介入率・轉介率</span></div>
+      <div><b>追得到嗎？</b><span>追蹤・後測</span></div>
+      <div><b>找得到新的嗎？</b><span>新開案分析</span></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>四個問題對應接下來的四組指標。</li>
+    <li>資料來源是 2026 機構訪查篩選表，已去識別化為單位代碼。</li>
+  </ul></aside>
+</section>
+
+<!-- 7 ───────── 指標定義 -->
+<section class="slide" data-title="指標怎麼算">
+  <div class="hd"><span class="sec">宏觀｜指標定義</span><span class="pg"></span></div>
+  <h2>先對齊：每個指標的分子與分母</h2>
+  <div class="body">
+    <div class="g2" style="grid-template-columns:1.25fr 1fr">
+      <div class="card tint fx">
+        <div class="label">評估效能｜找得到嗎</div>
+        <div class="row"><span class="nm">初評異常率</span><span class="frac"><span>初評任 1 項異常人數</span><span>評估人數</span></span></div>
+        <div class="row"><span class="nm">複評完成率</span><span class="frac"><span>完成複評人數</span><span>初評異常人數</span></span></div>
+        <div class="row"><span class="nm">異常率</span><span class="frac"><span>確認異常人數（複評異常＋視聽異常）</span><span>評估人數</span></span><span class="thr">篩選線 &lt;10%</span></div>
+      </div>
+      <div class="card fx">
+        <div class="label">接得住嗎</div>
+        <div class="row"><span class="nm">介入率</span><span class="frac"><span>有個人介入計畫人數</span><span>異常人數</span></span><span class="thr">篩選線 &lt;50%</span></div>
+        <div class="row"><span class="nm">轉介率</span><span class="frac"><span>轉介他單位接手人數</span><span>異常人數</span></span></div>
+        <div class="row"><span class="nm">轉介到位率</span><span class="frac"><span>確認已到位人數</span><span>轉介人數</span></span></div>
+      </div>
+    </div>
+    <div class="g2" style="grid-template-columns:1.25fr 1fr">
+      <div class="card fx">
+        <div class="label">追得到嗎</div>
+        <div class="row"><span class="nm">追蹤率</span><span class="frac"><span>完成追蹤人數</span><span>複評異常人數</span></span></div>
+        <div class="row"><span class="nm">後測率</span><span class="frac"><span>完成後測人數</span><span>已到後測期的應後測人數</span></span><span class="thr">篩選線 &lt;30%</span></div>
+      </div>
+      <div class="card fx">
+        <div class="label">找得到新的嗎</div>
+        <div class="row"><span class="nm">新開案比</span><span class="frac"><span>首次評估人數</span><span>評估人數</span></span></div>
+        <p class="cap muted">首次評估者：110–114 年未曾接受評估。</p>
+      </div>
+    </div>
+  </div>
+  <p class="foot">篩選線＝衛生局「2026 機構訪查篩選表」挑選訪查對象用的門檻，用來找出需要協助的流程，不是績效排名。</p>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>請大家先對自己的報表：分母是不是一樣？篩選表裡就有單位的介入率分母用「初評異常數」，結果會偏低。</li>
+    <li>異常率「太低」也會被篩選：可能是漏測、判讀寬鬆，或初評異常後沒複評就結案。</li>
+    <li>轉介率與到位率目前篩選表沒有欄位，請各單位自行從紀錄計算。</li>
+  </ul></aside>
+</section>
+
+<!-- 8 ───────── 總覽 -->
+<section class="slide" data-title="全市總覽">
+  <div class="hd"><span class="sec">宏觀｜總覽</span><span class="pg"></span></div>
+  <h2>30 個單位、9,454 筆評估的整體樣貌</h2>
+  <div class="body">
+    <div class="kpis">
+      <div class="kpi"><div class="v num">15.0<small>%</small></div><div class="l">初評異常率</div><div class="s num">1,414 / 9,454</div></div>
+      <div class="kpi alert"><div class="v num">82.9<small>%</small></div><div class="l">複評完成率</div><div class="s">至少 239 人未複評</div></div>
+      <div class="kpi"><div class="v num">11.3<small>%</small></div><div class="l">異常率</div><div class="s num">1,073 / 9,454</div></div>
+      <div class="kpi"><div class="v num">89.0<small>%</small></div><div class="l">介入率</div><div class="s num">959 / 1,078</div></div>
+      <div class="kpi alert"><div class="v num">57.7<small>%</small></div><div class="l">後測率</div><div class="s num">187 / 324（已到期）</div></div>
+    </div>
+    <div class="g21">
+      <div>
+        <table class="tb">
+          <thead><tr><th>單位類型</th><th class="r">單位數</th><th class="r">評估數</th><th class="r">複評完成率</th><th class="r">異常率</th><th class="r">介入率</th><th class="r">後測率</th></tr></thead>
+          <tbody id="typeTable"></tbody>
+        </table>
+      </div>
+      <div class="fx">
+        <div class="card sun">
+          <div class="label">觸及篩選線的單位</div>
+          <div id="flagCount" class="small" style="margin-top:6px"></div>
+        </div>
+        <div class="card">
+          <div class="label">全國參考</div>
+          <p class="small" style="margin-top:6px">114 年全國約 35.5 萬名長者受檢；2026 年 8 月國健署指出，約每 4 位受檢長者有 1 位至少一項能力需要關懷。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="foot">資料：2026 機構訪查篩選表彙整（醫院 6、衛生所 7、診所 13、藥局 4）。各單位分母定義略有差異，加總僅供討論；藥局複評欄位資料不足未計。</p>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>先看兩個橘色：複評完成率 82.9%（至少 239 位初評異常的長輩沒有複評），後測率 57.7%。</li>
+    <li>全市初評異常率 15.0%，低於全國「每 4 位約 1 位」的說法；定義不完全相同，但值得討論是否有漏測。</li>
+    <li>有一筆原始資料的異常率分母疑似少打一位數（某衛生所），本頁已更正後計算，會前請與該單位確認。</li>
+  </ul></aside>
+</section>
+
+<!-- 9 ───────── 漏斗 -->
+<section class="slide" data-title="服務漏斗">
+  <div class="hd"><span class="sec">宏觀｜流程效能</span><span class="pg"></span></div>
+  <h2>漏斗看流失：長輩在哪一段掉出去？</h2>
+  <div class="body g21" style="display:grid;align-items:start">
+    <div class="fun" id="funnel"></div>
+    <div class="fx">
+      <div class="callout"><b>三個流失點</b>
+        <ol class="small" style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+          <li>初評異常 → 複評：至少 <b class="num">239</b> 人沒有複評</li>
+          <li>異常 → 介入：<b class="num">119</b> 人沒有介入紀錄</li>
+          <li>到期 → 後測：<b class="num">137</b> 人未完成追蹤或後測</li>
+        </ol>
+      </div>
+      <div class="card small">另有 <b class="num">131</b> 人<b>還沒到後測期</b>。年底前要排進行程，避免掉進下一個流失點。</div>
+      <p class="cap muted">漏斗前兩層以 1,414 人為 100% 寬度；評估總數 9,454 人未畫出，以免壓扁其他層。</p>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>請每組在自己的討論單上畫出單位的漏斗，標出最大缺口。</li>
+    <li>「確認異常」比「完成複評」少，是因為部分長輩複評後正常；這是好事，不是流失。</li>
+    <li>未複評的 239 人：最常見原因是當天時間不夠、改約後沒回來、家屬不在無法填 AD8。</li>
+  </ul></aside>
+</section>
+
+<!-- 10 ───────── 評估效能 -->
+<section class="slide" data-title="評估效能">
+  <div class="hd"><span class="sec">宏觀｜評估效能</span><span class="pg"></span></div>
+  <h2>評估效能：異常率太低、太高都要看</h2>
+  <div class="body g21" style="display:grid">
+    <div class="fx" style="gap:var(--g2)">
+      <div class="slegend"><span><i style="background:var(--teal)"></i>單位</span><span><i style="background:var(--orange)"></i>低於篩選線</span><span><i class="dash"></i>篩選線 10%</span><span class="muted">滑過圓點看數值</span></div>
+      <div class="xscroll"><div id="stripAb" style="min-width:520px"></div></div>
+      <p class="cap muted">右欄為該類型加總異常率。</p>
+    </div>
+    <div class="fx">
+      <div class="card warm small"><b>偏低（12 家 &lt;10%）可能代表</b>
+        <ul style="margin-top:4px"><li>施測或判讀較寬鬆、漏記</li><li>初評異常後未複評就結案</li><li>收案集中在健康、活躍的長輩</li></ul></div>
+      <div class="card sun small"><b>偏高（3 家 ≥40%）可能代表</b>
+        <ul style="margin-top:4px"><li>收案集中在高風險門診病人</li><li>把「初評異常」直接當「確認異常」</li></ul></div>
+      <div class="card tint small"><b>診所：找得到，接不太住</b><br>初評異常率 23.0% 最高，複評完成率 70.3% 最低。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>異常率不是越低越好。全國大約四分之一的受檢長輩至少一項需要關懷。</li>
+    <li>請異常率很低的單位分享：施測流程誰做、在哪裡做、多久做完？</li>
+    <li>請異常率很高的單位分享：收案從哪個門診來？</li>
+  </ul></aside>
+</section>
+
+<!-- 11 ───────── 介入率 -->
+<section class="slide" data-title="介入率">
+  <div class="hd"><span class="sec">宏觀｜介入率</span><span class="pg"></span></div>
+  <h2>介入率 89.0%，大多數單位都「有做」</h2>
+  <div class="body g21" style="display:grid">
+    <div class="fx" style="gap:var(--g2)">
+      <div class="slegend"><span><i style="background:var(--teal)"></i>單位</span><span><i style="background:var(--orange)"></i>低於篩選線</span><span><i class="dash"></i>篩選線 50%</span></div>
+      <div class="xscroll"><div id="stripIv" style="min-width:520px"></div></div>
+    </div>
+    <div class="fx">
+      <div class="card small"><b>低於或貼近篩選線</b>
+        <ul style="margin-top:4px"><li>診所 D：4/13（30.8%）</li><li>診所 F：0/1（視力異常 1 案）</li><li>醫院 D：2/4（50.0%）</li></ul></div>
+      <div class="callout a small"><b>先檢查分母</b><br>衛生所 B 的分母用了初評異常數；若改用確認異常數，介入率約 67.6%。</div>
+      <div class="callout small"><b>下一個問題</b><br>介入率高，不等於長輩真的被接手。只給一張衛教單張，也算介入。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>介入率是「有沒有做」，轉介率和到位率才是「做得多深」。</li>
+    <li>邀請介入率 100% 的單位說說：介入內容主要是哪一類？</li>
+  </ul></aside>
+</section>
+
+<!-- 12 ───────── 轉介率 -->
+<section class="slide" data-title="轉介率">
+  <div class="hd"><span class="sec">宏觀｜轉介率</span><span class="pg"></span></div>
+  <h2>轉介率：介入有沒有「交到下一雙手」</h2>
+  <div class="body g12" style="display:grid">
+    <div class="fx">
+      <div class="label">個人介入計畫的 6 種樣子（115 須知）</div>
+      <table class="tb">
+        <thead><tr><th>介入類型</th><th>誰接手</th></tr></thead>
+        <tbody>
+          <tr><td>指導居家健康管理</td><td class="muted">長輩自己、家屬</td></tr>
+          <tr><td>評估單位直接介入</td><td>本單位課程或訓練</td></tr>
+          <tr><td>連結社區據點</td><td>據點、營養推廣中心、輔具點</td></tr>
+          <tr><td>轉介醫療院所</td><td>高齡整合門診、專科</td></tr>
+          <tr><td>連結長照管理中心</td><td>長照 2.0</td></tr>
+          <tr><td>連結失智共照中心</td><td>共照中心個管師</td></tr>
+        </tbody>
+      </table>
+      <p class="cap muted">後四類需要其他單位接手，計入轉介率。</p>
+    </div>
+    <div class="fx">
+      <div class="label">請各單位帶回去算（篩選表目前沒有轉介欄位）</div>
+      <table class="tb">
+        <thead><tr><th>本單位近 6 個月</th><th class="r">人數</th><th class="r">比率</th></tr></thead>
+        <tbody>
+          <tr><td>確認異常人數</td><td class="r num">＿＿</td><td class="r muted">分母</td></tr>
+          <tr><td>只做居家健康管理（單張、衛教）</td><td class="r num">＿＿</td><td class="r num">＿＿%</td></tr>
+          <tr><td>轉介他單位接手</td><td class="r num">＿＿</td><td class="r num">轉介率 ＿＿%</td></tr>
+          <tr><td>已確認到位（有就診、有上課、有收案）</td><td class="r num">＿＿</td><td class="r num">到位率 ＿＿%</td></tr>
+          <tr><td>對方有回饋結果</td><td class="r num">＿＿</td><td class="r num">回饋率 ＿＿%</td></tr>
+        </tbody>
+      </table>
+      <div class="callout t small">建議下次資料收集加入「轉介人數」「到位人數」兩欄，才看得出介入的深度。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>訪查時會抽驗轉介模式：轉介流程、介入內容、回饋方式、功能變化追蹤。</li>
+    <li>「到位」的定義要先講清楚：例如門診有掛號就診、據點出席至少 1 次、共照中心完成收案。</li>
+  </ul></aside>
+</section>
+
+<!-- 13 ───────── 後測率 -->
+<section class="slide" data-title="追蹤與後測">
+  <div class="hd"><span class="sec">宏觀｜追蹤與後測</span><span class="pg"></span></div>
+  <h2>後測率：診所 15.4%，是全市最大的缺口</h2>
+  <div class="body g21" style="display:grid">
+    <div class="fx" style="gap:var(--g2)">
+      <div class="slegend"><span><i style="background:var(--teal)"></i>單位</span><span><i style="background:var(--orange)"></i>低於篩選線</span><span><i class="dash"></i>篩選線 30%</span></div>
+      <div class="xscroll compact"><div id="stripPt" style="min-width:520px"></div></div>
+      <table class="tb">
+        <thead><tr><th>類型</th><th class="r">未完成追蹤／後測</th><th class="r">尚未到後測期</th></tr></thead>
+        <tbody id="pendTable"></tbody>
+      </table>
+    </div>
+    <div class="fx">
+      <div class="card small"><b>7 家低於 30%</b>，其中 6 家是診所。共同點：異常個案多，但沒有人專責排後測。</div>
+      <div class="callout a small"><b>窗口管理</b>
+        <ul style="margin-top:4px"><li>後測窗口：評估後 3～6 個月</li><li>介入計畫訂好當天，就約好後測日</li><li>年底上傳截止前 1 個月，盤點「已到期未後測」名單</li></ul></div>
+      <div class="card tint small">跨年規定：114 年評估個案可在 115 年完成追蹤與後測。115 年個案是否比照，以 116 年須知為準。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>後測率高的醫院（例如醫院 B 91.5%）請分享：誰負責？用什麼提醒？</li>
+    <li>未到後測期 131 人：今天就可以排進行事曆。</li>
+  </ul></aside>
+</section>
+
+<!-- 14 ───────── 新開案 -->
+<section class="slide" data-title="新開案分析">
+  <div class="hd"><span class="sec">宏觀｜新開案</span><span class="pg"></span></div>
+  <h2>新開案的分析過程：五個步驟</h2>
+  <div class="body">
+    <div class="xscroll"><div class="steps" style="min-width:860px">
+      <div class="step"><span class="n">STEP 1</span><h3>定義</h3><ul><li>首次評估者：110–114 年未曾評估</li><li>首次評估初評費 150 元，非首次 100 元</li><li>再評資格：距前次評估滿 1 年</li></ul></div>
+      <div class="step"><span class="n">STEP 2</span><h3>拉資料</h3><ul><li>從系統下載本年度個案明細</li><li>標記首次／非首次</li><li>標記來源：門診、慢箋、社區活動、LINE 自評、他單位轉介</li></ul></div>
+      <div class="step"><span class="n">STEP 3</span><h3>分層比較</h3><ul><li>首次 vs 非首次的初評異常率</li><li>A–F 各面向異常分布</li><li>年齡層 65–74／75–84／85+</li></ul></div>
+      <div class="step"><span class="n">STEP 4</span><h3>找缺口</h3><ul><li>哪些長輩還沒被評到？</li><li>75 歲以上少就醫者、獨居、行動不便到不了院所</li><li>非慢病門診的長輩</li></ul></div>
+      <div class="step"><span class="n">STEP 5</span><h3>定策略</h3><ul><li>門診系統跳提醒</li><li>慢箋回診順便評估</li><li>社區活動設站、與據點合作</li><li>訂每月新開案目標並追蹤</li></ul></div>
+    </div></div>
+    <div class="g2">
+      <div>
+        <div class="label" style="margin-bottom:6px">分析表範本（請帶自己單位的數字）</div>
+        <table class="tb">
+          <thead><tr><th></th><th class="r">人數</th><th class="r">初評異常率</th><th class="r">最多的異常面向</th><th class="r">主要來源</th></tr></thead>
+          <tbody>
+            <tr><td>首次評估</td><td class="r">＿＿</td><td class="r">＿＿%</td><td class="r">＿＿</td><td class="r">＿＿</td></tr>
+            <tr><td>非首次評估</td><td class="r">＿＿</td><td class="r">＿＿%</td><td class="r">＿＿</td><td class="r">＿＿</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout t small"><b>判讀提示</b><br>如果首次與非首次的異常率差不多，而且來源都是同一個門診，可能一直在評同一群相對健康的長輩。新開案要往「還沒進來的人」找。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>篩選表沒有首次評估欄位，請各單位從系統明細自行統計。</li>
+    <li>國健署 115 年方向：加強尚未評估的族群，並推廣以家為單位、由家屬幫長輩自評（LINE 長者量六力）。</li>
+    <li>LINE 自評異常的長輩，是很好的新開案來源。</li>
+  </ul></aside>
+</section>
+
+<!-- 15 ───────── 計算器 -->
+<section class="slide" data-title="單位自我診斷">
+  <div class="hd"><span class="sec">宏觀｜工具</span><span class="pg"></span></div>
+  <h2>單位自我診斷：填入人數，馬上看指標</h2>
+  <div class="calc" id="calc">
+    <div class="fx">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" type="button" data-fill="demo">載入範例（虛構單位）</button>
+        <button class="btn" type="button" data-fill="city">載入全市加總</button>
+        <button class="btn" type="button" data-fill="clear">清空</button>
+      </div>
+      <p class="cap" id="calcSrc" style="color:var(--amberink);font-weight:700">目前是範例數字（虛構單位），不是任何真實單位。</p>
+      <div class="in">
+        <label for="c_n">評估人數<input id="c_n" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_new">首次評估人數<input id="c_new" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_a0">初評異常人數<input id="c_a0" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_rev">完成複評人數<input id="c_rev" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_a1">確認異常人數<input id="c_a1" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_iv">有介入人數<input id="c_iv" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_ref">轉介他單位人數<input id="c_ref" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_arr">確認到位人數<input id="c_arr" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_fu">完成追蹤人數<input id="c_fu" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_due">已到期應後測人數<input id="c_due" type="number" min="0" inputmode="numeric"></label>
+        <label for="c_pt">完成後測人數<input id="c_pt" type="number" min="0" inputmode="numeric"></label>
+      </div>
+    </div>
+    <div class="out" id="calcOut" aria-live="polite"></div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>現場示範：請一個自願的單位報數字，直接輸入。</li>
+    <li>橘色狀態代表觸及衛生局篩選線；異常率超過 40% 會提醒檢查收案與判讀。</li>
+    <li>這份簡報會放到 LINE 社群，各單位可自行開啟使用。</li>
+  </ul></aside>
+</section>
+
+<!-- 16 ───────── 宏觀討論 -->
+<section class="slide" data-title="宏觀分組討論">
+  <div class="hd"><span class="sec">宏觀｜分組討論 20 分鐘</span><span class="pg"></span></div>
+  <h2>分組討論：找出你們單位的最大缺口</h2>
+  <div class="disc">
+    <ol class="qlist">
+      <li><span>對照漏斗，你們單位最大的流失在哪一段？<small>未複評／未介入／未追蹤／未後測／新開案太少</small></span></li>
+      <li><span>造成缺口的流程原因是什麼？<small>從人力、時間、場地、系統、長輩與家屬端各想一個</small></span></li>
+      <li><span>你們的「介入」裡，有多少只是給衛教單張？<small>估一個比例，並說出一個真的交到下一雙手的例子</small></span></li>
+      <li><span>下個月可以先改的一件事是什麼？<small>寫在討論單：缺口 → 原因 → 改善</small></span></li>
+    </ol>
+    <div class="fx">
+      <div class="timer" data-min="20" id="timer1">
+        <div class="label">討論計時</div>
+        <div class="tv num">20:00</div>
+        <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
+      </div>
+      <div class="card small"><b>角色</b><br>主持：控時與點名發言<br>記錄：寫討論單<br>報告：每組 2 分鐘</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>巡場時優先聽 Q2：原因要具體到「哪一站、誰、什麼時候」。</li>
+    <li>報告時只講 Q1 與 Q4，其餘寫在討論單。</li>
+  </ul></aside>
+</section>
+
+<!-- 17 ───────── 微觀 divider -->
+<section class="slide divider mi" data-title="微觀：個案模擬">
+  <div class="hd"><span class="sec" style="color:var(--orange)">PART 2</span><span class="pg"></span></div>
+  <div class="body" style="justify-content:center;gap:calc(var(--u)*40)">
+    <div class="big">微觀<small>MICRO · 機構版（醫療人員）· 一位長輩的 177 天</small></div>
+    <p class="lead">跟著一位模擬個案走完一次服務，看她怎麼變化，也看單位的介入幫了什麼。</p>
+    <div class="qs">
+      <div><b>初評</b><span>Day 0・六項篩檢</span></div>
+      <div><b>複評與介入</b><span>Day 14・針對異常項</span></div>
+      <div><b>3 個月追蹤</b><span>Day 90・電訪＋回診</span></div>
+      <div><b>6 個月再評</b><span>Day 177・後測</span></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>個案為教學用虛構人物，內容綜合常見情境。</li>
+    <li>每一站都會停下來問：「如果是你的單位，會怎麼做？」</li>
+  </ul></aside>
+</section>
+
+<!-- 18 ───────── 個案 -->
+<section class="slide" data-title="認識李阿嬤">
+  <div class="hd"><span class="sec mi">微觀｜個案</span><span class="pg"></span></div>
+  <h2>認識李阿嬤（化名，教學用虛構個案）</h2>
+  <div class="body">
+    <div class="g2" style="grid-template-columns:1fr 1.3fr">
+      <dl class="prof card">
+        <dt>年齡性別</dt><dd>78 歲女性</dd>
+        <dt>同住</dt><dd>82 歲先生；女兒住臺北，週末回來</dd>
+        <dt>慢性病</dt><dd>高血壓、第 2 型糖尿病、退化性膝關節炎</dd>
+        <dt>身分</dt><dd><b>首次評估者</b>（110–114 年未曾評估）</dd>
+        <dt>來源</dt><dd>家醫科慢箋回診，護理師依門診提醒邀約</dd>
+      </dl>
+      <div class="card warm small">
+        <div class="label">最近發生的事</div>
+        <p style="margin-top:6px">2 月先生在家跌倒住院，3 月初出院。阿嬤這段時間兩頭跑，吃不下、睡不好，也不再去廟口的唱歌班。女兒說：「媽媽最近一直重複問同樣的事。」</p>
+      </div>
+    </div>
+    <div class="xscroll"><div class="ctl" id="caseTl" style="min-width:820px"></div></div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>時間軸上方是發生的事，下方兩條色帶是規定的窗口：追蹤（評估滿 1 個月起）與後測（3–6 個月）。</li>
+    <li>虛線圓圈是「發生了但單位不知道」的事件，等一下會回來談。</li>
+    <li>她是新開案，也連結到宏觀的新開案分析。</li>
+  </ul></aside>
+</section>
+
+<!-- 19 ───────── 初評 -->
+<section class="slide" data-title="Day 0 初評">
+  <div class="hd"><span class="sec mi">微觀｜Day 0 初評</span><span class="pg"></span></div>
+  <h2>Day 0 初評：六項裡有四項異常</h2>
+  <div class="body g21" style="display:grid">
+    <div>
+      <div class="formrow"><span class="dom bad">A</span><span class="nm">認知</span><span>日期 ✓（說出農曆日期）・地點 ✓・3 項物品只記得 2 項</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom bad">B</span><span class="nm">行動</span><span>椅子起身 5 次 <b class="num">15.8</b> 秒（&gt;12 秒）</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom bad">C</span><span class="nm">營養</span><span>3 個月內體重 49.5 → 46.2 kg（減 3.3）・食慾不振</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom ok">D</span><span class="nm">視力</span><span>自覺無困難；遠、近距離皆通過<br><span class="t-orange small">高風險調查：糖尿病，過去 1 年未做眼科檢查</span></span><span class="res"><span class="yn"><i class="x"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom ok">E</span><span class="nm">聽力</span><span>氣音測試 6‧1‧9 正確複誦</span><span class="res"><span class="yn"><i class="x"></i>異常</span></span></div>
+      <div class="formrow"><span class="dom bad">F</span><span class="nm">憂鬱</span><span>兩週內常心煩（阿雜）・減少活動和興趣</span><span class="res"><span class="yn"><i class="x on"></i>異常</span></span></div>
+    </div>
+    <div class="fx">
+      <div class="card"><b>停一下：下一步要做哪些評估？</b>
+        <p class="cap muted" style="margin-top:4px">先讓各組回答，再按下方按鈕對答案。</p>
+        <button class="btn pri" type="button" data-reveal="r19" style="margin-top:8px">顯示答案</button>
+      </div>
+      <div class="card tint small reveal-body" id="r19" hidden>
+        <ul style="display:flex;flex-direction:column;gap:4px">
+          <li>4 項複評：A → AD8 或 BHT、B → SPPB、C → MNA-SF、F → GDS-15</li>
+          <li>任 1 項異常 → 加做<b>用藥評估</b>與<b>社會照護與支持評估</b></li>
+          <li>視力不算異常，但高風險調查為「是」→ 建議眼科檢查（糖尿病眼底）</li>
+          <li>同意書：營養與認知轉介都勾「同意」；協助女兒在手機註冊 LINE 量六力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>農曆日期答對算正確：手冊允許以農曆或相對時序判斷。</li>
+    <li>視力題 b 只是「建議眼科」，不計為異常，但臨床上很重要。</li>
+    <li>初評約 12 分鐘。接下來問：複評當天做得完嗎？</li>
+  </ul></aside>
+</section>
+
+<!-- 20 ───────── 複評 -->
+<section class="slide" data-title="Day 14 複評">
+  <div class="hd"><span class="sec mi">微觀｜Day 14 複評</span><span class="pg"></span></div>
+  <h2>Day 14 複評：確認四項異常，加上多重用藥</h2>
+  <div class="body g21" style="display:grid">
+    <div>
+      <div class="formrow"><span class="dom bad">A</span><span class="nm">AD8</span><span>女兒陪同填答：重複問同樣問題、忘記約診</span><span class="res"><span class="score">2<small>/8</small></span><span class="pill sr">≥2 異常</span></span></div>
+      <div class="formrow"><span class="dom bad">B</span><span class="nm">SPPB</span><span>平衡 3・步行 4 公尺 5.9 秒 3・起身 15.8 秒 2</span><span class="res"><span class="score">8<small>/12</small></span><span class="pill sr">&lt;10 受限</span></span></div>
+      <div class="formrow"><span class="dom bad">C</span><span class="nm">MNA-SF</span><span>食量減少、體重下降、BMI 20.0</span><span class="res"><span class="score">10<small>/14</small></span><span class="pill wn">8–11 風險</span></span></div>
+      <div class="formrow"><span class="dom bad">F</span><span class="nm">GDS-15</span><span>常覺得無聊、提不起勁、擔心先生</span><span class="res"><span class="score">6<small>/15</small></span><span class="pill sr">≥5 疑似</span></span></div>
+      <div class="formrow"><span class="dom">Rx</span><span class="nm">用藥</span><span>長期用藥 7 種，含安眠藥（BZD）、NSAID 止痛藥</span><span class="res"><span class="pill sr">多重用藥</span></span></div>
+      <div class="formrow"><span class="dom">S</span><span class="nm">社會支持</span><span>照顧剛出院的先生；購物需女兒協助；停止社交活動</span><span class="res"><span class="pill wn">需支持</span></span></div>
+    </div>
+    <div class="fx">
+      <div class="callout"><b>流程卡點</b><br><span class="small">原本要當天複評，但門診量大改約 2 週後。女兒那週差點不能陪同，AD8 險些無人填答。</span></div>
+      <button class="btn pri" type="button" data-reveal="r20" style="align-self:flex-start">還有什麼做法？</button>
+      <div class="card tint small reveal-body" id="r20" hidden>
+        <ul style="display:flex;flex-direction:column;gap:4px">
+          <li>初評異常當天就做複評：排第二站，或由另一位人員接手</li>
+          <li>做不到當天，就發「複評預約卡」並在 7 天內完成</li>
+          <li>家屬不在場：改用 BHT 由長輩本人作答，後測也要用 BHT</li>
+          <li>宏觀對照：全市至少 239 人卡在這一段</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>切點：AD8 ≥2、SPPB &lt;10、MNA-SF 8–11 有營養不良風險（0–7 營養不良）、GDS-15 ≥5 疑似憂鬱。</li>
+    <li>SPPB 計分：步行 4 公尺 4.82–6.20 秒得 3 分；起身 13.70–16.69 秒得 2 分。</li>
+    <li>問大家：你們單位的複評是誰做？平均隔幾天？</li>
+  </ul></aside>
+</section>
+
+<!-- 21 ───────── 介入計畫 -->
+<section class="slide" data-title="個人介入計畫">
+  <div class="hd"><span class="sec mi">微觀｜Day 14 個人介入計畫</span><span class="pg"></span></div>
+  <h2>個人介入計畫：六類介入怎麼排</h2>
+  <div class="body">
+    <table class="tb">
+      <thead><tr><th style="width:19%">介入類型</th><th>本案做法</th><th style="width:18%">對應問題</th><th style="width:20%">負責與時程</th></tr></thead>
+      <tbody>
+        <tr><td><b>轉介醫療院所</b></td><td>高齡整合門診：藥物整合、體重下降原因；眼科：糖尿病眼底檢查</td><td>用藥・營養・行動・視力</td><td>護理師代掛號，4/07、4/15</td></tr>
+        <tr><td><b>連結社區據點</b></td><td>巷弄長照站肌力課（每週 2 次）；社區營養推廣中心</td><td>行動・營養・社會參與</td><td>個管電話媒合，3/31 起</td></tr>
+        <tr><td><b>連結失智共照中心</b></td><td>AD8 = 2，同意書已勾選同意轉介</td><td>認知</td><td>系統轉介，預計 2 週內聯繫</td></tr>
+        <tr><td><b>連結長照管理中心</b></td><td>協助先生申請長照 2.0，減輕阿嬤照顧負荷</td><td>社會支持・憂鬱</td><td>撥 1966，3/25</td></tr>
+        <tr><td><b>指導居家健康管理</b></td><td>Vivifrail 居家運動單張與影片；每餐一掌心蛋白質；LINE 量六力註冊在女兒手機</td><td>行動・營養</td><td>當日衛教</td></tr>
+        <tr><td class="muted"><b>評估單位直接介入</b></td><td class="muted">本案未使用（單位沒有團體課程）</td><td class="muted">—</td><td class="muted">—</td></tr>
+      </tbody>
+    </table>
+    <div class="g2">
+      <div class="callout t small"><b>優點</b>：一次涵蓋五類介入，而且把<b>照顧者</b>（先生）也納入計畫。</div>
+      <div class="callout small"><b>先想一想</b>：這張計畫裡，哪一項最可能中斷？單位要怎麼知道它中斷了？</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>先讓大家猜哪一項會中斷，再進下一頁揭曉。</li>
+    <li>「連結長照管理中心」的對象可以是照顧者，這是很多單位沒想到的介入點。</li>
+  </ul></aside>
+</section>
+
+<!-- 22 ───────── 3 個月追蹤 -->
+<section class="slide" data-title="Day 90 追蹤">
+  <div class="hd"><span class="sec mi">微觀｜Day 90 三個月追蹤</span><span class="pg"></span></div>
+  <h2>Day 90 追蹤：四項到位，兩項卡住</h2>
+  <div class="body g21" style="display:grid">
+    <table class="tb">
+      <thead><tr><th style="width:23%">介入</th><th style="width:15%">狀態</th><th>發現與調整</th></tr></thead>
+      <tbody>
+        <tr><td>高齡整合門診</td><td><span class="pill ok">已到位</span></td><td>停用安眠藥，止痛藥改 acetaminophen，藥物由 7 種減為 5 種</td></tr>
+        <tr><td>眼科</td><td><span class="pill ok">已到位</span></td><td>輕度非增殖性視網膜病變，半年後回診</td></tr>
+        <tr><td>社區營養推廣中心</td><td><span class="pill ok">已到位</span></td><td>營養師電訪 2 次；早餐加蛋與豆漿</td></tr>
+        <tr><td>長照管理中心（先生）</td><td><span class="pill ok">已到位</span></td><td>先生居家服務每週 3 次，阿嬤可以出門</td></tr>
+        <tr><td>巷弄長照站</td><td><span class="pill sr">已中斷</span></td><td>第 5 週起沒去：膝痛、先生沒人顧、要過大馬路。<b>調整</b>：居家運動加女兒週末陪走；膝痛轉復健科</td></tr>
+        <tr><td>失智共照中心</td><td><span class="pill cr">未聯繫上</span></td><td>聯絡電話留家裡市話，白天沒人接。<b>調整</b>：改留女兒手機，6/16 完成收案</td></tr>
+      </tbody>
+    </table>
+    <div class="fx">
+      <div class="card small"><div class="label">回診順便測</div>
+        <p style="margin-top:4px">椅子起身 <b class="num">13.9</b> 秒（初評 15.8）<br>體重 <b class="num">47.0</b> kg（初評 46.2）<br>阿嬤說：「先生有人幫忙後，比較睡得著。」</p></div>
+      <div class="callout"><b>關鍵發現</b><br><span class="small">據點在第 5 週就中斷，單位到第 90 天才知道；共照中心晚了 3 個月才收案。</span></div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>追蹤用「追蹤表單（含轉介）」逐項確認，並上傳平台。</li>
+    <li>規定：評估滿 1 個月起即可追蹤。若第 1 次追蹤排在第 5 週，就能及早發現據點中斷。</li>
+    <li>聯絡人資訊單一是很常見的失敗原因。</li>
+  </ul></aside>
+</section>
+
+<!-- 23 ───────── 6 個月後測 -->
+<section class="slide" data-title="Day 177 後測">
+  <div class="hd"><span class="sec mi">微觀｜Day 177 六個月再評（後測）</span><span class="pg"></span></div>
+  <h2>Day 177 後測：行動、營養、情緒回到正常範圍</h2>
+  <div class="body">
+    <div class="minis" id="minis"></div>
+    <div class="g2">
+      <div class="card small"><b>用藥評估</b>：7 種 → 5 種，已停用安眠藥。<b>社會照護與支持</b>：先生有居家服務，阿嬤恢復每週 1 次唱歌班。</div>
+      <div class="callout a small"><b>日期提醒</b>：後測排在 9/03，距離 6 個月窗口截止（9/10）只剩 1 週。那週如果感冒，這次後測就做不成了。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>綠色色帶是正常範圍。SPPB、MNA-SF、GDS-15 都跨進正常範圍；AD8 持平。</li>
+    <li>椅子起身與體重有 3 個時間點，因為 3 個月回診時有順便測。</li>
+    <li>後測工具與複評相同：AD8 → AD8。</li>
+  </ul></aside>
+</section>
+
+<!-- 24 ───────── 介入貢獻 -->
+<section class="slide" data-title="介入的貢獻">
+  <div class="hd"><span class="sec mi">微觀｜介入幫了什麼</span><span class="pg"></span></div>
+  <h2>哪些介入可能發揮了幫助？</h2>
+  <div class="body g21" style="display:grid">
+    <div>
+      <table class="mx">
+        <thead><tr><th>介入</th><th>行動<br><span class="num">SPPB +2</span></th><th>營養<br><span class="num">MNA-SF +2</span></th><th>情緒<br><span class="num">GDS −3</span></th><th>認知<br><span class="num">AD8 持平</span></th><th>用藥<br><span class="num">−2 種</span></th></tr></thead>
+        <tbody>
+          <tr><td>藥物整合（高齡整合門診）</td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="q" title="間接"></i></td><td><i class="p" title="主要"></i></td></tr>
+          <tr><td>居家運動＋女兒陪走</td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><i class="q" title="間接"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+          <tr><td>營養師諮詢</td><td><i class="q" title="間接"></i></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+          <tr><td>長照服務（先生）</td><td><i class="q" title="間接"></i></td><td><span class="z">—</span></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+          <tr><td>失智共照中心</td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><i class="p" title="主要"></i></td><td><span class="z">—</span></td></tr>
+          <tr><td>巷弄長照站（已中斷）</td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td><td><span class="z">—</span></td></tr>
+        </tbody>
+      </table>
+      <div class="slegend" style="margin-top:8px"><span><i style="background:var(--teal)"></i>主要可能貢獻</span><span><i style="background:transparent;border:2.5px solid var(--teal);box-sizing:border-box"></i>間接可能貢獻</span><span>— 無明顯關聯</span></div>
+    </div>
+    <div class="fx">
+      <div class="callout a small"><b>判讀要小心</b>
+        <ul style="margin-top:4px"><li>沒有對照組，只能說「可能有幫助」</li><li>同期事件：先生 3 月出院後逐漸穩定</li><li>AD8 由家屬填，短期變化不敏感，「持平」也算守住</li></ul></div>
+      <div class="card tint small"><b>單位可以做的</b>：在追蹤表單旁加一欄「同期發生的事」，例如家人住院、換藥、搬家，判讀時才分得清楚。</div>
+      <div class="card small">眼科發現的視網膜病變不在後測項目裡，卻是這次服務很重要的成果。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>這張表是討論用的推論，不是因果結論。</li>
+    <li>問大家：如果只能保留兩項介入，你會留哪兩項？為什麼？</li>
+    <li>中斷的據點沒有直接貢獻，但「調整後的居家運動」有。追蹤的價值在於能及時調整。</li>
+  </ul></aside>
+</section>
+
+<!-- 25 ───────── 微觀討論 -->
+<section class="slide mi" data-title="微觀分組討論">
+  <div class="hd"><span class="sec mi">微觀｜分組討論 20 分鐘</span><span class="pg"></span></div>
+  <h2>分組討論：如果李阿嬤是你們單位的個案</h2>
+  <div class="disc">
+    <ol class="qlist mi">
+      <li><span>複評延後 2 週、共照中心晚 3 個月，哪個環節可以更早攔截？<small>寫出「誰、在第幾天、做什麼」</small></span></li>
+      <li><span>據點第 5 週就中斷，卻到第 90 天才發現。追蹤的時間點和方式要怎麼排？</span></li>
+      <li><span>6 個月的進步，哪些是介入的功勞？哪些可能是情境改變？<small>要記錄什麼，才判斷得出來</small></span></li>
+      <li><span>你們單位接這個案，誰負責什麼？後測日要排在哪一天？</span></li>
+    </ol>
+    <div class="fx">
+      <div class="timer" data-min="20" id="timer2">
+        <div class="label">討論計時</div>
+        <div class="tv num">20:00</div>
+        <div class="tb2"><button class="btn pri" type="button" data-t="go">開始</button><button class="btn" type="button" data-t="pause">暫停</button><button class="btn" type="button" data-t="reset">重設</button></div>
+      </div>
+      <div class="card small"><b>產出</b><br>在討論單畫出李阿嬤的時間軸，標出你們會加的接觸點。</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>Q4 請醫院、診所、衛生所、藥局各自回答，人力配置不同，答案也不同。</li>
+    <li>報告時請各組說出一個「加在第幾天」的接觸點。</li>
+  </ul></aside>
+</section>
+
+<!-- 26 ───────── 優化建議 -->
+<section class="slide" data-title="流程優化建議">
+  <div class="hd"><span class="sec">綜整｜宏觀 × 微觀</span><span class="pg"></span></div>
+  <h2>七個流程優化做法，對應會改善的指標</h2>
+  <div class="body">
+    <table class="tb">
+      <thead><tr><th style="width:27%">卡點（宏觀／微觀）</th><th>改善做法</th><th style="width:16%">改善指標</th></tr></thead>
+      <tbody>
+        <tr><td>初評異常沒有當天複評<br><span class="cap muted">全市 ≥239 人／阿嬤延 2 週</span></td><td>異常當天完成複評；做不到就發複評預約卡，7 天內完成</td><td>複評完成率</td></tr>
+        <tr><td>轉介後沒人確認<br><span class="cap muted">據點中斷 8 週無人知</span></td><td>第 2 週打關懷電話確認「有沒有去」；滿 1 個月做正式追蹤並上傳</td><td>到位率・追蹤率</td></tr>
+        <tr><td>聯絡資訊只有一組<br><span class="cap muted">共照中心聯繫失敗</span></td><td>登錄長輩與主要聯絡人兩組電話；同意書勾選後當天送出轉介</td><td>到位率</td></tr>
+        <tr><td>後測卡在窗口尾端<br><span class="cap muted">診所後測率 15.4%</span></td><td>介入計畫訂好當天就約後測日，排在第 4 個月，留重排空間</td><td>後測率</td></tr>
+        <tr><td>介入多半只給單張</td><td>每位異常長輩至少一項「有人接手」的介入</td><td>轉介率</td></tr>
+        <tr><td>只看年度報表</td><td>每月看一次自己的漏斗；主管每月抽查 5 案並回饋</td><td>全部</td></tr>
+        <tr><td>新開案靠臨櫃遇到</td><td>門診系統提醒、慢箋回診順評、社區設站、LINE 自評異常轉院評</td><td>新開案比</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>請各組把剛才討論出的做法，對到這張表的哪一列；沒有對到的就是新點子，請補上。</li>
+    <li>「主管每月抽查」呼應須知的品質管理機制要求。</li>
+  </ul></aside>
+</section>
+
+<!-- 27 ───────── 行動承諾 -->
+<section class="slide" data-title="30 天行動承諾">
+  <div class="hd"><span class="sec">綜整｜行動承諾</span><span class="pg"></span></div>
+  <h2>30 天行動承諾卡</h2>
+  <div class="body g21" style="display:grid">
+    <form class="pdca" id="pdca" autocomplete="off">
+      <label for="p_unit">單位<input id="p_unit" placeholder="例：○○診所"></label>
+      <label for="p_kpi">要改善的指標<input id="p_kpi" placeholder="例：後測率"></label>
+      <label for="p_now">現況<input id="p_now" placeholder="例：15%（1/7）"></label>
+      <label for="p_goal">30 天後目標<input id="p_goal" placeholder="例：30%"></label>
+      <label class="wide" for="p_how">具體做法（誰、何時、怎麼做）<textarea id="p_how" placeholder="例：介入計畫當天由護理師約好後測日，排第 4 個月；每週五核對到期名單"></textarea></label>
+      <label for="p_check">檢核日期<input id="p_check" placeholder="例：11/30"></label>
+      <label for="p_help">需要衛生局協助的事<input id="p_help" placeholder="例：據點名單、共照中心窗口"></label>
+    </form>
+    <div class="fx">
+      <div class="callout t small"><b>寫法提醒</b>
+        <ul style="margin-top:4px"><li>只選一個指標</li><li>目標要能在 30 天內看到</li><li>做法寫到「誰」和「哪一天」</li></ul></div>
+      <div class="card small">這張卡會在下一次訪查或共學時一起回顧。</div>
+      <button class="btn" type="button" id="pdcaClear" style="align-self:flex-start">清空這張卡</button>
+      <p class="cap muted">填寫內容只存在這台裝置的瀏覽器。</p>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>現場可以投影示範一個單位填寫；紙本版請各單位帶回。</li>
+    <li>收卡後由主辦單位彙整，作為下次共學的開場。</li>
+  </ul></aside>
+</section>
+
+<!-- 28 ───────── 參考資料 -->
+<section class="slide" data-title="參考資料">
+  <div class="hd"><span class="sec">附錄</span><span class="pg"></span></div>
+  <h2>參考資料</h2>
+  <div class="body">
+    <ul class="ref">
+      <li><span class="tag">計畫須知</span><span>花蓮縣衛生局《115 年長者內在能力檢測推動計畫 計畫須知》，114 年 12 月。<a href="https://ws.hl.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNDI0L3JlbGZpbGUvOTk3OC8xOTk4MDEvNTBjZjBkOTMtODgzOC00MThkLWE2YTAtMjg0NThjZmQ5MGQ1LnBkZg%3D%3D&amp;n=6ZmE5Lu2MS0xMTXlubToqIjnlavpoIjnn6Uo6Yar5LqL5qmf5qeL6Yar5LqL5YWsKOWNlCnmnIPlnJjpq5Tlj4rpnZ7phqvkuovmqZ/mp4spLTExNDEyMTUo5qC45a6aKS5wZGY%3D" target="_blank" rel="noopener">開啟 PDF</a></span></li>
+      <li><span class="tag">需求說明</span><span>臺中市政府衛生局《115 年長者內在能力檢測推動計畫 需求說明書》，含服務人員資格規定。<a href="https://www.health.taichung.gov.tw/media/1346230/115-%E5%B9%B4-%E9%95%B7%E8%80%85%E5%85%A7%E5%9C%A8%E8%83%BD%E5%8A%9B%E6%AA%A2%E6%B8%AC%E6%8E%A8%E5%8B%95%E8%A8%88%E7%95%AB-%E9%9C%80%E6%B1%82%E8%AA%AA%E6%98%8E%E6%9B%B8.pdf" target="_blank" rel="noopener">開啟 PDF</a></span></li>
+      <li><span class="tag">量表</span><span>國民健康署《長者內在能力檢測量表》，114 年 10 月修訂。<a href="https://www.health.taichung.gov.tw/media/1365486/%E9%99%84%E4%BB%B63-icope%E9%95%B7%E8%80%85%E5%85%A7%E5%9C%A8%E8%83%BD%E5%8A%9B%E6%AA%A2%E6%B8%AC%E9%87%8F%E8%A1%A8-%E9%81%A9%E7%94%A8%E8%A1%9B%E7%94%9F%E6%89%80.pdf" target="_blank" rel="noopener">開啟 PDF</a></span></li>
+      <li><span class="tag">工作手冊</span><span>國民健康署《預防及延緩失能之長者功能評估服務試辦計畫 工作手冊》，110 年 5 月。<a href="https://www.klchb.klcg.gov.tw/wSite/public/Attachment/01205/f1625039772640.pdf" target="_blank" rel="noopener">開啟 PDF</a></span></li>
+      <li><span class="tag">新聞稿</span><span>國民健康署〈全臺醫療單位齊心 陪長輩「量六力」〉，2025 年 11 月 26 日。<a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19644" target="_blank" rel="noopener">開啟網頁</a></span></li>
+      <li><span class="tag">報導</span><span>工商時報〈「量六力」揪失能警訊 每 4 名長者就有 1 人需注意〉，2026 年 8 月。<a href="https://www.ctee.com.tw/news/20260805702058-431401" target="_blank" rel="noopener">開啟網頁</a></span></li>
+      <li><span class="tag">數據</span><span>2026 機構訪查篩選表（衛生局內部資料，本簡報已去識別化為單位代碼）。</span></li>
+    </ul>
+    <p class="foot">各項規定以國民健康署最新函文公告為準。個案「李阿嬤」為教學用虛構個案。</p>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul><li>參考資料也會一併放到 LINE 社群。</li></ul></aside>
+</section>
+
+<!-- 29 ───────── 滿意度 -->
+<section class="slide" data-title="滿意度問卷">
+  <div class="hd"><span class="sec">結尾</span><span class="pg"></span></div>
+  <div class="end-main">
+    <div class="body" style="justify-content:center">
+      <p class="kicker">謝謝今天的參與</p>
+      <h2 style="font-size:var(--fs-xl)">離開前，請掃描填寫<br>滿意度問卷</h2>
+      <p style="font-size:var(--fs-m)">大約 2 分鐘。你的回饋會決定下一次共學要深入哪個主題。</p>
+      <div class="card tint small" style="max-width:34em">還沒加入 LINE 社群的夥伴，簡報與相關資料都會放在社群裡，請回到開場那一頁掃描加入。</div>
+    </div>
+    <div class="qrbox" id="qr-survey">
+      <div class="qrframe">
+        <img src="img/qr-survey.png" alt="滿意度問卷 QR code" onerror="this.closest('.qrbox').classList.add('missing')">
+        <div class="ph">滿意度問卷 QR code<br>（圖檔：img/qr-survey.png）</div>
+      </div>
+      <div class="qrcap">掃描填寫滿意度</div>
+    </div>
+  </div>
+  <aside class="notes"><h4>講者備註</h4><ul>
+    <li>留 3 分鐘讓大家當場填寫。</li>
+    <li>提醒行動承諾卡繳回方式。</li>
+  </ul></aside>
+</section>
+
+</div>
+
+<div class="bar" id="bar">
+  <button type="button" id="prev" aria-label="上一頁">◀</button>
+  <span class="count" id="count">1 / 29</span>
+  <button type="button" id="next" aria-label="下一頁">▶</button>
+  <div class="prog" aria-hidden="true"><i id="progi"></i></div>
+  <button type="button" id="tocBtn">目錄 T</button>
+  <button type="button" id="notesBtn">講稿 N</button>
+  <button type="button" id="fsBtn">全螢幕 F</button>
+</div>
+<div class="fab"><button type="button" id="tocFab">目錄</button><button type="button" id="notesFab">講稿</button></div>
+<div class="notes-panel" id="notesPanel" hidden></div>
+<div class="toc" id="toc" hidden><div class="toc-box" role="dialog" aria-label="目錄"><h4>目錄</h4><div class="toc-list" id="tocList"></div></div></div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- data (2026 機構訪查篩選表，去識別化) ---------- */
+var UNITS=[{"c":"醫院A","t":"醫院","ab":23.8,"iv":100.0,"pt":62.5,"abf":null,"ivf":"18/18","ptf":"5/8","n":""},{"c":"醫院B","t":"醫院","ab":21.3,"iv":99.1,"pt":91.5,"abf":null,"ivf":"113/114","ptf":"43/47","n":""},{"c":"醫院C","t":"醫院","ab":5.2,"iv":100.0,"pt":80.0,"abf":null,"ivf":"50/50","ptf":"28/35","n":""},{"c":"醫院D","t":"醫院","ab":2.6,"iv":50.0,"pt":null,"abf":null,"ivf":"2/4","ptf":null,"n":""},{"c":"醫院E","t":"醫院","ab":8.8,"iv":93.2,"pt":16.7,"abf":null,"ivf":"41/44","ptf":"1/6","n":""},{"c":"醫院F","t":"醫院","ab":15.0,"iv":100.0,"pt":null,"abf":null,"ivf":"30/30","ptf":null,"n":"全數為視力/聽力異常，無需後測"},{"c":"衛生所A","t":"衛生所","ab":10.0,"iv":89.2,"pt":57.1,"abf":null,"ivf":"83/93","ptf":"16/28","n":""},{"c":"衛生所B","t":"衛生所","ab":12.5,"iv":55.9,"pt":52.9,"abf":null,"ivf":"71/127","ptf":"18/34","n":"介入率分母用初評異常數"},{"c":"衛生所C","t":"衛生所","ab":12.0,"iv":94.9,"pt":54.0,"abf":null,"ivf":"93/98","ptf":"27/50","n":""},{"c":"衛生所D","t":"衛生所","ab":7.3,"iv":97.9,"pt":100.0,"abf":null,"ivf":"46/47","ptf":"3/3","n":"原始資料分母疑似筆誤，已更正後計算"},{"c":"衛生所E","t":"衛生所","ab":15.8,"iv":100.0,"pt":75.0,"abf":null,"ivf":"174/174","ptf":"6/8","n":"163 案無需後測"},{"c":"衛生所F","t":"衛生所","ab":2.2,"iv":100.0,"pt":100.0,"abf":null,"ivf":"13/13","ptf":"4/4","n":""},{"c":"衛生所G","t":"衛生所","ab":14.4,"iv":76.3,"pt":71.4,"abf":null,"ivf":"71/93","ptf":"25/35","n":""},{"c":"診所A","t":"診所","ab":3.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"3 案皆未複評"},{"c":"診所B","t":"診所","ab":null,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評異常 70 案皆未完成複評"},{"c":"診所C","t":"診所","ab":10.0,"iv":100.0,"pt":87.5,"abf":null,"ivf":"23/23","ptf":"7/8","n":""},{"c":"診所D","t":"診所","ab":20.0,"iv":30.8,"pt":0.0,"abf":null,"ivf":"4/13","ptf":"0/7","n":""},{"c":"診所E","t":"診所","ab":0.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評無異常"},{"c":"診所F","t":"診所","ab":1.7,"iv":0.0,"pt":null,"abf":null,"ivf":"0/1","ptf":null,"n":"視力異常 1 案"},{"c":"診所G","t":"診所","ab":0.8,"iv":100.0,"pt":0.0,"abf":null,"ivf":"1/1","ptf":"0/1","n":""},{"c":"診所H","t":"診所","ab":1.7,"iv":100.0,"pt":null,"abf":null,"ivf":"1/1","ptf":null,"n":""},{"c":"診所I","t":"診所","ab":93.3,"iv":100.0,"pt":16.7,"abf":null,"ivf":"44/44","ptf":"1/6","n":""},{"c":"診所J","t":"診所","ab":51.7,"iv":83.9,"pt":6.7,"abf":null,"ivf":"26/31","ptf":"1/15","n":""},{"c":"診所K","t":"診所","ab":28.2,"iv":100.0,"pt":null,"abf":null,"ivf":"9/9","ptf":null,"n":"9 案未到後測期"},{"c":"診所L","t":"診所","ab":16.4,"iv":100.0,"pt":0.0,"abf":null,"ivf":"10/10","ptf":"0/4","n":""},{"c":"診所M","t":"診所","ab":43.3,"iv":100.0,"pt":4.2,"abf":null,"ivf":"26/26","ptf":"1/24","n":""},{"c":"藥局A","t":"藥局","ab":0.8,"iv":100.0,"pt":100.0,"abf":null,"ivf":"1/1","ptf":"1/1","n":""},{"c":"藥局B","t":"藥局","ab":0.0,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"無異常個案"},{"c":"藥局C","t":"藥局","ab":21.7,"iv":69.2,"pt":null,"abf":null,"ivf":"9/13","ptf":null,"n":"7 案未到後測期"},{"c":"藥局D","t":"藥局","ab":null,"iv":null,"pt":null,"abf":null,"ivf":null,"ptf":null,"n":"初評異常 6 案（視力）未複評、未介入"}];
+var TYPES=["醫院","衛生所","診所","藥局"];
+var AGG={
+ "醫院":{u:6,N:2426,rev:85.5,ab:10.8,iv:97.7,pt:80.2,ivf:"254/260",ptf:"77/96",unf:19,ny:38},
+ "衛生所":{u:7,N:5557,rev:86.7,ab:11.2,iv:85.4,pt:61.1,ivf:"551/645",ptf:"99/162",unf:63,ny:31},
+ "診所":{u:13,N:1171,rev:70.3,ab:15.0,iv:90.6,pt:15.4,ivf:"144/159",ptf:"10/65",unf:55,ny:55},
+ "藥局":{u:4,N:300,rev:null,ab:4.7,iv:71.4,pt:100.0,ivf:"10/14",ptf:"1/1",unf:0,ny:7},
+ "全部":{u:30,N:9454,rev:82.9,ab:11.3,iv:89.0,pt:57.7,ivf:"959/1,078",ptf:"187/324",unf:137,ny:131}
+};
+var THR={ab:10,iv:50,pt:30};
+function fmt(v){return v==null?"—":v.toFixed(1)+"%"}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
+
+/* ---------- type table & flags ---------- */
+(function(){
+  var tb=document.getElementById("typeTable"),h="";
+  TYPES.concat(["全部"]).forEach(function(t){var a=AGG[t];
+    h+="<tr"+(t==="全部"?" style=\"font-weight:700\"":"")+"><td>"+(t==="全部"?"全市":t)+"</td><td class=\"r num\">"+a.u+"</td><td class=\"r num\">"+a.N.toLocaleString()+"</td><td class=\"r num\">"+(a.rev==null?"<span class=muted>資料不足</span>":fmt(a.rev))+"</td><td class=\"r num\">"+fmt(a.ab)+"</td><td class=\"r num\">"+fmt(a.iv)+"</td><td class=\"r num\""+(a.pt<30?" style=\"color:var(--orangeink);font-weight:700\"":"")+">"+fmt(a.pt)+"</td></tr>";});
+  tb.innerHTML=h;
+  var fa=0,fi=0,fp=0,any=0;
+  UNITS.forEach(function(u){var f=false;
+    if(u.ab!=null&&u.ab<THR.ab){fa++;f=true}
+    if(u.iv!=null&&u.iv<THR.iv){fi++;f=true}
+    if(u.pt!=null&&u.pt<THR.pt){fp++;f=true}
+    if(f)any++;});
+  document.getElementById("flagCount").innerHTML="<b class=num style=\"font-size:var(--fs-m)\">"+any+"</b> / 30 家至少觸及一條<br>異常率 &lt;10%：<b class=num>"+fa+"</b> 家・介入率 &lt;50%：<b class=num>"+fi+"</b> 家・後測率 &lt;30%：<b class=num>"+fp+"</b> 家<br><span class=\"cap muted\">另有 2 家因初評異常未複評，無法計算。</span>";
+  var pt=document.getElementById("pendTable"),p="";
+  TYPES.concat(["全部"]).forEach(function(t){var a=AGG[t];p+="<tr"+(t==="全部"?" style=\"font-weight:700\"":"")+"><td>"+(t==="全部"?"全市":t)+"</td><td class=\"r num\">"+a.unf+"</td><td class=\"r num\">"+a.ny+"</td></tr>"});
+  pt.innerHTML=p;
+})();
+
+/* ---------- funnel ---------- */
+(function(){
+  var S=[["初評異常","需要複評",1414],["完成複評","",1175],["確認異常","複評異常＋視聽異常",1073],["有介入","介入率 89.0%",959],["應後測","已到後測期",324],["完成後測","後測率 57.7%",187]];
+  var L={1:"未複評 ≥239 人",3:"未介入 119 人",5:"未完成追蹤／後測 137 人"};
+  var shades=["var(--tealink)","var(--teal)","var(--teal)","var(--tealmid)","var(--tealmid)","var(--orange)"];
+  var h="";
+  S.forEach(function(s,i){
+    if(L[i])h+="<div class=leak><span></span><span>"+L[i]+"</span></div>";
+    h+="<div class=fr><div class=lb>"+s[0]+(s[1]?"<small>"+s[1]+"</small>":"")+"</div><div class=tr><div class=bx style=\"width:"+(s[2]/1414*100).toFixed(1)+"%;background:"+shades[i]+"\"></div></div><div class=\"vl\">"+s[2].toLocaleString()+"</div></div>";
+  });
+  document.getElementById("funnel").innerHTML=h;
+})();
+
+/* ---------- strip charts ---------- */
+function strip(id,key,fkey,thr){
+  var host=document.getElementById(id); if(!host)return;
+  var h="<div class=strip><div class=sax><span></span><div class=tk>";
+  [0,25,50,75,100].forEach(function(t){h+="<span style=\"left:"+t+"%"+(t===0?";transform:none":t===100?";transform:translateX(-100%)":"")+"\">"+t+"%</span>"});
+  h+="</div><span class=\"cap muted\" style=\"font-size:var(--fs-cap)\">類型加總</span></div>";
+  TYPES.forEach(function(t){
+    var us=UNITS.filter(function(u){return u.t===t&&u[key]!=null}).sort(function(a,b){return a[key]-b[key]});
+    h+="<div class=srow><span class=sl>"+t+"</span><div class=strk>";
+    [25,50,75].forEach(function(g){h+="<span class=grid style=\"left:"+g+"%\"></span>"});
+    h+="<span class=th style=\"left:"+thr+"%\"></span>";
+    var lastV=-99,lane=0,lanes=[0,-15,15,-26,26];
+    us.forEach(function(u){
+      var v=u[key]; if(v-lastV<3.2){lane=(lane+1)%lanes.length}else{lane=0} lastV=v;
+      var tip=u.c+"｜"+v.toFixed(1)+"%"+(u[fkey]?"（"+u[fkey]+"）":"")+(u.n?"\n"+u.n:"");
+      h+="<button type=button class=\"dot"+(v<thr?" flag":"")+"\" style=\"left:"+Math.max(0.6,Math.min(99.4,v))+"%;--dy:calc(var(--u)*"+lanes[lane]+")\" data-tip=\""+esc(tip)+"\" aria-label=\""+esc(tip)+"\"></button>";
+    });
+    h+="</div><span class=\"sa\">"+fmt(AGG[t][key])+"</span></div>";
+  });
+  h+="</div>";
+  host.innerHTML=h;
+}
+strip("stripAb","ab","abf",THR.ab);
+strip("stripIv","iv","ivf",THR.iv);
+strip("stripPt","pt","ptf",THR.pt);
+
+/* tooltip */
+var tip=document.getElementById("tip");
+function showTip(el){tip.textContent=el.getAttribute("data-tip");tip.hidden=false;var r=el.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
+  var x=Math.min(window.innerWidth-tw-8,Math.max(8,r.left+r.width/2-tw/2)),y=r.top-th-10; if(y<8)y=r.bottom+10; tip.style.left=x+"px";tip.style.top=y+"px";tip.style.whiteSpace="pre-line"}
+document.addEventListener("pointerover",function(e){var d=e.target.closest&&e.target.closest("[data-tip]");if(d)showTip(d)});
+document.addEventListener("pointerout",function(e){if(e.target.closest&&e.target.closest("[data-tip]"))tip.hidden=true});
+document.addEventListener("focusin",function(e){if(e.target.matches&&e.target.matches("[data-tip]"))showTip(e.target)});
+document.addEventListener("focusout",function(){tip.hidden=true});
+
+/* ---------- case timeline ---------- */
+(function(){
+  var el=document.getElementById("caseTl"); if(!el)return;
+  var D=184; function x(d){return (d/D*100).toFixed(2)+"%"}
+  var h="<div class=base></div>";
+  h+="<div class=\"w fu\" style=\"left:"+x(31)+";width:calc("+x(177-31)+")\">追蹤窗口：評估滿 1 個月起至後測當日</div>";
+  h+="<div class=\"w pt\" style=\"left:"+x(92)+";width:calc("+x(184-92)+")\">後測窗口：3～6 個月（6/10–9/10）</div>";
+  var E=[[0,"3/10","初評<br>4 項異常","",0,"l"],[14,"3/24","複評＋<br>介入計畫","",1,""],[35,"4/14","據點中斷<br>（單位不知道）","hidden-ev",0,""],[90,"6/08","3 個月追蹤<br>電訪＋回診","",0,""],[98,"6/16","共照中心<br>收案","",1,""],[177,"9/03","6 個月後測<br>（窗口截止前 1 週）","",0,"r"]];
+  E.forEach(function(e){var top=e[4]?74:0;
+    h+="<div class=\"ev "+e[3]+" "+e[5]+"\" style=\"left:"+x(e[0])+";top:calc(var(--u)*"+top+")\"><span class=d>Day "+e[0]+"・"+e[1]+"</span><b>"+e[2]+"</b></div>";
+    h+="<span class=cn style=\"left:"+x(e[0])+";top:calc(var(--u)*"+(top+66)+");height:calc(var(--u)*"+(155-top-66)+")\"></span>";
+    h+="<span class=\"pin"+(e[3]?" hid":"")+"\" style=\"left:"+x(e[0])+"\"></span>";});
+  [[0,"0"],[31,"1 個月"],[92,"3 個月"],[184,"6 個月"]].forEach(function(m,i){h+="<span class=mo style=\"left:"+x(m[0])+(i===0?";transform:none":i===3?";transform:translateX(-100%)":"")+"\">"+m[1]+"</span>"});
+  el.innerHTML=h;
+})();
+
+/* ---------- mini charts (post-test) ---------- */
+(function(){
+  var host=document.getElementById("minis"); if(!host)return;
+  var M=[
+    {t:"SPPB",u:"0–12 分，≥10 正常",min:0,max:12,band:[10,12],pts:[[14,8],[177,10]],lab:["複評","後測"]},
+    {t:"MNA-SF",u:"0–14 分，≥12 正常",min:0,max:14,band:[12,14],pts:[[14,10],[177,12]],lab:["複評","後測"]},
+    {t:"GDS-15",u:"0–15 分，<5 正常（越低越好）",min:0,max:15,band:[0,4],pts:[[14,6],[177,3]],lab:["複評","後測"]},
+    {t:"AD8",u:"0–8 分，<2 正常（越低越好）",min:0,max:8,band:[0,1],pts:[[14,2],[177,2]],lab:["複評","後測"]},
+    {t:"椅子起身 5 次",u:"秒，≤12 正常（越低越好）",min:8,max:18,band:[8,12],pts:[[0,15.8],[90,13.9],[177,11.6]],lab:["初評","3 個月","後測"],dp:1},
+    {t:"體重",u:"公斤（3 個月前 49.5）",min:44,max:51,band:null,pts:[[0,46.2],[90,47.0],[177,47.8]],lab:["初評","3 個月","後測"],dp:1}
+  ];
+  var W=300,H=100,px=12,py=10;
+  var h="";
+  M.forEach(function(m){
+    function X(d){return px+(d/184)*(W-2*px)} function Y(v){return H-py-(v-m.min)/(m.max-m.min)*(H-2*py)}
+    var s="<svg viewBox=\"0 0 "+W+" "+H+"\" preserveAspectRatio=\"none\" role=\"img\" aria-label=\""+m.t+" 變化\">";
+    if(m.band){var y1=Y(m.band[1]),y0=Y(m.band[0]);s+="<rect x=\""+px+"\" y=\""+Math.min(y1,y0)+"\" width=\""+(W-2*px)+"\" height=\""+Math.abs(y0-y1)+"\" fill=\"color-mix(in srgb, var(--good) 14%, transparent)\"/>"}
+    s+="<line x1=\""+px+"\" x2=\""+(W-px)+"\" y1=\""+(H-py)+"\" y2=\""+(H-py)+"\" stroke=\"var(--rule)\" stroke-width=\"1\" vector-effect=\"non-scaling-stroke\"/>";
+    var d=m.pts.map(function(p,i){return (i?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1)}).join(" ");
+    s+="<path d=\""+d+"\" fill=\"none\" stroke=\"var(--teal)\" stroke-width=\"2.5\" vector-effect=\"non-scaling-stroke\"/>";
+    s+="</svg>";
+    var dots="";m.pts.forEach(function(p,i){dots+="<span style=\"position:absolute;left:"+(X(p[0])/W*100).toFixed(2)+"%;top:"+(Y(p[1])/H*100).toFixed(2)+"%;width:10px;height:10px;border-radius:50%;background:"+(i===m.pts.length-1?"var(--tealink)":"var(--sheet)")+";border:2px solid var(--tealink);transform:translate(-50%,-50%)\"></span>"});
+    var vals=m.pts.map(function(p,i){return "<span>"+m.lab[i]+" <b>"+p[1].toFixed(m.dp||0)+"</b></span>"}).join("");
+    h+="<div class=mini><div class=mt>"+m.t+"<span>"+m.u+"</span></div><div style=\"position:relative\">"+s+dots+"</div><div class=mv>"+vals+"</div></div>";
+  });
+  host.innerHTML=h;
+})();
+
+/* ---------- calculator ---------- */
+(function(){
+  var ids=["n","new","a0","rev","a1","iv","ref","arr","fu","due","pt"];
+  var DEMO={n:420,new:150,a0:78,rev:64,a1:57,iv:52,ref:24,arr:15,fu:38,due:30,pt:8};
+  var CITY={n:9454,new:"",a0:1414,rev:1175,a1:1073,iv:959,ref:"",arr:"",fu:"",due:324,pt:187};
+  var src=document.getElementById("calcSrc"),out=document.getElementById("calcOut");
+  function g(k){var v=document.getElementById("c_"+k).value;return v===""?null:Number(v)}
+  function set(o){ids.forEach(function(k){document.getElementById("c_"+k).value=o[k]==null?"":o[k]});calc()}
+  function r(a,b){return (a==null||b==null||b===0)?null:a/b*100}
+  function calc(){
+    var R=[
+      ["新開案比","首次評估 ÷ 評估",r(g("new"),g("n")),null],
+      ["初評異常率","初評異常 ÷ 評估",r(g("a0"),g("n")),null],
+      ["複評完成率","完成複評 ÷ 初評異常",r(g("rev"),g("a0")),null],
+      ["異常率","確認異常 ÷ 評估",r(g("a1"),g("n")),"ab"],
+      ["介入率","有介入 ÷ 確認異常",r(g("iv"),g("a1")),"iv"],
+      ["轉介率","轉介 ÷ 確認異常",r(g("ref"),g("a1")),null],
+      ["轉介到位率","到位 ÷ 轉介",r(g("arr"),g("ref")),null],
+      ["追蹤率","完成追蹤 ÷ 確認異常",r(g("fu"),g("a1")),null],
+      ["後測率","完成後測 ÷ 到期應後測",r(g("pt"),g("due")),"pt"]
+    ];
+    var h="";
+    R.forEach(function(x){
+      var v=x[2],st="<span class=\"pill\">參考</span>";
+      if(v==null)st="<span class=\"pill\">待填</span>";
+      else if(x[3]){ if(v<THR[x[3]])st="<span class=\"pill sr\">觸及篩選線 &lt;"+THR[x[3]]+"%</span>"; else if(x[3]==="ab"&&v>40)st="<span class=\"pill wn\">偏高，檢查收案</span>"; else st="<span class=\"pill ok\">未觸及</span>";}
+      else if(v>100)st="<span class=\"pill wn\">超過 100%，檢查分母</span>";
+      h+="<div class=orow><div><b>"+x[0]+"</b>　<span class=of>"+x[1]+"</span></div><div class=ov>"+(v==null?"—":v.toFixed(1)+"%")+"</div><div>"+st+"</div></div>";
+    });
+    out.innerHTML=h;
+  }
+  ids.forEach(function(k){document.getElementById("c_"+k).addEventListener("input",function(){src.textContent="自行輸入中。";calc()})});
+  document.querySelectorAll("[data-fill]").forEach(function(b){b.addEventListener("click",function(){
+    var f=b.getAttribute("data-fill");
+    if(f==="demo"){set(DEMO);src.textContent="目前是範例數字（虛構單位），不是任何真實單位。"}
+    else if(f==="city"){set(CITY);src.textContent="全市 30 單位加總（篩選表沒有首次評估、轉介、追蹤欄位，留白）。"}
+    else{set({});src.textContent="已清空，請輸入你們單位的人數。"}
+  })});
+  set(DEMO);
+})();
+
+/* ---------- reveal & timers ---------- */
+document.querySelectorAll("[data-reveal]").forEach(function(b){b.addEventListener("click",function(){var t=document.getElementById(b.getAttribute("data-reveal"));t.hidden=!t.hidden;b.textContent=t.hidden?(b.dataset.lab||b.textContent):"收起答案";if(!b.dataset.lab)b.dataset.lab=b.textContent==="收起答案"?"顯示答案":b.textContent})});
+document.querySelectorAll("[data-reveal]").forEach(function(b){b.dataset.lab=b.textContent});
+document.querySelectorAll(".timer").forEach(function(t){
+  var total=Number(t.dataset.min)*60,left=total,iv=null,tv=t.querySelector(".tv");
+  function show(){var m=Math.floor(left/60),s=left%60;tv.textContent=(m<10?"0":"")+m+":"+(s<10?"0":"")+s;t.classList.toggle("done",left===0)}
+  t.addEventListener("click",function(e){var a=e.target.getAttribute("data-t");if(!a)return;
+    if(a==="go"&&!iv&&left>0){iv=setInterval(function(){left=Math.max(0,left-1);show();if(!left){clearInterval(iv);iv=null}},1000)}
+    if(a==="pause"){clearInterval(iv);iv=null}
+    if(a==="reset"){clearInterval(iv);iv=null;left=total}
+    show()});
+  show();
+});
+
+/* ---------- commitment card (per-viewer storage) ---------- */
+(function(){
+  var f=document.getElementById("pdca"); if(!f)return; var KEY="icope-pdca-v1";
+  var els=f.querySelectorAll("input,textarea");
+  try{var d=JSON.parse(localStorage.getItem(KEY)||"{}");els.forEach(function(e){if(d[e.id])e.value=d[e.id]})}catch(e){}
+  f.addEventListener("input",function(){var d={};els.forEach(function(e){d[e.id]=e.value});try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}});
+  f.addEventListener("submit",function(e){e.preventDefault()});
+  document.getElementById("pdcaClear").addEventListener("click",function(){els.forEach(function(e){e.value=""});try{localStorage.removeItem(KEY)}catch(e){}});
+})();
+
+/* ---------- deck engine ---------- */
+var slides=[].slice.call(document.querySelectorAll(".slide")),N=slides.length,cur=0;
+var body=document.body,mq=window.matchMedia("(max-width: 820px), (max-height: 500px)");
+slides.forEach(function(s,i){var p=s.querySelector(".pg");if(p)p.textContent=String(i+1).padStart(2,"0")+" / "+N});
+function sizeIt(){
+  var W=window.innerWidth,H=window.innerHeight,u;
+  if(mq.matches){body.classList.add("scroll");u=Math.max(0.6,Math.min(1,W/640))}
+  else{body.classList.remove("scroll");u=Math.min(W/1300,(H-46)/736)}
+  document.documentElement.style.setProperty("--u",u.toFixed(4)+"px");
+}
+function go(i,push){
+  cur=Math.max(0,Math.min(N-1,i));
+  slides.forEach(function(s,k){s.classList.toggle("on",k===cur)});
+  document.getElementById("count").textContent=(cur+1)+" / "+N;
+  document.getElementById("progi").style.width=((cur+1)/N*100)+"%";
+  if(body.classList.contains("shownotes"))fillNotes();
+  tip.hidden=true;
+  try{history.replaceState(null,"","#s"+(cur+1))}catch(e){}
+}
+function fillNotes(){var n=slides[cur].querySelector("aside.notes"),p=document.getElementById("notesPanel");p.innerHTML=n?n.innerHTML:"<h4>講者備註</h4><p>本頁沒有備註。</p>"}
+function toggleNotes(){body.classList.toggle("shownotes");var on=body.classList.contains("shownotes");var p=document.getElementById("notesPanel");
+  if(body.classList.contains("scroll")){p.hidden=true}else{p.hidden=!on;if(on)fillNotes()}}
+function buildToc(){var l=document.getElementById("tocList"),h="";slides.forEach(function(s,i){h+="<button type=button data-i=\""+i+"\""+(i===cur?" class=on":"")+"><span class=n>"+(i+1)+"</span><span>"+esc(s.dataset.title||"")+"</span></button>"});l.innerHTML=h}
+function openToc(){buildToc();document.getElementById("toc").hidden=false;var b=document.querySelector("#tocList .on")||document.querySelector("#tocList button");if(b)b.focus()}
+function closeToc(){document.getElementById("toc").hidden=true}
+document.getElementById("tocList").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var i=Number(b.dataset.i);closeToc();
+  if(body.classList.contains("scroll"))slides[i].scrollIntoView({behavior:"smooth",block:"start"});else go(i)});
+document.getElementById("toc").addEventListener("click",function(e){if(e.target.id==="toc")closeToc()});
+document.getElementById("prev").onclick=function(){go(cur-1)};
+document.getElementById("next").onclick=function(){go(cur+1)};
+document.getElementById("tocBtn").onclick=openToc;document.getElementById("tocFab").onclick=openToc;
+document.getElementById("notesBtn").onclick=toggleNotes;document.getElementById("notesFab").onclick=toggleNotes;
+document.getElementById("fsBtn").onclick=function(){try{if(document.fullscreenElement)document.exitFullscreen();else{var p=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();if(p&&p.catch)p.catch(function(){})}}catch(e){}};
+document.addEventListener("keydown",function(e){
+  var t=e.target; if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"))return;
+  if(!document.getElementById("toc").hidden){if(e.key==="Escape"||e.key==="t"||e.key==="T"){closeToc();e.preventDefault()}return}
+  if(body.classList.contains("scroll")){if(e.key==="t"||e.key==="T")openToc();if(e.key==="n"||e.key==="N")toggleNotes();return}
+  var k=e.key;
+  if(k==="ArrowRight"||k==="PageDown"||(k===" "&&!(t&&t.tagName==="BUTTON"))){go(cur+1);e.preventDefault()}
+  else if(k==="ArrowLeft"||k==="PageUp"){go(cur-1);e.preventDefault()}
+  else if(k==="Home"){go(0)}else if(k==="End"){go(N-1)}
+  else if(k==="t"||k==="T"){openToc()}
+  else if(k==="n"||k==="N"){toggleNotes()}
+  else if(k==="f"||k==="F"){document.getElementById("fsBtn").click()}
+});
+var tx=null;document.addEventListener("touchstart",function(e){if(!body.classList.contains("scroll")&&e.touches.length===1)tx=e.touches[0].clientX},{passive:true});
+document.addEventListener("touchend",function(e){if(tx==null)return;var dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1))},{passive:true});
+window.addEventListener("resize",function(){sizeIt();if(body.classList.contains("scroll")){document.getElementById("notesPanel").hidden=true}});
+sizeIt();
+var m=/^#s(\d+)$/.exec(location.hash||"");go(m?Number(m[1])-1:0);
+if(body.classList.contains("scroll")&&m){setTimeout(function(){slides[cur].scrollIntoView({block:"start"})},50)}
+window.__deck={go:go,N:N};
+})();
+</script>
+</body></html>
